@@ -3,12 +3,6 @@
 A self-contained version of the portfolio built with plain HTML, CSS and vanilla JavaScript.
 No build step, no frameworks, no dependencies.
 
-## Files
-- `index.html` — markup & sections
-- `styles.css` — design system, glassmorphism, responsive layout
-- `script.js` — section data, reveal animations, mobile menu, contact form
-- `resume.pdf` — downloadable CV
-
 ## Run locally
 Just open `index.html` in a browser, or serve the folder:
 ```bash
@@ -18,8 +12,8 @@ python3 -m http.server 8080
 
 # Professional Portfolio | Kefas Etiku Francis
 
-[![Live Demo](https://img.shields.io/badge/demo-online-brightgreen.svg?style=for-the-badge)](https://kefras.github.io/Cloud-Architect-Portfolio/)
-[![Portfolio](https://img.shields.io/badge/UI/UX-Design-blue?style=for-the-badge)](index.html)
+[![Live Demo](https://img.shields.io/badge/demo-online-brightgreen.svg?style=for-the-badge)](https://kefras.netlify.app/)
+
 
 A sleek, high-performance personal portfolio built with a focus on modern UI/UX principles. This project showcases a clean "Glassmorphism" design system using vanilla web technologies, optimized for fast loading and full responsiveness.
 
