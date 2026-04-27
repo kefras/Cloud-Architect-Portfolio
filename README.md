@@ -51,4 +51,6 @@ Kefas Etiku Francis BSc. Computer Science Student | Cloud & DevOps Enthusiast SI
 
 [![Live Demo](https://img.shields.io/badge/demo-online-brightgreen.svg?style=for-the-badge)](https://kefras.netlify.app/)
 
-
+<p align="center">
+  <img src="images/architecture.png" width="600"/>
+</p>
