@@ -1,42 +1,54 @@
-# Kefas Etiku Francis — Portfolio (Static HTML/CSS/JS)
+🌐 AWS Cloud Architect Portfolio
+A secure, high-availability personal portfolio architected on AWS.
 
-A self-contained version of the portfolio built with plain HTML, CSS and vanilla JavaScript.
-No build step, no frameworks, no dependencies.
+Live Demo: https://kefas.live
 
-## Run locally
-Just open `index.html` in a browser, or serve the folder:
-```bash
-python3 -m http.server 8080
-# then visit http://localhost:8080
-```
+📖 Project Overview
+This project demonstrates a production-ready deployment of a static portfolio. Moving beyond basic web hosting, this architecture focuses on security at the edge, global content delivery, and infrastructure best practices.
+
+By utilizing Origin Access Control (OAC), the S3 origin remains entirely private, forcing all traffic through a secure, SSL-encrypted CloudFront distribution.
+
+🏗️ Architecture
+The infrastructure is built using the following AWS services:
+
+Amazon S3: Hosts the static website assets (HTML/CSS) in a private bucket.
+
+Amazon CloudFront: Acts as a Content Delivery Network (CDN) to serve content globally with low latency.
+
+AWS Route 53: Manages DNS and domain delegation for kefas.live.
+
+AWS Certificate Manager (ACM): Handles SSL/TLS certificates for end-to-end HTTPS encryption.
+
+Origin Access Control (OAC): Restricts bucket access strictly to CloudFront, preventing direct S3 URL exposure.
+
+🛡️ Security Features
+Least Privilege IAM Policies: Configured specific JSON policies to allow only the CloudFront Service Principal to perform s3:GetObject actions.
+
+SSL/TLS Encryption: Enforced HTTPS redirects to ensure all user data is encrypted in transit.
+
+Private Origin: The S3 bucket has "Block All Public Access" enabled, serving as a secure origin shield.
+
+🚀 Key Technical Challenges & Solutions
+The "Access Denied" (403) Hurdle
+Challenge: Initially encountered 403 errors when transitioning from S3 Public Hosting to CloudFront OAC.
+Solution: Identified that the S3 REST endpoint must be used instead of the website endpoint. Updated the S3 Bucket Policy with a unique CloudFront SourceArn condition to complete the security "handshake."
+
+DNS Propagation & SSL Validation
+Challenge: Validating the custom domain via ACM.
+Solution: Utilized Route 53 DNS validation to issue a public certificate in the us-east-1 region, enabling the professional "padlock" icon on the custom domain.
+
+🛠️ Tech Stack
+Cloud: AWS (S3, CloudFront, Route 53, ACM, IAM)
+
+Frontend: HTML5, CSS3
+
+Tools: Git, GitHub
+
+👨‍💻 About the Author
+Kefas Etiku Francis BSc. Computer Science Student | Cloud & DevOps Enthusiast SIWES Trainee at Build and Ship Academy.
 
 # Professional Portfolio | Kefas Etiku Francis
 
 [![Live Demo](https://img.shields.io/badge/demo-online-brightgreen.svg?style=for-the-badge)](https://kefras.netlify.app/)
 
 
-A sleek, high-performance personal portfolio built with a focus on modern UI/UX principles. This project showcases a clean "Glassmorphism" design system using vanilla web technologies, optimized for fast loading and full responsiveness.
-
-## 🚀 Features
-
-* **Responsive Layout:** Fully optimized for mobile, tablet, and desktop viewing.
-* **Modern UI:** Implements glassmorphism, smooth reveal animations, and a cohesive design system.
-* **Dynamic Sections:** Section data and animations managed via lightweight Vanilla JS.
-* **Contact Integration:** Functional contact form UI and direct social links.
-* **Resume Download:** One-click access to my professional CV.
-
-## 🛠️ Tech Stack
-
-* **HTML5:** Semantic markup for SEO and accessibility.
-* **CSS3:** Custom properties (variables), Flexbox, Grid, and CSS animations.
-* **JavaScript:** ES6+ Vanilla JS for DOM manipulation and interactivity.
-* **No Frameworks:** 100% dependency-free for maximum speed.
-
-## 📁 Project Structure
-
-```text
-├── index.html       # Main entry point & structural markup
-├── styles.css      # Design system, layout, and responsiveness
-├── script.js       # Animations, mobile menu, and data logic
-├── resume.pdf      # Downloadable professional CV
-└── images/         # Project assets and branding (if applicable)
