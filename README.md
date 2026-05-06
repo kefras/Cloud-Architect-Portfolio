@@ -13,7 +13,7 @@ This project represents a complete transition from basic web hosting and third-p
 The system is divided into two main components: a secure frontend delivery network and a serverless backend for communication.
 
 ### **System Data Flow**
-![Architecture Diagram](./architecture.png)
+![Architecture Diagram](/architecture.png)
 *Architecture mapped using Excalidraw, showcasing the end-to-end flow from browser request to email delivery.*
 
 ### **Infrastructure Components**
