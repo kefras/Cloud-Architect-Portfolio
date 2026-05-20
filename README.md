@@ -16,6 +16,11 @@ The system is divided into two main components: a secure frontend delivery netwo
 <p align="center">
   <img src="./architecture.png" alt="Architecture Diagram" width="650">
 </p>
+
+<p align="center">
+  <img src="./VPC architecture 2.png" alt="Architecture Diagram" width="650">
+</p>
+
 *Architecture mapped using Draw.io, showcasing the end-to-end flow from browser request to email delivery.*
 
 ### **Infrastructure Components**
