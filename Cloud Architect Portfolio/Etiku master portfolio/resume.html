@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kefas Etiku Francis | Resume</title>
+  <meta
+    name="description"
+    content="Resume of Kefas Etiku Francis, an entry-level Cloud and DevOps Engineer based in Abuja, Nigeria."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --ink: #102033;
+      --muted: #58667a;
+      --line: #d7dee8;
+      --accent: #0b79d0;
+      --accent-dark: #075f9f;
+      --accent-soft: #eaf5ff;
+      --paper: #ffffff;
+      --surface: #f6f9fc;
+      --max-width: 980px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Manrope", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(11, 121, 208, 0.1), transparent 24%),
+        linear-gradient(180deg, #eef4fb 0%, #f7fafd 100%);
+      padding: 2rem 1rem 3rem;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus-visible {
+      text-decoration: underline;
+    }
+
+    .resume-shell {
+      width: min(var(--max-width), 100%);
+      margin: 0 auto;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .toolbar-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.85rem;
+      padding: 0.75rem 1.1rem;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .button.primary {
+      color: #fff;
+      background: linear-gradient(135deg, #23a1ff, var(--accent));
+      box-shadow: 0 18px 34px rgba(11, 121, 208, 0.18);
+    }
+
+    .button.secondary {
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.88);
+      border-color: #c6d5e6;
+    }
+
+    .resume-paper {
+      overflow: hidden;
+      background: var(--paper);
+      border: 1px solid rgba(16, 32, 51, 0.08);
+      border-radius: 28px;
+      box-shadow: 0 30px 80px rgba(24, 39, 75, 0.12);
+    }
+
+    .hero {
+      padding: clamp(1.4rem, 4vw, 2.2rem);
+      background:
+        linear-gradient(140deg, rgba(11, 121, 208, 0.09), transparent 55%),
+        linear-gradient(180deg, #ffffff 0%, #f9fbfe 100%);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      padding: 0.5rem 0.8rem;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .headline {
+      max-width: 46rem;
+      margin: 0.85rem 0 0;
+      color: #23354a;
+      font-size: 1.04rem;
+      line-height: 1.7;
+    }
+
+    .contact-bar {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .contact-pill {
+      padding: 0.72rem 0.92rem;
+      color: var(--muted);
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 0.9rem;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 0.95fr 1.45fr;
+    }
+
+    .sidebar,
+    .main {
+      padding: 1.7rem 2rem 2rem;
+    }
+
+    .sidebar {
+      background: var(--surface);
+      border-right: 1px solid var(--line);
+    }
+
+    .section + .section {
+      margin-top: 1.55rem;
+    }
+
+    .section-label {
+      margin: 0 0 0.8rem;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    p,
+    li {
+      color: #28384c;
+      font-size: 0.96rem;
+      line-height: 1.66;
+    }
+
+    .meta-list,
+    .skill-list,
+    .project-list,
+    .cert-list,
+    .timeline-list {
+      display: grid;
+      gap: 0.9rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .meta-list strong,
+    .project-list strong,
+    .cert-list strong,
+    .timeline-list strong {
+      display: block;
+      margin-bottom: 0.15rem;
+      color: var(--ink);
+      font-size: 0.97rem;
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .skill-list li {
+      padding: 0.9rem 1rem;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+    }
+
+    .skill-list strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-size: 0.94rem;
+    }
+
+    .project-item,
+    .timeline-item,
+    .cert-item {
+      padding-bottom: 0.9rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .project-item:last-child,
+    .timeline-item:last-child,
+    .cert-item:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .project-item p,
+    .timeline-item p,
+    .cert-item p {
+      margin: 0.28rem 0 0;
+    }
+
+    .stack {
+      display: flex;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+      margin-top: 0.45rem;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 1.85rem;
+      padding: 0.24rem 0.62rem;
+      color: var(--accent-dark);
+      background: var(--accent-soft);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    @media (max-width: 860px) {
+      .content {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .hero,
+      .sidebar,
+      .main {
+        padding: 1.35rem;
+      }
+    }
+
+    @media (max-width: 560px) {
+      body {
+        padding: 0.8rem 0.7rem 2rem;
+      }
+
+      .toolbar-actions,
+      .button,
+      .contact-pill {
+        width: 100%;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 12mm;
+      }
+
+      body {
+        padding: 0;
+        background: #fff;
+      }
+
+      .toolbar {
+        display: none;
+      }
+
+      .resume-paper {
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .hero {
+        padding: 0 0 1rem;
+      }
+
+      .sidebar,
+      .main {
+        padding: 1rem 1.1rem 0 0;
+      }
+
+      .sidebar {
+        background: #fff;
+      }
+
+      .content {
+        grid-template-columns: 0.9fr 1.5fr;
+      }
+
+      .project-item,
+      .timeline-item,
+      .cert-item,
+      .skill-list li {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume-shell">
+    <div class="toolbar">
+      <p class="toolbar-note">Resume page for portfolio visitors, recruiters, and internship applications.</p>
+      <div class="toolbar-actions">
+        <button class="button primary" type="button" id="print-resume">Print / Save as PDF</button>
+        <a class="button secondary" href="./index.html">Back to Portfolio</a>
+      </div>
+    </div>
+
+    <article class="resume-paper">
+      <header class="hero">
+        <p class="eyebrow">Entry-Level Cloud &amp; DevOps Engineer</p>
+        <h1>Kefas Etiku Francis</h1>
+        <p class="headline">
+          Undergraduate Computer Science student with hands-on experience in cloud infrastructure, DevOps automation,
+          Linux systems, containerization, and CI/CD workflows. Skilled in deploying scalable applications on AWS using
+          EC2, S3, IAM, CloudFront, Docker, Kubernetes, and GitHub Actions.
+        </p>
+        <div class="contact-bar" aria-label="Contact links">
+          <span class="contact-pill">Abuja, Nigeria</span>
+          <a class="contact-pill" href="mailto:kefasetikufrancis@gmail.com">kefasetikufrancis@gmail.com</a>
+          <a class="contact-pill" href="tel:+2348102839482">+234 810 283 9482</a>
+          <a class="contact-pill" href="https://linkedin.com/in/kefas">linkedin.com/in/kefas</a>
+          <a class="contact-pill" href="https://github.com/kefras">github.com/kefras</a>
+          <a class="contact-pill" href="https://kefas.live/">kefas.live</a>
+        </div>
+      </header>
+
+      <div class="content">
+        <aside class="sidebar">
+          <section class="section">
+            <p class="section-label">Professional Summary</p>
+            <p>
+              Motivated cloud and DevOps learner recognized for practical problem-solving, clear technical communication,
+              remote collaboration, and leadership in student mentoring. Comfortable working across cloud-native projects,
+              deployment automation, documentation, and troubleshooting.
+            </p>
+          </section>
+
+          <section class="section">
+            <p class="section-label">Education</p>
+            <ul class="meta-list">
+              <li>
+                <strong>B.Sc. Computer Science</strong>
+                <span>Miva Open University, Abuja</span>
+                <div class="small">2023 - 2027 | In View</div>
+              </li>
+              <li>
+                <strong>Cloud Computing Micro-credential</strong>
+                <span>Africa Agility &amp; Oz</span>
+                <div class="small">Scholarship Program | Remote | April 2026 - Present</div>
+                <p class="small">Tracks: Cloud &amp; Infrastructure, Cloud Security, and AI for Cloud.</p>
+              </li>
+            </ul>
+          </section>
+
+          <section class="section">
+            <p class="section-label">Skills</p>
+            <ul class="skill-list">
+              <li><strong>Cloud Platforms</strong>AWS EC2, S3, IAM, CloudFront, cloud architecture, access control</li>
+              <li><strong>DevOps &amp; Containers</strong>Docker, Kubernetes, Pods, Deployments, Services, ReplicaSets, GitHub Actions, AWS CLI</li>
+              <li><strong>Systems &amp; Scripting</strong>Linux CLI, shell environments, Bash scripting, resource monitoring, log troubleshooting</li>
+              <li><strong>Programming &amp; Tools</strong>Python, JavaScript, Java, C++, Git, GitHub, VS Code</li>
+              <li><strong>Transferable Skills</strong>Teamwork, leadership, communication, documentation, remote collaboration, adaptability</li>
+            </ul>
+          </section>
+
+          <section class="section">
+            <p class="section-label">Awards / Achievements</p>
+            <ul class="cert-list">
+              <li class="cert-item">
+                <strong>AWS Cloud Quest</strong>
+                <span>Generative AI Practitioner, Apr 22, 2026; Cloud Practitioner, Apr 4, 2026</span>
+              </li>
+              <li class="cert-item">
+                <strong>AWS Certifications</strong>
+                <span>Cloud Practitioner Essentials; AI Practitioner Challenge; AWS Foundations: Getting Started</span>
+              </li>
+              <li class="cert-item">
+                <strong>The Linux Foundation</strong>
+                <span>Kubernetes and Cloud Native Essentials (LFS250), Introduction to Kubernetes (LFS158), Introduction to Linux (LFS101)</span>
+              </li>
+              <li class="cert-item">
+                <strong>Honors &amp; Training</strong>
+                <span>Work Ready Africa Cohort 1 Award, Hashgraph Developer Course, Cloud Engineering Certificate, Miva Masterclass: AI and Future Careers</span>
+              </li>
+            </ul>
+          </section>
+        </aside>
+
+        <main class="main">
+          <section class="section">
+            <p class="section-label">Experience</p>
+            <ul class="timeline-list">
+              <li class="timeline-item">
+                <strong>DevOps &amp; Cloud Projects - SIWES Intern</strong>
+                <span>Build and Ship Academy Ltd, UK | Remote</span>
+                <p class="small">2026 - Present</p>
+                <p>Designed and deployed multi-tier AWS environments to support scalable and highly available application infrastructure.</p>
+                <p>Built automated CI/CD pipelines using GitHub Actions, reducing manual deployment tasks and improving delivery consistency.</p>
+                <p>Managed containerized workloads with Docker and supported zero-downtime deployment practices through rolling updates.</p>
+                <div class="stack">
+                  <span class="tag">AWS</span>
+                  <span class="tag">GitHub Actions</span>
+                  <span class="tag">Docker</span>
+                  <span class="tag">Troubleshooting</span>
+                </div>
+              </li>
+
+              <li class="timeline-item">
+                <strong>Student Mentor / Community Volunteer (Miva Buddy Programme)</strong>
+                <span>Miva Open University | Remote</span>
+                <p class="small">January 2026 - April 2026</p>
+                <p>Spearheaded onboarding and community-building support for incoming students, strengthening peer engagement and academic support pathways.</p>
+                <p>Facilitated collaboration within student groups to resolve onboarding friction and foster an interactive, supportive learning community.</p>
+                <div class="stack">
+                  <span class="tag">Leadership</span>
+                  <span class="tag">Communication</span>
+                  <span class="tag">Teamwork</span>
+                </div>
+              </li>
+
+              <li class="timeline-item">
+                <strong>Cloud Engineering Trainee</strong>
+                <span>Schull Technologies, Lagos, Nigeria</span>
+                <p class="small">November 2025 - February 2026</p>
+                <p>Completed practical training in cloud architecture, infrastructure deployment, IAM, access management, and secure application hosting.</p>
+              </li>
+
+              <li class="timeline-item">
+                <strong>Kubernetes African Developer Training Participant</strong>
+                <span>Andela / The Linux Foundation | Remote</span>
+                <p class="small">2025 - 2026</p>
+                <p>Developed hands-on skills in Linux command-line operations, process monitoring, shell environments, infrastructure scripting, and Kubernetes deployment patterns.</p>
+              </li>
+            </ul>
+          </section>
+
+          <section class="section">
+            <p class="section-label">Selected Projects</p>
+            <ul class="project-list">
+              <li class="project-item">
+                <strong>End-to-End CI/CD Pipeline with Docker &amp; GitHub Actions</strong>
+                <p>Designed an automated workflow that delivered application updates from GitHub commits to cloud-hosted AWS EC2 instances, reducing manual configuration work.</p>
+                <div class="stack">
+                  <span class="tag">GitHub Actions</span>
+                  <span class="tag">Docker</span>
+                  <span class="tag">AWS EC2</span>
+                  <span class="tag">Linux</span>
+                </div>
+              </li>
+              <li class="project-item">
+                <strong>Production-Ready Multi-Tier Application Deployment</strong>
+                <p>Provisioned frontend and backend layers on AWS with secure routing, environment configuration, and access control practices.</p>
+                <div class="stack">
+                  <span class="tag">AWS</span>
+                  <span class="tag">Networking</span>
+                  <span class="tag">Access Control</span>
+                </div>
+              </li>
+              <li class="project-item">
+                <strong>Kubernetes-Based Scalable Application Deployment</strong>
+                <p>Orchestrated containerized applications using Kubernetes Deployments, Services, and ReplicaSets while practicing scaling and self-healing concepts.</p>
+                <div class="stack">
+                  <span class="tag">Kubernetes</span>
+                  <span class="tag">ReplicaSets</span>
+                  <span class="tag">Services</span>
+                </div>
+              </li>
+              <li class="project-item">
+                <strong>Cloud-Based Static Website &amp; Personal Portfolio Deployment</strong>
+                <p>Deployed static web applications and a live personal portfolio using Amazon S3 and Amazon CloudFront for optimized global content delivery.</p>
+                <div class="stack">
+                  <span class="tag">Amazon S3</span>
+                  <span class="tag">CloudFront</span>
+                  <span class="tag">Portfolio</span>
+                </div>
+              </li>
+              <li class="project-item">
+                <strong>Infrastructure Automation Practice</strong>
+                <p>Created Bash and AWS CLI automation scripts to speed up cloud resource configuration and improve repeatable environment setup.</p>
+                <div class="stack">
+                  <span class="tag">Bash</span>
+                  <span class="tag">AWS CLI</span>
+                  <span class="tag">IaC Practice</span>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <section class="section">
+            <p class="section-label">Career Focus</p>
+            <p>
+              Seeking internship and entry-level opportunities in cloud engineering, DevOps, site reliability, Linux
+              administration, and infrastructure automation where strong learning ability, teamwork, and disciplined
+              problem-solving can support real engineering outcomes.
+            </p>
+            <div class="stack">
+              <span class="tag">Cloud Engineering</span>
+              <span class="tag">DevOps</span>
+              <span class="tag">CI/CD</span>
+              <span class="tag">Kubernetes</span>
+              <span class="tag">Linux</span>
+              <span class="tag">Automation</span>
+            </div>
+          </section>
+        </main>
+      </div>
+    </article>
+  </div>
+
+  <script>
+    document.getElementById("print-resume")?.addEventListener("click", () => {
+      window.print();
+    });
+  </script>
+</body>
+</html>
