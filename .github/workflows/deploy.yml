@@ -3,6 +3,7 @@ name: Deploy Portfolio
 on:
   push:
     branches:
+      - develop
       - main
 
 jobs:
@@ -31,5 +32,10 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - name: Deploy index.html to S3
-        run: aws s3 cp index.html s3://${{ secrets.S3_BUCKET_NAME }}/index.html
+      - name: Deploy to staging
+        if: github.ref == 'refs/heads/develop'
+        run: aws s3 cp index.html s3://kefas-etiku-portfolio25/index.html
+
+      - name: Deploy to production
+        if: github.ref == 'refs/heads/main'
+        run: aws s3 cp index.html s3://kefras-professional-portfolio/index.html
