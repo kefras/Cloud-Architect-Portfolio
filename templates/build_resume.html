@@ -1,0 +1,42 @@
+<main id="main" class="container resume-wrap">
+  <div class="resume-toolbar">
+    <a href="index.html">← Portfolio</a>
+    <div>
+      <a class="button primary" href="resume.pdf" download>Download ATS PDF ↓</a>
+      <button type="button" class="button secondary" id="printResume">Print resume</button>
+    </div>
+  </div>
+  <article class="resume-paper">
+    <header class="resume-header">
+      <p class="eyebrow">RESUME / EARLY CAREER ENGINEERING</p>
+      <h1>${full_name}</h1>
+      <p class="resume-headline">${professional_headline}</p>
+      <p>${location} · ${email_link} · ${phone}</p>
+      <p>${github_link} · ${linkedin_link} · ${portfolio_link}</p>
+    </header>
+    <section>
+      <h2>Professional Summary</h2>
+      <p>${summary}</p>
+    </section>
+    <section>
+      <h2>Skills</h2>
+      <ul class="resume-skills">
+        ${skill_items}
+      </ul>
+    </section>
+    <section>
+      <h2>Selected Projects</h2>
+      ${project_items}
+    </section>
+    <section>
+      <h2>Experience</h2>
+      ${experience_items}
+    </section>
+    <section>
+      <h2>Education</h2>
+      <h3>${degree}</h3>
+      <p>${school} · ${graduation_date}</p>
+    </section>
+    <p class="small muted resume-note">Professional headline describes areas of focus. Project status is stated above. Experience dates are taken from the supplied resume; credential records are pending reconciliation.</p>
+  </article>
+</main>

@@ -1,0 +1,15 @@
+<!-- Homepage: projects. Content slots are supplied by tools/pages.py. -->
+<section class="section container" id="projects">
+  ${projects_heading}
+  <div class="filter-row">
+    <div class="filters" role="group" aria-label="Filter projects">
+      <button type="button" aria-pressed="true" data-filter="All">All projects</button>
+      <button type="button" aria-pressed="false" data-filter="Full-stack">Full-stack</button>
+      <button type="button" aria-pressed="false" data-filter="Cloud & DevOps">Cloud & DevOps</button>
+    </div>
+    <span id="projectCount" class="mono muted" role="status">4 projects</span>
+  </div>
+  <div class="projects-grid">
+    ${project_cards}
+  </div>
+</section>

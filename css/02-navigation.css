@@ -1,0 +1,71 @@
+/* Shared navigation and menu controls. */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--nav);
+  border-bottom: 1px solid var(--line-soft);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-height: 84px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-right: auto;
+}
+.brand-mark {
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.08em;
+  line-height: 1;
+}
+.brand-mark span {
+  color: var(--accent);
+}
+.brand-caption {
+  font: 9px/1.5 var(--mono);
+  letter-spacing: 0.13em;
+  max-width: 100px;
+}
+.nav nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.nav nav a {
+  font-size: 12px;
+  color: var(--muted);
+  padding-block: 18px;
+}
+.nav nav a[aria-current] {
+  color: var(--accent);
+}
+.nav-actions {
+  display: flex;
+  gap: 8px;
+}
+.icon-button,
+.menu-toggle {
+  border: 1px solid var(--line);
+  background: transparent;
+  border-radius: 5px;
+  min-width: 44px;
+  min-height: 44px;
+  line-height: 1;
+}
+.icon-button {
+  font-size: 23px;
+}
+.menu-toggle {
+  display: none;
+  padding: 0 12px;
+  font-size: 12px;
+}
+.menu-toggle span {
+  margin-left: 8px;
+}

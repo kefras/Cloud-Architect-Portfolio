@@ -1,0 +1,14 @@
+# Local tooling, caches and verification artifacts.
+__pycache__/
+*.py[cod]
+.venv/
+node_modules/
+.artifacts/
+public-dist/
+output/
+
+# Never publish local credentials or environment files.
+.env
+.env.*
+!.env.example
+.aws/

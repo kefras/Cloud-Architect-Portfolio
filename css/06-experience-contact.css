@@ -1,0 +1,144 @@
+/* Experience timeline, contact form and footer. */
+.timeline-row {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 30px;
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+}
+.timeline-row > .mono {
+  font-size: 11px;
+  padding-top: 4px;
+}
+.timeline-row h3 {
+  font-size: 21px;
+  letter-spacing: -0.025em;
+}
+.timeline-row .accent {
+  font-size: 13px;
+  margin-top: 9px;
+}
+.timeline-row ul {
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 15px;
+}
+.timeline-row li + li {
+  margin-top: 6px;
+}
+.learning-note {
+  margin-top: 32px;
+  padding: 30px;
+  background: var(--surface);
+  border-left: 2px solid var(--accent);
+}
+.learning-note h3 {
+  margin: 12px 0;
+  font-size: 24px;
+}
+.learning-note > p {
+  max-width: 800px;
+}
+.learning-note .small {
+  margin-top: 16px;
+}
+.contact-section {
+  background: var(--surface-alt);
+}
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+}
+.contact-email {
+  display: block;
+  font-size: clamp(14px, 1.6vw, 19px);
+  margin-top: 26px;
+  overflow-wrap: anywhere;
+  color: var(--accent);
+}
+.contact-links {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  margin-top: 24px;
+}
+form {
+  min-width: 0;
+}
+form > .eyebrow {
+  margin-bottom: 24px;
+}
+.form-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.field {
+  margin-bottom: 12px;
+}
+.field label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+.field input,
+.field textarea {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  color: var(--text);
+  padding: 11px 13px;
+  border-radius: 4px;
+  min-height: 46px;
+  font-size: 14px;
+}
+.field textarea {
+  resize: vertical;
+}
+.field [aria-invalid='true'] {
+  border-color: var(--error);
+}
+.field-error {
+  display: block;
+  min-height: 19px;
+  font-size: 11px;
+  color: var(--error);
+  margin-top: 5px;
+}
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+#formNote {
+  margin-top: 16px;
+  min-height: 40px;
+}
+button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+.footer {
+  border-top: 1px solid var(--line-soft);
+}
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-block: 32px;
+}
+.footer p {
+  font-size: 11px;
+  color: var(--muted);
+}
+.footer-inner > div {
+  display: flex;
+  gap: 20px;
+  font-size: 11px;
+}
