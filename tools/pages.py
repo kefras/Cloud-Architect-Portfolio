@@ -1,7 +1,7 @@
 """Page assembly; long HTML belongs in templates/, reusable pieces in components.py."""
 
 import json
-from config import ROOT, content
+from config import ROOT, content, featured_projects, resume_sections
 from rendering import render_template
 from components import (
     escape_html,
@@ -17,12 +17,15 @@ from components import (
     resume_skill,
     resume_project,
     case_section,
+    project_source,
+    project_filters,
 )
 from rendering import write_html
 
 
 def build_home():
     """Assemble homepage sections from shared components."""
+    featured = featured_projects()
     person = {
         "@context": "https://schema.org",
         "@type": "Person",
@@ -56,8 +59,13 @@ def build_home():
                 "Engineering, made tangible.",
                 "Inspect the code, understand the decisions, and see where each project stands.",
             ),
-            "project_cards": "".join(
-                (project_card(project) for project in content["projects"])
+            "project_cards": "".join(project_card(project) for project in featured),
+            "project_filters": project_filters(featured),
+            "project_count": len(featured),
+            "project_directory_link": link(
+                "projects.html",
+                f"Explore all {len(content['projects'])} projects →",
+                "button secondary",
             ),
             "capabilities_heading": title(
                 "02 / CAPABILITIES",
@@ -140,10 +148,8 @@ def build_studies():
                 "technology_tags": "".join(
                     ("<li>" + escape_html(tag) + "</li>" for tag in project["tags"])
                 ),
-                "repository_link": link(
-                    "https://github.com/kefras/" + project["repo"],
-                    "Inspect source on GitHub ↗",
-                    "button secondary",
+                "repository_link": project_source(
+                    project, "Inspect source on GitHub ↗", "button secondary"
                 ),
                 "diagram_file": project["visual"],
                 "diagram_description": escape_html(
@@ -176,7 +182,14 @@ def build_studies():
 def build_resume():
     """Generate the web resume from the same facts as the PDF."""
     skills = "".join((resume_skill(skill) for skill in content["skills"]))
-    projects = "".join((resume_project(project) for project in content["projects"][:3]))
+    project_sections = "".join(
+        "<section><h2>"
+        + escape_html(section["heading"])
+        + "</h2>"
+        + "".join(resume_project(project) for project in section["projects"])
+        + "</section>"
+        for section in resume_sections(include_web_extras=True)
+    )
     page = (
         head("Kefas Etiku Francis | Resume", content["summary"], "resume.html") + nav()
     )
@@ -193,7 +206,7 @@ def build_resume():
             "portfolio_link": link("https://kefas.live", "kefas.live"),
             "summary": escape_html(content["summary"]),
             "skill_items": skills,
-            "project_items": projects,
+            "project_sections": project_sections,
             "experience_items": experience_html(),
             "degree": escape_html(content["education"]["degree"]),
             "school": escape_html(content["education"]["school"]),
@@ -201,3 +214,27 @@ def build_resume():
         },
     )
     write_html(ROOT / "resume.html", page + footer())
+
+
+def build_project_directory():
+    """Keep the full project collection available without overwhelming the hero page."""
+    projects = content["projects"]
+    page = (
+        head(
+            "Cloud, DevOps & AI Projects | Kefas Etiku Francis",
+            "Explore practical AWS deployments, Kubernetes and CI/CD labs, AI applications and software engineering projects.",
+            "projects.html",
+        )
+        + nav()
+    )
+    page += render_template(
+        "project-directory.html",
+        {
+            "project_cards": "".join(
+                project_card(project, heading_level=2) for project in projects
+            ),
+            "project_filters": project_filters(projects),
+            "project_count": len(projects),
+        },
+    )
+    write_html(ROOT / "projects.html", page + footer())

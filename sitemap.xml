@@ -7,15 +7,45 @@
     <loc>https://kefas.live/resume.html</loc>
   </url>
   <url>
-    <loc>https://kefas.live/case-studies/naseni-lims.html</loc>
+    <loc>https://kefas.live/projects.html</loc>
+  </url>
+  <url>
+    <loc>https://kefas.live/case-studies/cloud-portfolio.html</loc>
   </url>
   <url>
     <loc>https://kefas.live/case-studies/aws-delivery.html</loc>
   </url>
   <url>
-    <loc>https://kefas.live/case-studies/routeng.html</loc>
+    <loc>https://kefas.live/case-studies/kubernetes.html</loc>
+  </url>
+  <url>
+    <loc>https://kefas.live/case-studies/velvet-ec2.html</loc>
+  </url>
+  <url>
+    <loc>https://kefas.live/case-studies/aws-web-tier.html</loc>
+  </url>
+  <url>
+    <loc>https://kefas.live/case-studies/aws-databases.html</loc>
+  </url>
+  <url>
+    <loc>https://kefas.live/case-studies/cloudwatch-operations.html</loc>
   </url>
   <url>
     <loc>https://kefas.live/case-studies/terraform-lab.html</loc>
+  </url>
+  <url>
+    <loc>https://kefas.live/case-studies/novamart.html</loc>
+  </url>
+  <url>
+    <loc>https://kefas.live/case-studies/digital-twin.html</loc>
+  </url>
+  <url>
+    <loc>https://kefas.live/case-studies/etiku-ai.html</loc>
+  </url>
+  <url>
+    <loc>https://kefas.live/case-studies/naseni-lims.html</loc>
+  </url>
+  <url>
+    <loc>https://kefas.live/case-studies/routeng.html</loc>
   </url>
 </urlset>

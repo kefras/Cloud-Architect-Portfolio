@@ -6,7 +6,7 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, KeepTogethe
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.colors import HexColor
 from reportlab.lib.pagesizes import A4
-from config import ROOT, content
+from config import ROOT, content, resume_sections
 
 
 def build_pdf():
@@ -71,13 +71,13 @@ def build_pdf():
     story += [para("SKILLS", "section")]
     for text in content["resume_skill_summary"]:
         story.append(para(text))
-    story.append(para("SELECTED PROJECTS", "section"))
-    for project in content["projects"][:3]:
-        block = [para(project["title"] + " | " + project["status"], "sub")] + [
-            para("- " + bullet, "bullet") for bullet in project["resume"]
-        ]
-        story.append(KeepTogether(block))
-        story.append(Spacer(1, 3))
+    for section in resume_sections():
+        story.append(para(section["heading"].upper(), "section"))
+        for project in section["projects"]:
+            block = [para(project["title"] + " | " + project["status"], "sub")]
+            block.extend(para("- " + bullet, "bullet") for bullet in project["resume"])
+            story.append(KeepTogether(block))
+            story.append(Spacer(1, 2))
     story.append(para("EXPERIENCE", "section"))
     for experience in content["experience"]:
         block = [

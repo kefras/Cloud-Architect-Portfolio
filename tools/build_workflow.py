@@ -3,8 +3,9 @@
 from xml.etree.ElementTree import Element, SubElement, ElementTree, indent
 
 from config import ROOT, content
-from pages import build_home, build_resume, build_studies
+from pages import build_home, build_resume, build_studies, build_project_directory
 from resume_pdf import build_pdf
+from project_diagrams import build_project_diagrams
 
 
 def build_styles():
@@ -20,7 +21,7 @@ def build_styles():
 def build_sitemap():
     """Keep discoverable URLs synchronized with configured project pages."""
     root = Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
-    paths = ["", "resume.html"]
+    paths = ["", "resume.html", "projects.html"]
     paths.extend(
         f"case-studies/{project['id']}.html" for project in content["projects"]
     )
@@ -35,8 +36,10 @@ def build_sitemap():
 def main():
     """Keep the build order explicit and the orchestration easy to follow."""
     build_styles()
+    build_project_diagrams()
     build_home()
     build_studies()
+    build_project_directory()
     build_resume()
     build_pdf()
     build_sitemap()

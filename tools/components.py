@@ -15,6 +15,34 @@ def link(url, label, cls=""):
     return f'<a class="{cls}" href="{escape_html(url)}">{escape_html(label)}</a>'
 
 
+def project_source(project, label=None, css_class=""):
+    """Respect private repositories instead of publishing an unusable source link."""
+    if project.get("visibility") == "private":
+        return (
+            escape_html(project["title"])
+            if label is None
+            else '<span class="small muted">Private source</span>'
+        )
+    return link(
+        "https://github.com/kefras/" + project["repo"],
+        label or project["title"],
+        css_class,
+    )
+
+
+def project_filters(projects):
+    """Generate only categories represented by the current page's cards."""
+    categories = list(dict.fromkeys(project["category"] for project in projects))
+    buttons = [
+        '<button type="button" aria-pressed="true" data-filter="All">All projects</button>'
+    ]
+    for category in categories:
+        buttons.append(
+            f'<button type="button" aria-pressed="false" data-filter="{escape_html(category)}">{escape_html(category)}</button>'
+        )
+    return "".join(buttons)
+
+
 def head(title, description, path="", prefix=""):
     """Render shared metadata and asset references for any page."""
     return render_template(
@@ -65,11 +93,12 @@ def nav(prefix="", home=False):
     )
 
 
-def project_card(project):
+def project_card(project, heading_level=3):
     """Render one project from the structured content source."""
     return render_template(
         "project_card.html",
         {
+            "heading_level": heading_level,
             "project_category": escape_html(project["category"]),
             "project_id": project["id"],
             "project_title": escape_html(project["title"]),
@@ -90,8 +119,9 @@ def project_card(project):
             "case_study_link": link(
                 "case-studies/" + project["id"] + ".html", "View case study →"
             ),
-            "repository_link": link(
-                "https://github.com/kefras/" + project["repo"], "GitHub ↗"
+            "repository_link": project_source(project, "GitHub ↗"),
+            "demo_link": (
+                link(project["live"], "Live demo ↗") if project.get("live") else ""
             ),
         },
     )
@@ -198,9 +228,7 @@ def resume_project(project):
     return render_template(
         "resume-project.html",
         {
-            "project_link": link(
-                "https://github.com/kefras/" + project["repo"], project["title"]
-            ),
+            "project_link": project_source(project),
             "status": escape_html(project["status"]),
             "bullets": list_items(project["resume"]),
         },

@@ -29,3 +29,8 @@ The experience record now reads **DevOps & Cloud Engineer Intern** followed by *
 ## Preservation
 
 The complete pre-refactor source was copied to `portfolio-refactor/original` in the writable workspace. Existing Git changes, unrelated images and prototype files are preserved. No commit, push or deployment is part of this refactor.
+
+
+## Project selection
+
+`content.json` now defines `featured_project_ids`, `resume_sections` and `resume_web_extras`. `tools/config.py` resolves these identifiers for both resume renderers. `tools/pages.py` also builds the full projects.html directory; `tools/project_diagrams.py` creates safe schematics for new entries. `tools/components.py` renders available category filters and suppresses source links for private projects. Add a project once, then select it explicitly for the homepage or CV.

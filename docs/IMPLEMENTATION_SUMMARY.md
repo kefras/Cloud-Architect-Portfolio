@@ -45,3 +45,8 @@ See CONTENT_VERIFICATION.md for the information still needed: credential ownersh
 ## Follow-up code refactor
 
 The requested title is now DevOps & Cloud Engineer Intern at Build and Ship Academy Ltd | Remote. `script.js` is a small bootstrap, with six reusable helpers/features in `js/`. CSS sources live in ten commented files under `css/`; the build still emits one readable stylesheet. HTML lives in section partials and shared templates, with separate page/component/PDF build helpers. See CODE_STRUCTURE.md for the editing map and TEST_RESULTS.md for the latest checks. The original pre-refactor files are preserved in the workspace portfolio-refactor/original snapshot.
+
+
+## Cloud/DevOps and AI project expansion
+
+The current CV now leads with five Cloud/DevOps projects and follows with Digital Twin and ETIKU AI. The homepage highlights six projects and links to projects.html, a 13-project directory with category filters. Nine new case studies and safe SVG diagrams were added. Private NovaMart source remains private; source-link rendering honors visibility. Code-backed projects and documentation/screenshot-backed labs are labelled distinctly. Explicit content selections replace all first-three-project slices. Source-evidence references wrap correctly at 320px. The next-project roadmap is proposed work only. See the current CONTENT_VERIFICATION.md and PROJECT_STRATEGY.md.

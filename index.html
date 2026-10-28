@@ -55,7 +55,7 @@
         </div>
       </div>
     </header>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Kefas Etiku Francis", "url": "https://kefas.live/", "description": "Computer Science undergraduate building practical experience in cloud infrastructure, delivery automation and full-stack applications. Working with AWS, Python, React, Docker and GitHub Actions through engineering projects and technical training. Seeking internships and junior engineering opportunities.", "email": "kefasetikufrancis@gmail.com", "address": {"@type": "PostalAddress", "addressLocality": "Abuja", "addressCountry": "NG"}, "sameAs": ["https://github.com/kefras", "https://linkedin.com/in/kefas"]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Kefas Etiku Francis", "url": "https://kefas.live/", "description": "Computer Science undergraduate and DevOps & Cloud Engineer Intern with hands-on AWS hosting, Docker/Linux deployment, Kubernetes manifests and GitHub Actions experience. Builds Python AI applications and documents infrastructure troubleshooting. Seeking junior Cloud/DevOps opportunities.", "email": "kefasetikufrancis@gmail.com", "address": {"@type": "PostalAddress", "addressLocality": "Abuja", "addressCountry": "NG"}, "sameAs": ["https://github.com/kefras", "https://linkedin.com/in/kefas"]}</script>
     <main id="main">
       <!-- Homepage: home. Content slots are supplied by tools/pages.py. -->
       <section class="hero container" id="home" aria-labelledby="hero-title">
@@ -113,33 +113,35 @@
         <div class="filter-row">
           <div class="filters" role="group" aria-label="Filter projects">
             <button type="button" aria-pressed="true" data-filter="All">All projects</button>
-            <button type="button" aria-pressed="false" data-filter="Full-stack">Full-stack</button>
-            <button type="button" aria-pressed="false" data-filter="Cloud & DevOps">Cloud & DevOps</button>
+            <button type="button" aria-pressed="false" data-filter="Cloud &amp; DevOps">Cloud &amp; DevOps</button>
+            <button type="button" aria-pressed="false" data-filter="AI Engineering">AI Engineering</button>
           </div>
-          <span id="projectCount" class="mono muted" role="status">4 projects</span>
+          <span id="projectCount" class="mono muted" role="status">6 projects</span>
         </div>
         <div class="projects-grid">
-          <article class="project-card" data-category="Full-stack">
-            <a class="project-visual" href="case-studies/naseni-lims.html" aria-label="Read NASENI Research LIMS case study"><img src="assets/lims.svg" width="720" height="360" loading="lazy" alt="Architecture schematic: React workspace to FastAPI + JWT to PostgreSQL to Audit records"></a>
+          <article class="project-card" data-category="Cloud &amp; DevOps">
+            <a class="project-visual" href="case-studies/cloud-portfolio.html" aria-label="Read AWS Portfolio &amp; Serverless Contact case study"><img src="assets/cloud-portfolio.svg" width="720" height="360" loading="lazy" alt="Architecture schematic: Browser / HTTPS to CloudFront / S3 to API Gateway to Lambda / SES"></a>
             <div class="project-copy">
               <div class="project-meta">
-                <span class="eyebrow">01 / RESEARCH SYSTEMS</span>
-                <span class="status">In development</span>
+                <span class="eyebrow">01 / CLOUD &amp; DEVOPS</span>
+                <span class="status">Deployed portfolio</span>
               </div>
-              <h3>NASENI Research LIMS</h3>
-              <p>Connecting research records with traceable laboratory workflows.</p>
-              <p class="project-problem"><strong>The problem</strong> Research projects, experiments and sample histories need a consistent record and clear access boundaries.</p>
-              <p class="project-contribution"><strong>Project work</strong> Project work covers a React/TypeScript workspace and FastAPI API with role checks, sample tracking and audit logging.</p>
+              <h3>AWS Portfolio &amp; Serverless Contact</h3>
+              <p>A public portfolio with private-origin delivery and an AWS contact integration.</p>
+              <p class="project-problem"><strong>The problem</strong> A static website needs HTTPS delivery, controlled origin access and a contact channel without a dedicated application server.</p>
+              <p class="project-contribution"><strong>Project work</strong> Built the static application and contact integration; documented private S3/CloudFront hosting and the Lambda/SES backend during Cloud and DevOps practical work.</p>
               <ul class="tags" aria-label="Technologies">
-                <li>FastAPI</li>
-                <li>React</li>
-                <li>TypeScript</li>
-                <li>PostgreSQL</li>
-                <li>Docker</li>
+                <li>S3</li>
+                <li>CloudFront</li>
+                <li>OAC</li>
+                <li>API Gateway</li>
+                <li>Lambda</li>
+                <li>SES</li>
               </ul>
               <div class="project-links">
-                <a class="" href="case-studies/naseni-lims.html">View case study →</a>
-                <a class="" href="https://github.com/kefras/naseni-research-lims">GitHub ↗</a>
+                <a class="" href="case-studies/cloud-portfolio.html">View case study →</a>
+                <a class="" href="https://github.com/kefras/Cloud-Architect-Portfolio">GitHub ↗</a>
+                <a class="" href="https://kefas.live/">Live demo ↗</a>
               </div>
             </div>
           </article>
@@ -147,8 +149,8 @@
             <a class="project-visual" href="case-studies/aws-delivery.html" aria-label="Read Container delivery on AWS case study"><img src="assets/delivery.svg" width="720" height="360" loading="lazy" alt="Architecture schematic: GitHub commit to Docker build to Trivy report to Amazon ECR"></a>
             <div class="project-copy">
               <div class="project-meta">
-                <span class="eyebrow">02 / DELIVERY AUTOMATION</span>
-                <span class="status">Implementation reviewed</span>
+                <span class="eyebrow">02 / CLOUD &amp; DEVOPS</span>
+                <span class="status">CI/CD lab</span>
               </div>
               <h3>Container delivery on AWS</h3>
               <p>A traceable path from a Git commit to a container registry.</p>
@@ -167,52 +169,109 @@
               </div>
             </div>
           </article>
-          <article class="project-card" data-category="Full-stack">
-            <a class="project-visual" href="case-studies/routeng.html" aria-label="Read RouteNG case study"><img src="assets/routeng.svg" width="720" height="360" loading="lazy" alt="Architecture schematic: Web frontend to Express API to PostgreSQL to Optional Paystack"></a>
-            <div class="project-copy">
-              <div class="project-meta">
-                <span class="eyebrow">03 / NIGERIAN MOBILITY</span>
-                <span class="status">MVP</span>
-              </div>
-              <h3>RouteNG</h3>
-              <p>Exploring a more connected intercity travel experience in Nigeria.</p>
-              <p class="project-problem"><strong>The problem</strong> Intercity carpooling needs coordinated ride listings, passenger requests and seat availability.</p>
-              <p class="project-contribution"><strong>Project work</strong> Project source includes a vanilla HTML/CSS/JavaScript frontend, Express API and PostgreSQL booking model.</p>
-              <ul class="tags" aria-label="Technologies">
-                <li>JavaScript</li>
-                <li>Express</li>
-                <li>PostgreSQL</li>
-                <li>JWT</li>
-                <li>Docker Compose</li>
-              </ul>
-              <div class="project-links">
-                <a class="" href="case-studies/routeng.html">View case study →</a>
-                <a class="" href="https://github.com/kefras/RouteNG">GitHub ↗</a>
-              </div>
-            </div>
-          </article>
           <article class="project-card" data-category="Cloud &amp; DevOps">
-            <a class="project-visual" href="case-studies/terraform-lab.html" aria-label="Read Terraform foundations case study"><img src="assets/terraform.svg" width="720" height="360" loading="lazy" alt="Architecture schematic: Terraform HCL to AWS provider to S3 resource to S3 sync example"></a>
+            <a class="project-visual" href="case-studies/kubernetes.html" aria-label="Read Kubernetes Application Orchestration case study"><img src="assets/kubernetes.svg" width="720" height="360" loading="lazy" alt="Architecture schematic: NodePort service to Label selector to Deployment to Nginx replicas"></a>
             <div class="project-copy">
               <div class="project-meta">
-                <span class="eyebrow">04 / INFRASTRUCTURE AS CODE</span>
-                <span class="status">Learning lab</span>
+                <span class="eyebrow">03 / CLOUD &amp; DEVOPS</span>
+                <span class="status">Hands-on lab</span>
               </div>
-              <h3>Terraform foundations</h3>
-              <p>Making a small piece of cloud infrastructure explicit and repeatable.</p>
-              <p class="project-problem"><strong>The problem</strong> Manual cloud setup is difficult to inspect and reproduce from a source repository.</p>
-              <p class="project-contribution"><strong>Project work</strong> Repository work includes an AWS provider, an S3 bucket resource and a GitHub Actions S3 sync example.</p>
+              <h3>Kubernetes Application Orchestration</h3>
+              <p>Declarative replicas, resource budgets and service discovery for a containerized web workload.</p>
+              <p class="project-problem"><strong>The problem</strong> A single manually started container has no declarative replica count or stable service abstraction.</p>
+              <p class="project-contribution"><strong>Project work</strong> Authored Kubernetes manifests for an Nginx deployment with three replicas, resource requests/limits and a NodePort service.</p>
               <ul class="tags" aria-label="Technologies">
-                <li>Terraform</li>
-                <li>AWS S3</li>
-                <li>GitHub Actions</li>
+                <li>Kubernetes</li>
+                <li>Deployments</li>
+                <li>Services</li>
+                <li>Nginx</li>
+                <li>Resource limits</li>
               </ul>
               <div class="project-links">
-                <a class="" href="case-studies/terraform-lab.html">View case study →</a>
-                <a class="" href="https://github.com/kefras/terraform-github-actions-aws-pipeline">GitHub ↗</a>
+                <a class="" href="case-studies/kubernetes.html">View case study →</a>
+                <a class="" href="https://github.com/kefras/kubernetes-scalable-app">GitHub ↗</a>
               </div>
             </div>
           </article>
+          <article class="project-card" data-category="AI Engineering">
+            <a class="project-visual" href="case-studies/novamart.html" aria-label="Read NovaMart Multi-Agent RAG case study"><img src="assets/novamart.svg" width="720" height="360" loading="lazy" alt="Architecture schematic: Agent router to Policy retrieval to Workflow tools to Trace / log hooks"></a>
+            <div class="project-copy">
+              <div class="project-meta">
+                <span class="eyebrow">09 / AI ENGINEERING</span>
+                <span class="status">Private implementation</span>
+              </div>
+              <h3>NovaMart Multi-Agent RAG</h3>
+              <p>AWS agent orchestration connecting policy retrieval with business-workflow tools.</p>
+              <p class="project-problem"><strong>The problem</strong> A support workflow needs to combine policy knowledge with order/inventory actions while tracking the request across tools.</p>
+              <p class="project-contribution"><strong>Project work</strong> Developed Python multi-agent orchestration with Bedrock/Strands integrations, Knowledge Base retrieval helpers and DynamoDB/Lambda workflow tools.</p>
+              <ul class="tags" aria-label="Technologies">
+                <li>Bedrock AgentCore</li>
+                <li>Strands</li>
+                <li>Knowledge Bases</li>
+                <li>DynamoDB</li>
+                <li>Lambda</li>
+                <li>CloudWatch</li>
+              </ul>
+              <div class="project-links">
+                <a class="" href="case-studies/novamart.html">View case study →</a>
+                <span class="small muted">Private source</span>
+              </div>
+            </div>
+          </article>
+          <article class="project-card" data-category="AI Engineering">
+            <a class="project-visual" href="case-studies/digital-twin.html" aria-label="Read Digital Twin AI case study"><img src="assets/digital-twin.svg" width="720" height="360" loading="lazy" alt="Architecture schematic: PDF / knowledge to Semantic retrieval to Gemini PDF chat to Answer / sources"></a>
+            <div class="project-copy">
+              <div class="project-meta">
+                <span class="eyebrow">10 / AI ENGINEERING</span>
+                <span class="status">Streamlit demo</span>
+              </div>
+              <h3>Digital Twin AI</h3>
+              <p>From word embeddings to retrieval-grounded PDF conversations.</p>
+              <p class="project-problem"><strong>The problem</strong> Finding useful information in text and PDFs requires retrieval of relevant context and a clear response when evidence is missing.</p>
+              <p class="project-contribution"><strong>Project work</strong> Implemented custom GloVe/search components, a retrieval pipeline with abstention behavior and Gemini-powered PDF chat with conversation context and source references.</p>
+              <ul class="tags" aria-label="Technologies">
+                <li>Python</li>
+                <li>Streamlit</li>
+                <li>Sentence Transformers</li>
+                <li>Gemini</li>
+                <li>RAG</li>
+                <li>Unit tests</li>
+              </ul>
+              <div class="project-links">
+                <a class="" href="case-studies/digital-twin.html">View case study →</a>
+                <a class="" href="https://github.com/kefras/digital-twin-ai">GitHub ↗</a>
+                <a class="" href="https://digitaltwin1.streamlit.app/">Live demo ↗</a>
+              </div>
+            </div>
+          </article>
+          <article class="project-card" data-category="AI Engineering">
+            <a class="project-visual" href="case-studies/etiku-ai.html" aria-label="Read ETIKU AI case study"><img src="assets/etiku-ai.svg" width="720" height="360" loading="lazy" alt="Architecture schematic: Streamlit UI to Chat settings to Gemini stream to Conversation store"></a>
+            <div class="project-copy">
+              <div class="project-meta">
+                <span class="eyebrow">11 / AI ENGINEERING</span>
+                <span class="status">Streamlit demo</span>
+              </div>
+              <h3>ETIKU AI</h3>
+              <p>A conversational assistant with streaming responses and organized chat history.</p>
+              <p class="project-problem"><strong>The problem</strong> A useful chat interface needs more than a model call: conversation management, response controls and understandable storage boundaries matter.</p>
+              <p class="project-contribution"><strong>Project work</strong> Built the Streamlit chat interface, Gemini streaming integration, response-style/temperature controls and conversation create/search/rename/delete flows.</p>
+              <ul class="tags" aria-label="Technologies">
+                <li>Python</li>
+                <li>Streamlit</li>
+                <li>Gemini</li>
+                <li>Streaming</li>
+                <li>Supabase</li>
+              </ul>
+              <div class="project-links">
+                <a class="" href="case-studies/etiku-ai.html">View case study →</a>
+                <a class="" href="https://github.com/kefras/etiku-ai">GitHub ↗</a>
+                <a class="" href="https://etiku-ai.streamlit.app/">Live demo ↗</a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="directory-link">
+          <a class="button secondary" href="projects.html">Explore all 13 projects →</a>
         </div>
       </section>
       <!-- Homepage: skills. Content slots are supplied by tools/pages.py. -->
@@ -227,9 +286,9 @@
             <article class="skill">
               <span class="skill-index mono">01</span>
               <h3>Cloud Platforms</h3>
-              <p>AWS S3, ECR</p>
-              <p class="skill-evidence">Demonstrated in repository code</p>
-              <a class="" href="case-studies/aws-delivery.html">See project evidence ↗</a>
+              <p>AWS EC2, S3, CloudFront/OAC, ECR; ALB, Auto Scaling and RDS labs</p>
+              <p class="skill-evidence">Code, deployed portfolio and documented AWS labs</p>
+              <a class="" href="case-studies/cloud-portfolio.html">See project evidence ↗</a>
             </article>
             <article class="skill">
               <span class="skill-index mono">02</span>
@@ -241,9 +300,9 @@
             <article class="skill">
               <span class="skill-index mono">03</span>
               <h3>Containers &amp; Orchestration</h3>
-              <p>Docker, Docker Compose; Kubernetes fundamentals</p>
-              <p class="skill-evidence">Docker demonstrated; Kubernetes in training</p>
-              <a class="" href="case-studies/naseni-lims.html">See project evidence ↗</a>
+              <p>Docker, Compose, Kubernetes Deployments and Services, resource requests/limits</p>
+              <p class="skill-evidence">Container deployment evidence and Kubernetes manifests</p>
+              <a class="" href="case-studies/kubernetes.html">See project evidence ↗</a>
             </article>
             <article class="skill">
               <span class="skill-index mono">04</span>
@@ -276,14 +335,16 @@
             <article class="skill">
               <span class="skill-index mono">08</span>
               <h3>AI Engineering</h3>
-              <p>RAG, agent orchestration, intelligent applications</p>
-              <p class="skill-evidence">Currently learning; implementation evidence pending</p>
+              <p>Gemini streaming, semantic retrieval, RAG, PDF Q&amp;A; Bedrock/Strands agent workflows</p>
+              <p class="skill-evidence">Public application source and authorized private implementation review</p>
+              <a class="" href="case-studies/digital-twin.html">See project evidence ↗</a>
             </article>
             <article class="skill">
               <span class="skill-index mono">09</span>
               <h3>Linux &amp; System Administration</h3>
-              <p>Linux CLI, Bash, process and log troubleshooting</p>
-              <p class="skill-evidence">Training and practical coursework</p>
+              <p>Ubuntu, Bash deployment scripts, Docker logs, port-conflict troubleshooting</p>
+              <p class="skill-evidence">Reviewed EC2 deployment screenshots and lab documentation</p>
+              <a class="" href="case-studies/velvet-ec2.html">See project evidence ↗</a>
             </article>
           </div>
         </div>
@@ -359,8 +420,8 @@ Practical by approach.</h2>
               <h3>DevOps &amp; Cloud Engineer Intern</h3>
               <p class="accent">Build and Ship Academy Ltd | Remote</p>
               <ul>
-                <li>Practice cloud deployment and delivery automation through AWS, Docker and GitHub Actions projects.</li>
-                <li>Document infrastructure configuration, deployment workflows and troubleshooting steps.</li>
+                <li>Build AWS hosting, container deployment and delivery-automation projects using Linux, Docker and GitHub Actions.</li>
+                <li>Document infrastructure configuration, deployment troubleshooting and cloud operations labs.</li>
               </ul>
             </div>
           </article>
@@ -398,7 +459,7 @@ Practical by approach.</h2>
         <div class="learning-note" id="certifications">
           <p class="eyebrow">PROFESSIONAL DEVELOPMENT</p>
           <h3>Learning is part of the work.</h3>
-          <p class="muted">Cloud engineering training and Linux/Kubernetes coursework support my project practice. Current exploration includes AI applications, RAG and agent orchestration.</p>
+          <p class="muted">Cloud engineering training and Linux/Kubernetes coursework support my project practice. Application work includes semantic retrieval, Gemini streaming and AWS agent workflows; my next focus is reproducible infrastructure and stronger operational testing.</p>
           <p class="small muted">Credential names, dates and issuer records are being reconciled before a verified certification list is published.</p>
         </div>
       </section>

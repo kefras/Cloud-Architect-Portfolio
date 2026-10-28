@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360">
+<defs><pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#263a50" stroke-width=".5"/></pattern></defs>
+<rect width="720" height="360" fill="#0c1727"/><rect width="720" height="360" fill="url(#grid)"/>
+<text x="32" y="38" fill="#43d8c7" font-size="11" font-family="monospace">KUBERNETES APPLICATION ORCHESTRATION</text>
+<text x="32" y="68" fill="#a2b1c7" font-size="12" font-family="Arial">Project schematic. No live telemetry, account identifiers or private data.</text>
+<path d="M174 175H190V200H205" fill="none" stroke="#43d8c7" stroke-width="1.5"/>
+<rect x="32" y="130" width="142" height="100" rx="5" fill="#111f33" stroke="#3a506b"/><rect x="32" y="130" width="142" height="3" fill="#43d8c7"/><text x="44" y="157" fill="#43d8c7" font-size="10" font-family="monospace">01</text><text x="44" y="188" fill="#f8fafc" font-size="12" font-family="Arial">NodePort service</text>
+<path d="M347 200H363V175H378" fill="none" stroke="#43d8c7" stroke-width="1.5"/>
+<rect x="205" y="155" width="142" height="100" rx="5" fill="#111f33" stroke="#3a506b"/><rect x="205" y="155" width="142" height="3" fill="#43d8c7"/><text x="217" y="182" fill="#43d8c7" font-size="10" font-family="monospace">02</text><text x="217" y="213" fill="#f8fafc" font-size="12" font-family="Arial">Label selector</text>
+<path d="M520 175H536V200H551" fill="none" stroke="#43d8c7" stroke-width="1.5"/>
+<rect x="378" y="130" width="142" height="100" rx="5" fill="#111f33" stroke="#3a506b"/><rect x="378" y="130" width="142" height="3" fill="#43d8c7"/><text x="390" y="157" fill="#43d8c7" font-size="10" font-family="monospace">03</text><text x="390" y="188" fill="#f8fafc" font-size="12" font-family="Arial">Deployment</text>
+<rect x="551" y="155" width="142" height="100" rx="5" fill="#111f33" stroke="#3a506b"/><rect x="551" y="155" width="142" height="3" fill="#43d8c7"/><text x="563" y="182" fill="#43d8c7" font-size="10" font-family="monospace">04</text><text x="563" y="213" fill="#f8fafc" font-size="12" font-family="Arial">Nginx replicas</text>
+<line x1="32" y1="304" x2="688" y2="304" stroke="#2c3d55"/><text x="32" y="332" fill="#a2b1c7" font-size="10" font-family="monospace">HANDS-ON LAB</text><text x="688" y="332" text-anchor="end" fill="#43d8c7" font-size="10" font-family="monospace">KF / SYSTEM NOTES</text></svg>

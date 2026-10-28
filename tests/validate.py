@@ -43,6 +43,7 @@ pages = {
     for f in [
         ROOT / "index.html",
         ROOT / "resume.html",
+        ROOT / "projects.html",
         *(ROOT / "case-studies").glob("*.html"),
     ]
 }
@@ -93,7 +94,8 @@ check("ATS PDF has no replacement characters", "\ufffd" not in text)
 sections = [
     "PROFESSIONAL SUMMARY",
     "SKILLS",
-    "SELECTED PROJECTS",
+    "CLOUD & DEVOPS PROJECTS",
+    "AI ENGINEERING PROJECTS",
     "EXPERIENCE",
     "EDUCATION",
 ]
@@ -119,15 +121,40 @@ check(
     (ROOT / "resume.pdf").read_bytes()
     == (ROOT / "output/pdf/Kefas_Etiku_Francis_ATS_Resume.pdf").read_bytes(),
 )
-for project in d["projects"][:3]:
+project_lookup = {project["id"]: project for project in d["projects"]}
+cv_projects = [
+    project_lookup[identifier]
+    for section in d["resume_sections"]
+    for identifier in section["projects"]
+]
+for project in cv_projects:
     check(
         project["id"] + ": PDF and web share bullets",
         all(
-            b in text.replace("\n", " ")
+            " ".join(b.split()) in " ".join(text.split())
             and b in (ROOT / "resume.html").read_text(encoding="utf-8")
             for b in project["resume"]
         ),
     )
+check(
+    "Cloud projects lead the CV",
+    len(d["resume_sections"][0]["projects"]) == 5
+    and d["resume_sections"][0]["heading"] == "Cloud & DevOps Projects",
+)
+check(
+    "Both supplied AI projects are in the CV",
+    all(
+        project_lookup[identifier]["title"] in text
+        for identifier in ["digital-twin", "etiku-ai"]
+    ),
+)
+for project in d["projects"]:
+    if project.get("visibility") == "private":
+        private_url = "https://github.com/kefras/" + project["repo"]
+        check(
+            "Private source is not linked publicly: " + project["id"],
+            private_url not in public,
+        )
 
 
 def luminance(color):
@@ -153,11 +180,19 @@ for theme, block in [
     check(f"{theme} primary button contrast", (b + 0.05) / (a + 0.05) >= 4.5)
 # The requested role must remain consistent across every resume output.
 from html import unescape
+
 new_role = "DevOps & Cloud Engineer Intern"
 for filename in ("index.html", "resume.html"):
     page_text = unescape((ROOT / filename).read_text(encoding="utf-8"))
-    check(filename + ": updated internship title", new_role in page_text and "DevOps & Cloud Projects - SIWES Intern" not in page_text)
-check("ATS PDF: updated internship title", new_role in text and "DevOps & Cloud Projects - SIWES Intern" not in text)
+    check(
+        filename + ": updated internship title",
+        new_role in page_text
+        and "DevOps & Cloud Projects - SIWES Intern" not in page_text,
+    )
+check(
+    "ATS PDF: updated internship title",
+    new_role in text and "DevOps & Cloud Projects - SIWES Intern" not in text,
+)
 
 out = ROOT / ".artifacts" / "tests"
 out.mkdir(parents=True, exist_ok=True)

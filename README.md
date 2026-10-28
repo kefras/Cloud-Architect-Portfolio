@@ -1,6 +1,6 @@
 # Kefas Etiku Francis - Engineering Portfolio and AWS Hosting
 
-A buildless HTML/CSS/JavaScript portfolio with a coordinated web resume, four evidence-based case studies and a one-page ATS PDF. No framework migration or production changes.
+A buildless HTML/CSS/JavaScript portfolio with a coordinated web resume, 13 project case studies, a filterable project directory and a one-page ATS PDF. The CV leads with practical Cloud/DevOps work and includes a separate AI section.
 
 [Visit kefas.live](https://kefas.live/) · [Web resume](https://kefas.live/resume.html) · [Download resume](https://kefas.live/resume.pdf)
 
@@ -33,7 +33,9 @@ Open http://127.0.0.1:8765. The contact endpoint permits the production origin; 
 
 ## Content and generation
 
-Edit `content.json` for identity, resume facts, skills and project evidence. The internship title is **DevOps & Cloud Engineer Intern**, at **Build and Ship Academy Ltd | Remote**. Both resume versions and the homepage use that same record.
+Edit `content.json` for identity, resume facts, skills and project evidence. `featured_project_ids` selects the six homepage projects; `resume_sections` selects the Cloud/DevOps and AI groups for the ATS PDF; `resume_web_extras` adds further labs and software work to the web resume. Reordering project cards cannot silently remove projects from the CV. The internship title remains **DevOps & Cloud Engineer Intern**, at **Build and Ship Academy Ltd | Remote**.
+
+NovaMart is a private-source project: the public portfolio contains a high-level case study and no private repository link, code, resource identifiers or operational screenshots. Project status distinguishes source implementations, deployed demos and documentation-backed labs. `docs/PROJECT_STRATEGY.md` ranks the evidence and proposes stronger next projects without presenting them as completed work.
 
 `tools/build.py` is a small build entry point. The maintained sources are organized by responsibility:
 

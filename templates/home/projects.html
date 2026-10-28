@@ -3,13 +3,12 @@
   ${projects_heading}
   <div class="filter-row">
     <div class="filters" role="group" aria-label="Filter projects">
-      <button type="button" aria-pressed="true" data-filter="All">All projects</button>
-      <button type="button" aria-pressed="false" data-filter="Full-stack">Full-stack</button>
-      <button type="button" aria-pressed="false" data-filter="Cloud & DevOps">Cloud & DevOps</button>
+      ${project_filters}
     </div>
-    <span id="projectCount" class="mono muted" role="status">4 projects</span>
+    <span id="projectCount" class="mono muted" role="status">${project_count} projects</span>
   </div>
   <div class="projects-grid">
     ${project_cards}
   </div>
+  <div class="directory-link">${project_directory_link}</div>
 </section>
