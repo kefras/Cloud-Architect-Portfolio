@@ -1,0 +1,19 @@
+<article class="project-card" data-category="${project_category}">
+  <a class="project-visual" href="case-studies/${project_id}.html" aria-label="Read ${project_title} case study"><img src="assets/${diagram_file}" width="720" height="360" loading="lazy" alt="${diagram_description}"></a>
+  <div class="project-copy">
+    <div class="project-meta">
+      <span class="eyebrow">${project_label}</span>
+      <span class="status">${project_status}</span>
+    </div>
+    <h3>${project_title}</h3>
+    <p>${project_intro}</p>
+    <p class="project-problem"><strong>The problem</strong> ${project_problem}</p>
+    <p class="project-contribution"><strong>Project work</strong> ${project_contribution}</p>
+    <ul class="tags" aria-label="Technologies">
+      ${technology_tags}
+    </ul>
+    <div class="project-links">
+      ${case_study_link}${repository_link}
+    </div>
+  </div>
+</article>

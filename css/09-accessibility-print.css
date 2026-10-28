@@ -1,0 +1,103 @@
+/* Reduced-motion and single-column print output. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *:before,
+  *:after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+  html,
+  body {
+    background: #fff !important;
+    color: #111 !important;
+    font-size: 10pt;
+  }
+  .nav,
+  .footer,
+  .skip-link,
+  .resume-toolbar,
+  .resume-note {
+    display: none !important;
+  }
+  .container,
+  .resume-wrap {
+    width: 100%;
+    max-width: none;
+    padding: 0;
+    margin: 0;
+  }
+  .resume-paper {
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+    background: #fff;
+    color: #111;
+    border-radius: 0;
+  }
+  .resume-header h1 {
+    font-size: 25pt;
+    margin-top: 0;
+  }
+  .resume-header .eyebrow {
+    display: none;
+  }
+  .resume-paper section {
+    margin-top: 15px;
+  }
+  .resume-paper h2 {
+    font-size: 12pt;
+    color: #111;
+    border-color: #aaa;
+    break-after: avoid;
+  }
+  .resume-paper p,
+  .resume-paper li {
+    font-size: 9pt;
+    color: #111 !important;
+    line-height: 1.4;
+  }
+  .resume-paper h3 {
+    font-size: 10pt;
+    break-after: avoid;
+  }
+  .resume-paper article {
+    break-inside: avoid;
+    margin-top: 12px;
+  }
+  .resume-paper .timeline-row {
+    display: block;
+    padding: 8px 0;
+    border: 0;
+  }
+  .resume-paper .timeline-row .mono {
+    font-size: 8pt;
+  }
+  .resume-paper .small {
+    font-size: 8pt;
+  }
+  .resume-paper a {
+    color: #111 !important;
+  }
+  .resume-paper .accent,
+  .resume-headline {
+    color: #111 !important;
+  }
+  .resume-paper ul {
+    color: #111;
+  }
+  .resume-header > p {
+    margin-top: 5px;
+  }
+  .resume-paper .resume-skills li + li {
+    margin-top: 4px;
+  }
+}

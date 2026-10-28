@@ -1,0 +1,47 @@
+<!-- Homepage: contact. Content slots are supplied by tools/pages.py. -->
+<section class="section contact-section" id="contact">
+  <div class="container contact-layout">
+    <div>
+      ${contact_heading}
+      <p class="muted">For internships, junior engineering opportunities and technical collaborations.</p>
+      <a class="contact-email" href="mailto:${email}">${email} ↗</a>
+      <div class="contact-links">
+        ${contact_github}${contact_linkedin}${contact_phone}
+      </div>
+    </div>
+    <form id="contactForm" data-endpoint="https://fpl6eii032.execute-api.us-east-1.amazonaws.com/contact" novalidate>
+      <p class="eyebrow">SEND A MESSAGE</p>
+      <div class="form-pair">
+        <div class="field">
+          <label for="cname">Name</label>
+          <input id="cname" name="name" autocomplete="name" required maxlength="100" aria-describedby="cname-error">
+          <span class="field-error" id="cname-error"></span>
+        </div>
+        <div class="field">
+          <label for="cemail">Email</label>
+          <input id="cemail" name="email" type="email" autocomplete="email" required maxlength="254" aria-describedby="cemail-error">
+          <span class="field-error" id="cemail-error"></span>
+        </div>
+      </div>
+      <div class="field">
+        <label for="csubject">Subject</label>
+        <input id="csubject" name="subject" required maxlength="160" aria-describedby="csubject-error">
+        <span class="field-error" id="csubject-error"></span>
+      </div>
+      <div class="field">
+        <label for="cmsg">Message</label>
+        <textarea id="cmsg" name="message" required minlength="10" maxlength="5000" rows="4" aria-describedby="cmsg-error"></textarea>
+        <span class="field-error" id="cmsg-error"></span>
+      </div>
+      <div class="honeypot" aria-hidden="true">
+        <label for="website">Leave this field empty</label>
+        <input id="website" name="website" tabindex="-1" autocomplete="off">
+      </div>
+      <button type="submit" class="button primary" id="submitBtn">Send message ↗</button>
+      <p id="formNote" class="small muted" role="status" aria-live="polite" aria-atomic="true">Prefer email? Use the direct email link above.</p>
+      <noscript>
+        <p>JavaScript is required for this form. Please email me directly.</p>
+      </noscript>
+    </form>
+  </div>
+</section>

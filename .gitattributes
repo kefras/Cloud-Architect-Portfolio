@@ -1,0 +1,4 @@
+# Keep source consistent across Windows development and Linux CI.
+* text=auto eol=lf
+*.png binary
+*.pdf binary

@@ -1,0 +1,19 @@
+<!-- Homepage: architecture. Content slots are supplied by tools/pages.py. -->
+<section class="section container" id="architecture">
+  ${architecture_heading}
+  <div class="architecture-shell">
+    <div class="map-header mono">
+      <span>COMMIT → ARTIFACT → APPLICATION</span>
+      <span>ILLUSTRATIVE</span>
+    </div>
+    <div class="map-nodes" role="group" aria-label="Delivery stages">
+      ${architecture_stages}
+    </div>
+    <div id="mapDetail" class="map-detail" role="status">
+      <span class="eyebrow">01 / SOURCE CONTROL</span>
+      <h3>A reviewable starting point.</h3>
+      <p>Version code and configuration together. A commit identifies the source used to create a release artifact.</p>
+    </div>
+    <p class="map-hint mono">Use Tab or arrow keys to choose a stage. Enter or tap to inspect.</p>
+  </div>
+</section>

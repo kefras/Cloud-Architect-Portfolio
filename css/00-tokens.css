@@ -1,0 +1,38 @@
+/* Theme tokens: color, typography, spacing and motion. */
+:root {
+  color-scheme: dark;
+  --bg: #0b1120;
+  --surface: #111c2e;
+  --surface-alt: #0e1828;
+  --text: #f8fafc;
+  --muted: #a2b1c7;
+  --accent: #43d8c7;
+  --accent-ink: #071a1b;
+  --sky: #7dd3fc;
+  --line: #2c3d55;
+  --line-soft: #1e2d42;
+  --error: #fda4af;
+  --nav: rgba(11, 17, 32, 0.96);
+  --radius: 10px;
+  --shadow: 0 20px 65px #0002;
+  --sans: Inter, 'Segoe UI', Arial, sans-serif;
+  --mono: 'Cascadia Code', Consolas, monospace;
+  --space: clamp(20px, 4vw, 64px);
+  --motion: 160ms;
+  --max: 1200px;
+}
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f5f7fa;
+  --surface: #fff;
+  --surface-alt: #eaf0f5;
+  --text: #0b1930;
+  --muted: #4b5e76;
+  --accent: #087a6e;
+  --accent-ink: #fff;
+  --sky: #086e9a;
+  --line: #afbdcc;
+  --line-soft: #d8e0e9;
+  --error: #a51b32;
+  --nav: rgba(245, 247, 250, 0.97);
+}

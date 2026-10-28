@@ -1,0 +1,337 @@
+/* Responsive layouts and progressive enhancement. */
+@media (max-width: 1090px) {
+  .brand-caption {
+    display: none;
+  }
+  .nav nav {
+    gap: 18px;
+  }
+  .nav-inner {
+    gap: 18px;
+  }
+  .hero {
+    gap: 32px;
+  }
+  .hero h1 {
+    font-size: clamp(58px, 8vw, 90px);
+  }
+  .hero-blueprint {
+    max-height: 490px;
+  }
+  .blueprint-grid {
+    height: 290px;
+  }
+  .about-layout {
+    gap: 40px;
+  }
+  .contact-layout {
+    gap: 40px;
+  }
+}
+@media (max-width: 859px) {
+  .nav-inner {
+    min-height: 72px;
+  }
+  .menu-toggle {
+    display: block;
+  }
+  .nav nav {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 10px var(--space) 20px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav nav[data-open='true'] {
+    display: flex;
+  }
+  .nav nav a {
+    padding: 10px 0;
+    font-size: 14px;
+    min-height: 44px;
+  }
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 48px;
+    gap: 30px;
+  }
+  .hero-copy {
+    max-width: 680px;
+  }
+  .hero h1 {
+    font-size: clamp(60px, 12vw, 90px);
+  }
+  .hero-blueprint {
+    display: none;
+  }
+  .hero-socials span {
+    width: auto;
+  }
+  .hero-bottom {
+    margin-top: 15px;
+  }
+  .section {
+    padding-block: 72px;
+  }
+  .project-copy {
+    padding: 22px;
+  }
+  .project-meta {
+    display: block;
+  }
+  .project-meta .status {
+    margin-top: 10px;
+  }
+  .project-card h3 {
+    font-size: 23px;
+  }
+  .skills-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .skill:nth-child(n) {
+    padding: 24px;
+    border-left: 1px solid var(--line);
+  }
+  .skill:nth-child(2n + 1) {
+    padding-left: 0;
+    border-left: 0;
+  }
+  .about-layout {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+  .about-note {
+    max-width: 650px;
+  }
+  .map-nodes {
+    grid-template-columns: 1fr 1fr;
+  }
+  .map-node:nth-child(2):after {
+    display: none;
+  }
+  .timeline-row {
+    grid-template-columns: 180px 1fr;
+  }
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .contact-layout > div {
+    max-width: 650px;
+  }
+  .case-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .case-toc {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+  }
+  .case-header {
+    padding-block: 32px;
+  }
+  .resume-paper {
+    padding: 32px;
+  }
+  .footer-inner {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 560px) {
+  :root {
+    --space: 20px;
+  }
+  .hero h1 {
+    font-size: 61px;
+  }
+  .hero-copy > .eyebrow {
+    font-size: 9px;
+  }
+  .eyebrow-divider {
+    margin-inline: 9px;
+  }
+  .hero-role {
+    font-size: 13px;
+  }
+  .hero-lead {
+    font-size: 14px;
+  }
+  .hero-buttons {
+    gap: 10px;
+  }
+  .hero-buttons .button {
+    flex: 1;
+    white-space: nowrap;
+    padding-inline: 14px;
+  }
+  .hero-socials {
+    gap: 18px;
+  }
+  .hero-socials span {
+    width: 100%;
+    font-size: 10px;
+  }
+  .hero-bottom {
+    font-size: 8px;
+    gap: 16px;
+  }
+  .section-heading {
+    margin-bottom: 30px;
+  }
+  .section-intro {
+    font-size: 14px;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .filter-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .filters button {
+    padding-inline: 12px;
+    font-size: 11px;
+  }
+  .skill:nth-child(n) {
+    padding: 24px 0;
+    border-left: 0;
+  }
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  .skill h3 {
+    margin-top: 12px;
+  }
+  .about-lead {
+    font-size: 19px;
+  }
+  .about-note {
+    padding: 24px;
+  }
+  .architecture-shell {
+    padding: 20px;
+  }
+  .map-nodes {
+    gap: 18px;
+  }
+  .map-node {
+    padding: 12px;
+    min-height: 135px;
+  }
+  .map-node strong {
+    font-size: 13px;
+  }
+  .map-node small {
+    font-size: 9px;
+  }
+  .map-node:not(:last-child):after {
+    right: -16px;
+  }
+  .map-detail {
+    padding: 18px;
+  }
+  .map-detail h3 {
+    font-size: 21px;
+  }
+  .map-detail p {
+    font-size: 13px;
+  }
+  .timeline-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .timeline-row h3 {
+    font-size: 20px;
+  }
+  .learning-note {
+    padding: 24px;
+  }
+  .form-pair {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .contact-links {
+    gap: 18px;
+  }
+  .footer-inner {
+    align-items: flex-start;
+  }
+  .footer p {
+    flex-basis: calc(100% - 60px);
+  }
+  .footer-inner > div {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .case-study {
+    padding-top: 32px;
+  }
+  .case-intro {
+    font-size: 18px;
+  }
+  .case-next {
+    flex-wrap: wrap;
+  }
+  .resume-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .resume-toolbar > div {
+    flex-wrap: wrap;
+  }
+  .resume-toolbar .button {
+    font-size: 11px;
+    padding-inline: 12px;
+  }
+  .resume-paper {
+    padding: 24px 18px;
+  }
+  .resume-paper .timeline-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .resume-header h1 {
+    font-size: 32px;
+  }
+  .resume-headline {
+    font-size: 14px;
+  }
+}
+@media (min-width: 860px) {
+  .nav nav {
+    display: flex !important;
+  }
+}
+@media (max-width: 859px) {
+  html:not(.js) .nav {
+    position: static;
+  }
+  html:not(.js) .nav-inner {
+    flex-wrap: wrap;
+    padding-top: 12px;
+  }
+  html:not(.js) .nav nav {
+    display: flex;
+    position: static;
+    order: 3;
+    width: 100%;
+    flex-flow: row wrap;
+    padding: 0 0 12px;
+    gap: 12px;
+    border: 0;
+  }
+  html:not(.js) .menu-toggle {
+    display: none;
+  }
+}

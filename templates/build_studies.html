@@ -1,0 +1,32 @@
+<main class="container case-study" id="main">
+  <a class="text-link" href="../index.html#projects">← All projects</a>
+  <header class="case-header">
+    <p class="eyebrow">${project_label} / CASE STUDY</p>
+    <h1>${project_title}</h1>
+    <p class="case-intro">${project_intro}</p>
+    <span class="status">${project_status}</span>
+    <ul class="tags">
+      ${technology_tags}
+    </ul>
+    ${repository_link}
+  </header>
+  <figure class="case-figure">
+    <img src="../assets/${diagram_file}" width="720" height="360" alt="${diagram_description}">
+    <figcaption>Architecture schematic based on reviewed source. No live system data.</figcaption>
+  </figure>
+  <div class="case-layout">
+    <nav aria-label="Case study contents" class="case-toc">
+      ${case_contents}
+    </nav>
+    <div class="case-body">
+      <section id="architecture">
+        <h2>Architecture</h2>
+        <p>${architecture_path}</p>
+      </section>
+      ${case_sections}
+    </div>
+  </div>
+  <div class="case-next">
+    ${contact_link}${resume_link}
+  </div>
+</main>

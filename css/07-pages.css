@@ -1,0 +1,165 @@
+/* Case-study and web-resume layouts. */
+.case-study {
+  padding-block: 50px 90px;
+}
+.case-header {
+  max-width: 850px;
+  padding-block: 50px;
+}
+.case-header h1 {
+  font-size: clamp(42px, 6vw, 76px);
+  margin: 22px 0;
+}
+.case-intro {
+  font-size: 22px;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+.case-header .tags {
+  margin-top: 18px;
+}
+.case-figure {
+  background: #0c1727;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.case-figure img {
+  width: min(100%, 850px);
+  margin: auto;
+}
+.case-figure figcaption {
+  padding: 16px 24px;
+  color: var(--muted);
+  font: 11px/1.6 var(--mono);
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+}
+.case-layout {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  gap: 70px;
+  margin-top: 65px;
+}
+.case-toc {
+  align-self: start;
+  position: sticky;
+  top: 115px;
+  display: grid;
+  gap: 12px;
+}
+.case-toc a {
+  font-size: 12px;
+  color: var(--muted);
+}
+.case-body {
+  min-width: 0;
+}
+.case-body section {
+  margin-bottom: 35px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line-soft);
+}
+.case-body h2 {
+  font-size: 25px;
+  margin-bottom: 16px;
+}
+.case-body p {
+  color: var(--muted);
+  font-size: 15px;
+}
+.case-next {
+  padding-top: 40px;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.resume-wrap {
+  padding-block: 35px 80px;
+  max-width: 1000px;
+}
+.resume-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 30px;
+  font-size: 12px;
+}
+.resume-toolbar > div {
+  display: flex;
+  gap: 12px;
+}
+.resume-paper {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 56px;
+  box-shadow: var(--shadow);
+}
+.resume-header h1 {
+  font-size: clamp(32px, 5vw, 54px);
+  margin-top: 22px;
+}
+.resume-headline {
+  color: var(--accent);
+  font-size: 17px;
+  margin-block: 16px;
+}
+.resume-header > p:not(.eyebrow):not(.resume-headline) {
+  font-size: 12px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+.resume-paper section {
+  margin-top: 30px;
+}
+.resume-paper h2 {
+  font-size: 17px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+}
+.resume-paper p,
+.resume-paper li {
+  font-size: 13px;
+}
+.resume-paper h3 {
+  font-size: 16px;
+  letter-spacing: -0.015em;
+}
+.resume-paper article {
+  margin-top: 22px;
+}
+.resume-paper ul {
+  padding-left: 18px;
+  margin-top: 8px;
+  color: var(--muted);
+}
+.resume-paper .resume-skills {
+  list-style: none;
+  padding-left: 0;
+}
+.resume-skills li + li {
+  margin-top: 9px;
+}
+.resume-skills strong {
+  color: var(--text);
+}
+.resume-paper .timeline-row {
+  grid-template-columns: 180px 1fr;
+  padding: 18px 0;
+}
+.resume-paper .timeline-row .mono {
+  font-size: 10px;
+}
+.resume-paper .timeline-row h3 {
+  font-size: 16px;
+}
+.resume-note {
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+  margin-top: 28px;
+}

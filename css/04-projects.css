@@ -1,0 +1,118 @@
+/* Project filters, cards, technology tags and links. */
+.filter-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.filters button {
+  border: 1px solid var(--line);
+  padding: 9px 15px;
+  min-height: 44px;
+  border-radius: 4px;
+  background: transparent;
+  font-size: 12px;
+  color: var(--muted);
+}
+.filters button[aria-pressed='true'] {
+  color: var(--accent-ink);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+.project-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.project-visual {
+  display: block;
+  border-bottom: 1px solid var(--line);
+  background: #0c1727;
+}
+.project-visual img {
+  width: 100%;
+}
+.project-copy {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.project-meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+.project-meta .eyebrow {
+  font-size: 9px;
+}
+.project-card h3 {
+  font-size: 27px;
+  margin-bottom: 12px;
+}
+.project-copy > p {
+  font-size: 14px;
+  color: var(--muted);
+}
+.project-problem,
+.project-contribution {
+  font-size: 12px !important;
+  line-height: 1.8;
+  margin-top: 16px;
+}
+.project-problem strong,
+.project-contribution strong {
+  display: block;
+  color: var(--text);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 600;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  list-style: none;
+  padding: 0;
+  margin: 24px 0;
+}
+.tags li {
+  font: 10px/1.5 var(--mono);
+  padding: 4px 7px;
+  color: var(--muted);
+  background: var(--surface-alt);
+  border: 1px solid var(--line-soft);
+  border-radius: 3px;
+}
+.project-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  border-top: 1px solid var(--line-soft);
+  padding-top: 20px;
+  margin-top: auto;
+  font-size: 12px;
+}
+.project-links a:first-child {
+  color: var(--accent);
+}
