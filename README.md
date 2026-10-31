@@ -44,11 +44,14 @@ NovaMart is a private-source project: the public portfolio contains a high-level
 | Homepage sections | `templates/home/` |
 | Shared navigation, project cards, experience rows and resume entries | `templates/` and `tools/components.py` |
 | Page assembly and content mapping | `tools/pages.py` |
-| Theme tokens, shared styles and section layouts | `css/00-tokens.css` through `css/09-accessibility-print.css` |
+| Theme tokens, shared styles and section layouts | `css/00-tokens.css` through `css/11-communities.css` |
 | Navigation, themes, filters, architecture or contact behavior | The matching file in `js/` |
 | Shared browser helpers | `js/core.js` |
 | Page initialization | `script.js` |
 | ATS PDF layout | `tools/resume_pdf.py` |
+| Hero headshot and frame | `headshot/kefas-headshot.png`, `templates/home/home.html`, `css/03-hero.css` |
+
+The hero uses the supplied portrait with intrinsic dimensions and high fetch priority. `tools/portrait_assets.py` builds responsive WebP copies, preserving the PNG as a fallback. Its frame remains visible on mobile and tablet. AOS 2.3.4 is pinned under `assets/vendor/aos-2.3.4/` with its MIT license and loads on generated HTML pages; `js/animations.js` handles reduced motion and failure fallback. No CDN is required. The public packager includes both `headshot/` and the vendored assets, preserving exact lowercase paths for S3. See `docs/HEADSHOT_INTEGRATION.md` for local checks and editing instructions.
 
 Each feature initializer ignores pages without its controls, so the same scripts can be reused across the portfolio, resume and case studies. All feature scripts use one `window.Portfolio` namespace and deferred loading in a declared order. This preserves local-file preview support without JavaScript module/CORS requirements.
 
@@ -99,3 +102,16 @@ The GitHub Actions workflow validates pull requests. A push or merge to `main` a
 - Separate A4 ATS PDF with selectable text and logical extraction order; web print CSS is also single-column.
 
 Read `docs/PORTFOLIO_AUDIT.md`, `docs/CONTENT_VERIFICATION.md`, `docs/IMPLEMENTATION_SUMMARY.md` and `docs/TEST_RESULTS.md` for evidence, measured results and outstanding limits.
+
+## Redesign audit and credentials
+
+See docs/REDESIGN_AUDIT.md for the requirement-by-requirement assessment and measured results. Section reveals use a shared progressive AOS initializer; project filters refresh the reveal positions. Cards offer hover/focus states, capabilities have local SVG icons, and the experience/education timeline uses the same source facts as the resume. The architecture explorer has delivery-pipeline and AWS-portfolio views. The shared header portrait uses page-relative paths on all 16 HTML pages.
+
+`content.json` contains a `certifications` list. Only complete records with `confirmed: true`, exact `name`, `issuer`, `date`, `kind`, `recipient` and a public HTTPS `verification_url` are rendered as credentials. Six owner-supplied Credly records were verified and populated during the audit; unresolved issuer records are excluded. An empty collection displays an honest pending state. See docs/CREDENTIAL_VERIFICATION.md. Credential rendering tests use fixtures; fixtures never enter the public website.
+
+After creating a public ZIP, run `python tools/verify_site_zip.py PATH_TO_ZIP` to check its allowlist, source bytes, integrity, and exact-case local paths (including srcset and fragment links). A passing local audit does not confirm production deployment or third-party demo availability.
+
+
+## Technical community involvement
+
+Community membership is stored in the `communities` collection in content.json and rendered by tools/components.py through templates/community-card.html and templates/home/communities.html. The section sits directly after Experience & Education; it does not add an employment or leadership entry to the resume. css/11-communities.css and the shared AOS initializer provide responsive presentation and reduced-motion behavior. See docs/COMMUNITY_UPDATE.md for this change and its verification.

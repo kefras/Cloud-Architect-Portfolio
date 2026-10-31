@@ -19,6 +19,8 @@ from components import (
     case_section,
     project_source,
     project_filters,
+    credential_cards,
+    community_cards,
 )
 from rendering import write_html
 
@@ -103,11 +105,13 @@ def build_home():
                 "04 / EXPERIENCE & EDUCATION", "A foundation built through practice."
             ),
             "experience_items": experience_html(),
+            "credential_cards": credential_cards(),
+            "community_cards": community_cards(),
             "graduation_date": escape_html(content["education"]["date"]),
             "degree": escape_html(content["education"]["degree"]),
             "school": escape_html(content["education"]["school"]),
             "contact_heading": title(
-                "05 / LET’S CONNECT", "Good work starts\nwith a conversation."
+                "06 / LET’S CONNECT", "Good work starts\nwith a conversation."
             ),
             "email": escape_html(content["email"]),
             "contact_github": link(content["github"], "GitHub ↗"),

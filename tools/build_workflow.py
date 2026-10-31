@@ -6,6 +6,7 @@ from config import ROOT, content
 from pages import build_home, build_resume, build_studies, build_project_directory
 from resume_pdf import build_pdf
 from project_diagrams import build_project_diagrams
+from portrait_assets import build_portrait_assets
 
 
 def build_styles():
@@ -36,6 +37,7 @@ def build_sitemap():
 def main():
     """Keep the build order explicit and the orchestration easy to follow."""
     build_styles()
+    build_portrait_assets()
     build_project_diagrams()
     build_home()
     build_studies()

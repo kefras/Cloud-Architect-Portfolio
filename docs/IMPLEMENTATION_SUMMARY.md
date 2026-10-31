@@ -50,3 +50,8 @@ The requested title is now DevOps & Cloud Engineer Intern at Build and Ship Acad
 ## Cloud/DevOps and AI project expansion
 
 The current CV now leads with five Cloud/DevOps projects and follows with Digital Twin and ETIKU AI. The homepage highlights six projects and links to projects.html, a 13-project directory with category filters. Nine new case studies and safe SVG diagrams were added. Private NovaMart source remains private; source-link rendering honors visibility. Code-backed projects and documentation/screenshot-backed labs are labelled distinctly. Explicit content selections replace all first-three-project slices. Source-evidence references wrap correctly at 320px. The next-project roadmap is proposed work only. See the current CONTENT_VERIFICATION.md and PROJECT_STRATEGY.md.
+
+
+## Complete redesign audit
+
+The local redesign adds reusable section reveals, interactive project/capability cards, local SVG icons, an animated experience/education timeline, a two-view cloud/delivery explorer and shared portrait branding. Six public Credly records were reconciled and rendered; two unavailable Oz records are excluded. Demo cards disclose Streamlit sleeping-app behavior. See REDESIGN_AUDIT.md, CREDENTIAL_VERIFICATION.md and TEST_RESULTS.md. The public ZIP is checked by tools/verify_site_zip.py. No commit, push or deployment occurs in this audit.

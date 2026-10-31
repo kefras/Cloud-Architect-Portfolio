@@ -34,3 +34,8 @@ The complete pre-refactor source was copied to `portfolio-refactor/original` in 
 ## Project selection
 
 `content.json` now defines `featured_project_ids`, `resume_sections` and `resume_web_extras`. `tools/config.py` resolves these identifiers for both resume renderers. `tools/pages.py` also builds the full projects.html directory; `tools/project_diagrams.py` creates safe schematics for new entries. `tools/components.py` renders available category filters and suppresses source links for private projects. Add a project once, then select it explicitly for the homepage or CV.
+
+
+## Audited interactions and credentials
+
+`css/10-interactions.css` adds shared hover/focus card treatment and the homepage timeline without changing resume print layout. `tools/icons.py` provides local decorative SVG icons. `credential_cards()` in tools/components.py requires complete, owner-confirmed public records and renders templates/credential-card.html; unconfirmed records cannot silently appear. The certification section is templates/home/certifications.html. `js/animations.js` owns reveal setup, reduced-motion changes, focus visibility and refresh hooks; js/projects.js refreshes it after category changes. `js/architecture.js` supplies delivery and AWS-portfolio views with the same keyboard controls. `tools/verify_site_zip.py` validates the final public archive without extracting it.

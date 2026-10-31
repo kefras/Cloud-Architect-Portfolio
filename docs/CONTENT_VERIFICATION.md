@@ -36,6 +36,11 @@ The ATS CV explicitly includes five Cloud/DevOps projects and two AI projects on
 
 ## Credentials and remaining confirmations
 
-Credential cards remain unpublished until owner, exact title, issuer, issue/expiry dates and verification links are reconciled. Training badges are not represented as AWS professional certifications. Experience dates and the education start-year conflict remain unchanged pending confirmation. Future institutional NASENI material requires appropriate public-release authorization.
+On 31 October 2026, the owner supplied eight public verification links. Six Credly records were read in the browser and reconciled by title, issuer, displayed recipient and issue date. Their training/course/skill badge cards are now published locally, with no AWS exam-certification claim. The two Oz University URLs displayed Credential Not Found and are excluded. See CREDENTIAL_VERIFICATION.md for the exact record map. No expiry date was invented. Experience dates and the education start-year conflict remain unchanged pending confirmation. Future institutional NASENI material requires appropriate public-release authorization.
 
 To strengthen the cloud labs, supply the actual Dockerfile/deploy.sh, reproducible ALB/ASG/RDS/CloudWatch configuration and measured drill logs. Never add uptime, failover, savings or user-count metrics without supporting evidence. Proposed next projects are listed only in PROJECT_STRATEGY.md and are not represented as completed work.
+
+
+## Hosted demo availability — 31 October 2026
+
+Browser visits to both owner-supplied Streamlit URLs reached the public sleeping-app screen. The URLs resolve to the intended hosts; runtime/model functionality was not tested. Cards now say Open demo and note that waking may be required. No external service was awakened or redeployed. Twelve public project repository metadata URLs were successfully retrieved through the connected GitHub read-only API; the private NovaMart source link remains suppressed.

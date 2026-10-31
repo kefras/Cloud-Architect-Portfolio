@@ -20,7 +20,7 @@ PUBLIC_FILES = (
     "robots.txt",
     "sitemap.xml",
 )
-PUBLIC_DIRECTORIES = ("assets", "case-studies", "js")
+PUBLIC_DIRECTORIES = ("assets", "case-studies", "js", "headshot")
 
 
 def package_site(output):

@@ -51,7 +51,13 @@ for f, p in pages.items():
     relative = str(f.relative_to(ROOT))
     check(relative + ": unique ids", len(p.ids) == len(set(p.ids)))
     check(relative + ": exactly one h1", p.h1 == 1)
-    check(relative + ": image alternatives", all(i.get("alt") for i in p.images))
+    check(
+        relative + ": image alternatives",
+        all(
+            i.get("alt") or (i.get("class") == "brand-avatar" and "alt" in i)
+            for i in p.images
+        ),
+    )
     for url in p.links:
         u = urlsplit(url)
         if u.scheme or u.netloc:

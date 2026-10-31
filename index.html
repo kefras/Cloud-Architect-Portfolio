@@ -25,6 +25,8 @@
     <meta name="twitter:image" content="https://kefas.live/assets/og-image.png">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <script src="theme.js"></script>
+    <link rel="stylesheet" href="assets/vendor/aos-2.3.4/aos.css">
+    <script src="assets/vendor/aos-2.3.4/aos.js" defer></script>
     <link rel="stylesheet" href="styles.css">
     <!-- Deferred scripts execute in this order on every page. -->
     <script src="js/core.js" defer></script>
@@ -33,19 +35,21 @@
     <script src="js/projects.js" defer></script>
     <script src="js/architecture.js" defer></script>
     <script src="js/contact.js" defer></script>
+    <script src="js/animations.js" defer></script>
     <script src="script.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="nav">
       <div class="container nav-inner">
-        <a class="brand" href="index.html" aria-label="Kefas home"><span class="brand-mark">kf<span>.</span></span><span class="brand-caption">KEFAS ETIKU FRANCIS</span></a>
+        <a class="brand" href="index.html" aria-label="kf. Kefas Etiku Francis home"><img class="brand-avatar" src="headshot/kefas-headshot-96.webp" width="40" height="40" alt="" decoding="async"><span class="brand-mark">kf<span>.</span></span><span class="brand-caption">KEFAS ETIKU FRANCIS</span></a>
         <nav id="navigation" aria-label="Main navigation">
           <a class="" href="#home">Home</a>
           <a class="" href="#projects">Projects</a>
           <a class="" href="#about">About</a>
           <a class="" href="#skills">Skills</a>
           <a class="" href="#experience">Experience</a>
+          <a class="" href="#certifications">Credentials</a>
           <a class="" href="resume.html">Resume</a>
           <a class="" href="#contact">Contact</a>
         </nav>
@@ -75,29 +79,19 @@
             <span>Computer Science · Class of 2027</span>
           </div>
         </div>
-        <aside class="hero-blueprint" aria-label="Engineering focus">
-          <div class="panel-heading">
-            <span class="mono">WORKSPACE / 001</span>
-            <span class="status">Always learning</span>
+        <!-- The portrait path is relative to the S3 bucket root, like the homepage. -->
+        <figure class="hero-portrait" data-aos="zoom-in" data-aos-duration="750" data-aos-offset="0">
+          <div class="portrait-frame">
+            <picture>
+              <source type="image/webp" srcset="headshot/kefas-headshot-320.webp 320w, headshot/kefas-headshot-480.webp 480w, headshot/kefas-headshot-720.webp 720w, headshot/kefas-headshot-1086.webp 1086w" sizes="(max-width: 560px) 268px, (max-width: 859px) 320px, 360px">
+              <img class="hero-headshot" src="headshot/kefas-headshot.png" width="1086" height="1448" fetchpriority="high" decoding="async" alt="Professional portrait of Kefas Etiku Francis">
+            </picture>
           </div>
-          <div class="blueprint-grid">
-            <div class="orbit orbit-one">
-            </div>
-            <div class="orbit orbit-two">
-            </div>
-            <div class="core">
-              <span aria-hidden="true">&lt;/&gt;</span>
-              <p>Build.<br>Connect.<br><em>Improve.</em></p>
-            </div>
-            <span class="blueprint-label label-one">01 / APPLICATION</span>
-            <span class="blueprint-label label-two">02 / AUTOMATION</span>
-            <span class="blueprint-label label-three">03 / INFRASTRUCTURE</span>
-          </div>
-          <div class="panel-bottom">
-            <p>From an idea to<br>a repeatable system.</p>
-            <span class="mono">AWS<br>PYTHON<br>DOCKER</span>
-          </div>
-        </aside>
+          <figcaption class="portrait-caption">
+      <span class="mono">THE ENGINEER BEHIND THE WORK</span>
+      <span>Build. Connect. Improve.</span>
+    </figcaption>
+        </figure>
         <div class="hero-bottom mono">
           <span>CLOUD + CODE + CURIOSITY</span>
           <a href="#projects">SCROLL TO EXPLORE ↓</a>
@@ -240,8 +234,9 @@
               <div class="project-links">
                 <a class="" href="case-studies/digital-twin.html">View case study →</a>
                 <a class="" href="https://github.com/kefras/digital-twin-ai">GitHub ↗</a>
-                <a class="" href="https://digitaltwin1.streamlit.app/">Live demo ↗</a>
+                <a class="" href="https://digitaltwin1.streamlit.app/">Open demo ↗</a>
               </div>
+              <p class="demo-notice">Streamlit demo may sleep; wake-up may be required.</p>
             </div>
           </article>
           <article class="project-card" data-category="AI Engineering">
@@ -265,8 +260,9 @@
               <div class="project-links">
                 <a class="" href="case-studies/etiku-ai.html">View case study →</a>
                 <a class="" href="https://github.com/kefras/etiku-ai">GitHub ↗</a>
-                <a class="" href="https://etiku-ai.streamlit.app/">Live demo ↗</a>
+                <a class="" href="https://etiku-ai.streamlit.app/">Open demo ↗</a>
               </div>
+              <p class="demo-notice">Streamlit demo may sleep; wake-up may be required.</p>
             </div>
           </article>
         </div>
@@ -284,63 +280,90 @@
           </div>
           <div class="skills-grid">
             <article class="skill">
-              <span class="skill-index mono">01</span>
+              <div class="skill-top">
+                <span class="card-icon"><svg class="line-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 18h10a4 4 0 0 0 .5-8A6 6 0 0 0 6 8a5 5 0 0 0 1 10Z"/></path></svg></span>
+                <span class="skill-index mono">01</span>
+              </div>
               <h3>Cloud Platforms</h3>
               <p>AWS EC2, S3, CloudFront/OAC, ECR; ALB, Auto Scaling and RDS labs</p>
               <p class="skill-evidence">Code, deployed portfolio and documented AWS labs</p>
               <a class="" href="case-studies/cloud-portfolio.html">See project evidence ↗</a>
             </article>
             <article class="skill">
-              <span class="skill-index mono">02</span>
+              <div class="skill-top">
+                <span class="card-icon"><svg class="line-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 5v14h14M5 12h7V5h7v14"/></path><circle cx="5" cy="5" r="2"/></circle><circle cx="19" cy="19" r="2"/></circle></svg></span>
+                <span class="skill-index mono">02</span>
+              </div>
               <h3>DevOps &amp; CI/CD</h3>
               <p>GitHub Actions, Git, Trivy scanning</p>
               <p class="skill-evidence">Demonstrated in repository code</p>
               <a class="" href="case-studies/aws-delivery.html">See project evidence ↗</a>
             </article>
             <article class="skill">
-              <span class="skill-index mono">03</span>
+              <div class="skill-top">
+                <span class="card-icon"><svg class="line-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 8 4v10l-8 4-8-4V7Zm-8 4 8 4 8-4M12 11v10M8 5l8 4"/></path></svg></span>
+                <span class="skill-index mono">03</span>
+              </div>
               <h3>Containers &amp; Orchestration</h3>
               <p>Docker, Compose, Kubernetes Deployments and Services, resource requests/limits</p>
               <p class="skill-evidence">Container deployment evidence and Kubernetes manifests</p>
               <a class="" href="case-studies/kubernetes.html">See project evidence ↗</a>
             </article>
             <article class="skill">
-              <span class="skill-index mono">04</span>
+              <div class="skill-top">
+                <span class="card-icon"><svg class="line-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m8 6-6 6 6 6m8-12 6 6-6 6M14 3l-4 18"/></path></svg></span>
+                <span class="skill-index mono">04</span>
+              </div>
               <h3>Infrastructure as Code</h3>
               <p>Terraform AWS provider and S3 resource</p>
               <p class="skill-evidence">Demonstrated in a foundational lab</p>
               <a class="" href="case-studies/terraform-lab.html">See project evidence ↗</a>
             </article>
             <article class="skill">
-              <span class="skill-index mono">05</span>
+              <div class="skill-top">
+                <span class="card-icon"><svg class="line-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="7" rx="2"/></rect><rect x="3" y="14" width="18" height="7" rx="2"/></rect><path d="M7 6h.01M7 17h.01M12 6h5M12 17h5"/></path></svg></span>
+                <span class="skill-index mono">05</span>
+              </div>
               <h3>Programming &amp; Backend</h3>
               <p>Python, FastAPI, Node.js, Express, JWT</p>
               <p class="skill-evidence">Demonstrated in repository code</p>
               <a class="" href="case-studies/routeng.html">See project evidence ↗</a>
             </article>
             <article class="skill">
-              <span class="skill-index mono">06</span>
+              <div class="skill-top">
+                <span class="card-icon"><svg class="line-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="4" width="20" height="16" rx="2"/></rect><path d="M2 9h20M6 6.5h.01M10 6.5h.01m0 6-3 2 3 2m4-4 3 2-3 2"/></path></svg></span>
+                <span class="skill-index mono">06</span>
+              </div>
               <h3>Frontend Development</h3>
               <p>React, TypeScript, HTML, CSS, JavaScript</p>
               <p class="skill-evidence">Demonstrated in repository code</p>
               <a class="" href="case-studies/naseni-lims.html">See project evidence ↗</a>
             </article>
             <article class="skill">
-              <span class="skill-index mono">07</span>
+              <div class="skill-top">
+                <span class="card-icon"><svg class="line-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><ellipse cx="12" cy="5" rx="8" ry="3"/></ellipse><path d="M4 5v14c0 4 16 4 16 0V5M4 12c0 4 16 4 16 0"/></path></svg></span>
+                <span class="skill-index mono">07</span>
+              </div>
               <h3>Databases</h3>
               <p>PostgreSQL, SQLAlchemy, Alembic</p>
               <p class="skill-evidence">Demonstrated in repository code</p>
               <a class="" href="case-studies/naseni-lims.html">See project evidence ↗</a>
             </article>
             <article class="skill">
-              <span class="skill-index mono">08</span>
+              <div class="skill-top">
+                <span class="card-icon"><svg class="line-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="6" y="6" width="12" height="12" rx="3"/></rect><path d="M9 2v4m6-4v4M9 18v4m6-4v4M2 9h4m-4 6h4m12-6h4m-4 6h4M10 10h4v4h-4Z"/></path></svg></span>
+                <span class="skill-index mono">08</span>
+              </div>
               <h3>AI Engineering</h3>
               <p>Gemini streaming, semantic retrieval, RAG, PDF Q&amp;A; Bedrock/Strands agent workflows</p>
               <p class="skill-evidence">Public application source and authorized private implementation review</p>
               <a class="" href="case-studies/digital-twin.html">See project evidence ↗</a>
             </article>
             <article class="skill">
-              <span class="skill-index mono">09</span>
+              <div class="skill-top">
+                <span class="card-icon"><svg class="line-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="4" width="20" height="16" rx="2"/></rect><path d="m6 9 3 3-3 3m6 0h5"/></path></svg></span>
+                <span class="skill-index mono">09</span>
+              </div>
               <h3>Linux &amp; System Administration</h3>
               <p>Ubuntu, Bash deployment scripts, Docker logs, port-conflict troubleshooting</p>
               <p class="skill-evidence">Reviewed EC2 deployment screenshots and lab documentation</p>
@@ -381,10 +404,14 @@ Practical by approach.</h2>
         </div>
         <div class="architecture-shell">
           <div class="map-header mono">
-            <span>COMMIT → ARTIFACT → APPLICATION</span>
+            <span id="mapTitle">COMMIT → ARTIFACT → APPLICATION</span>
             <span>ILLUSTRATIVE</span>
           </div>
-          <div class="map-nodes" role="group" aria-label="Delivery stages">
+          <div class="map-modes" id="architectureModes" role="group" aria-label="Architecture view" hidden>
+            <button type="button" data-architecture-mode="delivery" aria-pressed="true" aria-controls="architectureNodes mapDetail">Delivery pipeline</button>
+            <button type="button" data-architecture-mode="portfolio" aria-pressed="false" aria-controls="architectureNodes mapDetail">AWS portfolio</button>
+          </div>
+          <div class="map-nodes" id="architectureNodes" role="group" aria-label="Architecture stages">
             <button type="button" class="map-node" data-stage="0" aria-pressed="true" aria-controls="mapDetail">
   <span class="mono">01</span><strong>Source control</strong><small>Git / GitHub</small>
 </button>
@@ -397,6 +424,8 @@ Practical by approach.</h2>
             <button type="button" class="map-node" data-stage="3" aria-pressed="false" aria-controls="mapDetail">
   <span class="mono">04</span><strong>Run &amp; observe</strong><small>Runtime / logs</small>
 </button>
+          </div>
+          <div class="map-progress" aria-hidden="true">
           </div>
           <div id="mapDetail" class="map-detail" role="status">
             <span class="eyebrow">01 / SOURCE CONTROL</span>
@@ -456,11 +485,140 @@ Practical by approach.</h2>
             </div>
           </article>
         </div>
-        <div class="learning-note" id="certifications">
-          <p class="eyebrow">PROFESSIONAL DEVELOPMENT</p>
-          <h3>Learning is part of the work.</h3>
-          <p class="muted">Cloud engineering training and Linux/Kubernetes coursework support my project practice. Application work includes semantic retrieval, Gemini streaming and AWS agent workflows; my next focus is reproducible infrastructure and stronger operational testing.</p>
-          <p class="small muted">Credential names, dates and issuer records are being reconciled before a verified certification list is published.</p>
+      </section>
+      <!-- Community membership is separate from employment and education records. -->
+      <section class="section container" id="communities" aria-labelledby="communities-title">
+        <div class="section-heading">
+          <p class="eyebrow">TECHNICAL LEARNING / COMMUNITY</p>
+          <h2 id="communities-title">Technical Communities &amp; Involvement</h2>
+          <p class="muted section-intro">Learning with others, exploring engineering ideas and sharing technical curiosity.</p>
+        </div>
+        <div class="communities-grid">
+          <article class="involvement-card" tabindex="0" aria-labelledby="miva-robotics-title" aria-describedby="miva-robotics-description">
+            <div class="community-card-heading">
+              <span class="card-icon"><svg class="line-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="6" width="16" height="13" rx="4"/></rect><path d="M12 2v4M1 11v5m22-5v5M8 22v-3m8 3v-3M9 15h6"/></path><circle cx="8" cy="11" r="1"/></circle><circle cx="16" cy="11" r="1"/></circle></svg></span>
+              <span class="status">Member</span>
+            </div>
+            <p class="eyebrow">Miva Open University</p>
+            <h3 id="miva-robotics-title">Miva Robotics Club</h3>
+            <p id="miva-robotics-description" class="muted">Member of Miva Open University&#x27;s Robotics Club, participating in a technical learning community focused on robotics, AI, practical engineering skills, and collaborative innovation.</p>
+            <ul class="tags" aria-label="Community focus areas">
+              <li>Robotics</li>
+              <li>Artificial Intelligence</li>
+              <li>Automation</li>
+              <li>Collaborative Technical Learning</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+      <section class="section container" id="certifications" aria-labelledby="credentials-title">
+        <div class="section-heading">
+          <p class="eyebrow">05 / CREDENTIALS & CONTINUOUS LEARNING</p>
+          <h2 id="credentials-title">Learning, with evidence.</h2>
+          <p class="muted section-intro">Credential records and hands-on project evidence are presented separately.</p>
+        </div>
+        <div class="credentials-grid">
+          <article class="credential-card">
+            <div class="card-icon">
+              <svg class="line-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="8" r="5"/>
+                </circle>
+                <path d="m8 12-2 9 6-3 6 3-2-9"/>
+                </path>
+              </svg>
+            </div>
+            <p class="eyebrow">Skill badge</p>
+            <h3>Manage Kubernetes in Google Cloud Skill Badge</h3>
+            <p>Google Cloud</p>
+            <p class="small muted">11 September 2026</p>
+            <p class="small muted">Issued to Francis Kefas</p>
+            <a class="text-link" href="https://www.credly.com/badges/883171dd-b834-4ece-8837-eda169bdb6e5/public_url">Verify credential ↗</a>
+          </article>
+          <article class="credential-card">
+            <div class="card-icon">
+              <svg class="line-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="8" r="5"/>
+                </circle>
+                <path d="m8 12-2 9 6-3 6 3-2-9"/>
+                </path>
+              </svg>
+            </div>
+            <p class="eyebrow">Training badge</p>
+            <h3>AWS Cloud Quest: Cloud Practitioner - Training Badge</h3>
+            <p>Amazon Web Services Training and Certification</p>
+            <p class="small muted">4 April 2026</p>
+            <p class="small muted">Issued to Kefas Etiku Francis</p>
+            <a class="text-link" href="https://www.credly.com/badges/2b7bbe3e-783a-4bee-948f-a3521f833db4/public_url">Verify credential ↗</a>
+          </article>
+          <article class="credential-card">
+            <div class="card-icon">
+              <svg class="line-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="8" r="5"/>
+                </circle>
+                <path d="m8 12-2 9 6-3 6 3-2-9"/>
+                </path>
+              </svg>
+            </div>
+            <p class="eyebrow">Training badge</p>
+            <h3>AWS Cloud Quest: Generative AI Practitioner - Training Badge</h3>
+            <p>Amazon Web Services Training and Certification</p>
+            <p class="small muted">22 April 2026</p>
+            <p class="small muted">Issued to Kefas Etiku Francis</p>
+            <a class="text-link" href="https://www.credly.com/badges/45ffa510-cf69-4ca3-b84f-ddf3cb43eea9/public_url">Verify credential ↗</a>
+          </article>
+          <article class="credential-card">
+            <div class="card-icon">
+              <svg class="line-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="8" r="5"/>
+                </circle>
+                <path d="m8 12-2 9 6-3 6 3-2-9"/>
+                </path>
+              </svg>
+            </div>
+            <p class="eyebrow">Course badge</p>
+            <h3>LFS158: Introduction to Kubernetes</h3>
+            <p>The Linux Foundation</p>
+            <p class="small muted">19 March 2026</p>
+            <p class="small muted">Issued to Kefas Etiku Francis</p>
+            <a class="text-link" href="https://www.credly.com/badges/e81f1b94-e6ed-454f-b4f8-eb0e9c95abbb/public_url">Verify credential ↗</a>
+          </article>
+          <article class="credential-card">
+            <div class="card-icon">
+              <svg class="line-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="8" r="5"/>
+                </circle>
+                <path d="m8 12-2 9 6-3 6 3-2-9"/>
+                </path>
+              </svg>
+            </div>
+            <p class="eyebrow">Course badge</p>
+            <h3>LFS101: Introduction to Linux</h3>
+            <p>The Linux Foundation</p>
+            <p class="small muted">16 March 2026</p>
+            <p class="small muted">Issued to Kefas Etiku Francis</p>
+            <a class="text-link" href="https://www.credly.com/badges/60abffb8-96d3-42cd-a11f-36f4f6b6f822/public_url">Verify credential ↗</a>
+          </article>
+          <article class="credential-card">
+            <div class="card-icon">
+              <svg class="line-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="8" r="5"/>
+                </circle>
+                <path d="m8 12-2 9 6-3 6 3-2-9"/>
+                </path>
+              </svg>
+            </div>
+            <p class="eyebrow">Course badge</p>
+            <h3>LFS250: Kubernetes and Cloud Native Essentials</h3>
+            <p>The Linux Foundation</p>
+            <p class="small muted">21 March 2026</p>
+            <p class="small muted">Issued to Kefas Etiku Francis</p>
+            <a class="text-link" href="https://www.credly.com/badges/ef6e71ed-5c17-4d2b-8c60-fbb7d0ffac2d/public_url">Verify credential ↗</a>
+          </article>
+        </div>
+        <div class="learning-note">
+          <h3>Applied learning</h3>
+          <p class="muted">Cloud engineering training and Linux/Kubernetes coursework support my project practice. My next focus is reproducible infrastructure and stronger operational testing.</p>
+          <a class="text-link" href="projects.html">Explore practical project evidence →</a>
         </div>
       </section>
       <!-- Homepage: contact. Content slots are supplied by tools/pages.py. -->
@@ -468,7 +626,7 @@ Practical by approach.</h2>
         <div class="container contact-layout">
           <div>
             <div class="section-heading">
-              <p class="eyebrow">05 / LET’S CONNECT</p>
+              <p class="eyebrow">06 / LET’S CONNECT</p>
               <h2>Good work starts
 with a conversation.</h2>
             </div>

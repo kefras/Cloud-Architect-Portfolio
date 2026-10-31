@@ -356,7 +356,7 @@
       "decisions": "Keep retrieval and answer generation separate. Preserve source/page information in the PDF path and return an insufficient-information result when the knowledge-base path cannot support an answer.",
       "challenges": "Scanned PDFs need OCR beyond the current text extractor. Model availability and API quotas affect the PDF path. A retrieval-quality evaluation set is still a useful next step.",
       "verification": "Reviewed pipeline.py, semantic_retriever.py, pdf_chat.py, three unit-test files and the CI workflow at revision 9a9acd80247d87d4bed53355209d14b2ff0a538f. A repository screenshot records 21 passing core tests; that is historical evidence, not a fresh test run in this task. No model request was made.",
-      "current": "Educational Streamlit demo supplied by the owner. Core code and historical test evidence reviewed; live model response quality and current hosted availability were not tested.",
+      "current": "Educational Streamlit demo supplied by the owner. Core code and historical test evidence reviewed; live model response quality and current hosted availability were not tested. Browser check on 31 October 2026 reached the Streamlit sleep page. The link is reachable; live model behavior was not tested.",
       "lessons": "Embedding/search tests and explicit abstention are valuable, but they do not replace evaluation of the complete PDF/Gemini answering path.",
       "live": "https://digitaltwin1.streamlit.app/",
       "evidence_level": "Source, tests and supplied demo evidence",
@@ -364,7 +364,8 @@
         "Built semantic retrieval and Gemini PDF chat with source references, custom embedding/search components and automated core-functionality tests."
       ],
       "label": "10 / AI ENGINEERING",
-      "visibility": "public"
+      "visibility": "public",
+      "demo_availability": "Streamlit demo may sleep; wake-up may be required."
     },
     {
       "id": "etiku-ai",
@@ -383,7 +384,7 @@
       "decisions": "Keep the model adapter, settings, authentication and storage in separate modules. Load API configuration through environment/Streamlit settings rather than placing credentials in client-facing code.",
       "challenges": "The README still describes session-only storage while current code uses Supabase. Hosted behavior, database schema and row-level security need verification before claiming persistent multi-user isolation. RAG, PDF upload and voice remain roadmap items for ETIKU itself.",
       "verification": "Reviewed assistant.py, etiku_app.py, session_storage.py and supabase_storage.py at revision 2310c6fea69f7284369494c4a7f849621fc6cd36. The owner supplied the Streamlit demo screenshot and URL. No sign-in, model request or database operation was performed.",
-      "current": "Streamlit demonstration with a newer authentication/storage implementation in source. No production-security or persistent-storage guarantee is made.",
+      "current": "Streamlit demonstration with a newer authentication/storage implementation in source. No production-security or persistent-storage guarantee is made. Browser check on 31 October 2026 reached the Streamlit sleep page. The link is reachable; live model behavior was not tested.",
       "lessons": "Storage behavior must match the README and UI copy. Clear module boundaries make the model, UI and storage layers easier to test independently.",
       "live": "https://etiku-ai.streamlit.app/",
       "evidence_level": "Source and supplied demo evidence",
@@ -391,7 +392,8 @@
         "Built a Streamlit Gemini assistant with streaming responses, configurable response styles and conversation search, rename and delete controls."
       ],
       "label": "11 / AI ENGINEERING",
-      "visibility": "public"
+      "visibility": "public",
+      "demo_availability": "Streamlit demo may sleep; wake-up may be required."
     },
     {
       "id": "naseni-lims",
@@ -477,6 +479,83 @@
     {
       "heading": "Software Engineering Projects",
       "projects": ["naseni-lims", "routeng"]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Manage Kubernetes in Google Cloud Skill Badge",
+      "issuer": "Google Cloud",
+      "date": "11 September 2026",
+      "kind": "Skill badge",
+      "recipient": "Francis Kefas",
+      "confirmed": true,
+      "verification_url": "https://www.credly.com/badges/883171dd-b834-4ece-8837-eda169bdb6e5/public_url",
+      "reviewed_on": "2026-10-31"
+    },
+    {
+      "name": "AWS Cloud Quest: Cloud Practitioner - Training Badge",
+      "issuer": "Amazon Web Services Training and Certification",
+      "date": "4 April 2026",
+      "kind": "Training badge",
+      "recipient": "Kefas Etiku Francis",
+      "confirmed": true,
+      "verification_url": "https://www.credly.com/badges/2b7bbe3e-783a-4bee-948f-a3521f833db4/public_url",
+      "reviewed_on": "2026-10-31"
+    },
+    {
+      "name": "AWS Cloud Quest: Generative AI Practitioner - Training Badge",
+      "issuer": "Amazon Web Services Training and Certification",
+      "date": "22 April 2026",
+      "kind": "Training badge",
+      "recipient": "Kefas Etiku Francis",
+      "confirmed": true,
+      "verification_url": "https://www.credly.com/badges/45ffa510-cf69-4ca3-b84f-ddf3cb43eea9/public_url",
+      "reviewed_on": "2026-10-31"
+    },
+    {
+      "name": "LFS158: Introduction to Kubernetes",
+      "issuer": "The Linux Foundation",
+      "date": "19 March 2026",
+      "kind": "Course badge",
+      "recipient": "Kefas Etiku Francis",
+      "confirmed": true,
+      "verification_url": "https://www.credly.com/badges/e81f1b94-e6ed-454f-b4f8-eb0e9c95abbb/public_url",
+      "reviewed_on": "2026-10-31"
+    },
+    {
+      "name": "LFS101: Introduction to Linux",
+      "issuer": "The Linux Foundation",
+      "date": "16 March 2026",
+      "kind": "Course badge",
+      "recipient": "Kefas Etiku Francis",
+      "confirmed": true,
+      "verification_url": "https://www.credly.com/badges/60abffb8-96d3-42cd-a11f-36f4f6b6f822/public_url",
+      "reviewed_on": "2026-10-31"
+    },
+    {
+      "name": "LFS250: Kubernetes and Cloud Native Essentials",
+      "issuer": "The Linux Foundation",
+      "date": "21 March 2026",
+      "kind": "Course badge",
+      "recipient": "Kefas Etiku Francis",
+      "confirmed": true,
+      "verification_url": "https://www.credly.com/badges/ef6e71ed-5c17-4d2b-8c60-fbb7d0ffac2d/public_url",
+      "reviewed_on": "2026-10-31"
+    }
+  ],
+  "communities": [
+    {
+      "id": "miva-robotics",
+      "name": "Miva Robotics Club",
+      "role": "Member",
+      "institution": "Miva Open University",
+      "focus": [
+        "Robotics",
+        "Artificial Intelligence",
+        "Automation",
+        "Collaborative Technical Learning"
+      ],
+      "description": "Member of Miva Open University's Robotics Club, participating in a technical learning community focused on robotics, AI, practical engineering skills, and collaborative innovation."
     }
   ]
 }
