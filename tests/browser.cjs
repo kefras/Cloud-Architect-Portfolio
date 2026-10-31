@@ -47,7 +47,7 @@ fs.mkdirSync(out, { recursive: true });
               })),
             ),
           );
-          assert.equal(await page.locator('.project-card:visible').count(), 4);
+          assert.equal(await page.locator('.project-card:visible').count(), 6);
         });
       }
       if (width < 860) {
@@ -73,11 +73,11 @@ fs.mkdirSync(out, { recursive: true });
       assert.equal(await page.locator('#navToggle').getAttribute('aria-expanded'), 'false');
     });
     await check('Filter buttons update projects and accessible count', async () => {
-      await page.getByRole('button', { name: 'Full-stack', exact: true }).click();
-      assert.equal(await page.locator('.project-card:visible').count(), 2);
-      assert.equal(await page.locator('#projectCount').innerText(), '2 projects');
+      await page.getByRole('button', { name: 'Cloud & DevOps', exact: true }).click();
+      assert.equal(await page.locator('.project-card:visible').count(), 3);
+      assert.equal(await page.locator('#projectCount').innerText(), '3 projects');
       await page.getByRole('button', { name: 'All projects', exact: true }).click();
-      assert.equal(await page.locator('.project-card:visible').count(), 4);
+      assert.equal(await page.locator('.project-card:visible').count(), 6);
     });
     await check('Architecture keyboard selection and wrap-around', async () => {
       const node = page.locator('[data-stage="0"]');
@@ -196,10 +196,10 @@ fs.mkdirSync(out, { recursive: true });
     for (const width of [320, 375, 768, 860, 1024, 1440]) {
       for (const route of [
         'resume.html',
-        'case-studies/naseni-lims.html',
-        'case-studies/aws-delivery.html',
-        'case-studies/routeng.html',
-        'case-studies/terraform-lab.html',
+        'projects.html',
+        ...JSON.parse(
+          fs.readFileSync(path.join(__dirname, '../content.json'), 'utf8'),
+        ).projects.map((project) => `case-studies/${project.id}.html`),
       ]) {
         await check(`${route}: ${width}px overflow and response`, async () => {
           await page.setViewportSize({ width, height: 950 });
@@ -208,6 +208,24 @@ fs.mkdirSync(out, { recursive: true });
         });
       }
     }
+    await check('Directory organizes all 13 projects by discipline', async () => {
+      await page.goto(base + '/projects.html');
+      assert.equal(await page.locator('.project-card:visible').count(), 13);
+      await page.getByRole('button', { name: 'Cloud & DevOps', exact: true }).click();
+      assert.equal(await page.locator('.project-card:visible').count(), 8);
+      await page.getByRole('button', { name: 'AI Engineering', exact: true }).click();
+      assert.equal(await page.locator('.project-card:visible').count(), 3);
+      await page.getByRole('button', { name: 'Full-stack', exact: true }).click();
+      assert.equal(await page.locator('.project-card:visible').count(), 2);
+      assert.equal(await page.locator('a[href*="github.com/kefras/novamart"]').count(), 0);
+      await page.goto(base + '/resume.html');
+      const headings = await page.locator('.resume-paper h2').allTextContents();
+      assert.ok(
+        headings.indexOf('Cloud & DevOps Projects') < headings.indexOf('AI Engineering Projects'),
+      );
+      assert.match(await page.locator('.resume-paper').innerText(), /ETIKU AI/);
+      assert.match(await page.locator('.resume-paper').innerText(), /Digital Twin AI/);
+    });
     await check('Resume PDF download target returns PDF', async () => {
       const response = await page.request.get(base + '/resume.pdf');
       assert.equal(response.status(), 200);
@@ -232,7 +250,7 @@ fs.mkdirSync(out, { recursive: true });
       });
       const p = await nojs.newPage();
       await p.goto(base);
-      assert.equal(await p.locator('.project-card').count(), 4);
+      assert.equal(await p.locator('.project-card').count(), 6);
       assert.equal(await p.getByRole('link', { name: 'Explore projects' }).count(), 1);
       assert.equal(await p.locator('#navigation').isVisible(), true);
       assert.ok(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth));

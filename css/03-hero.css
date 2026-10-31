@@ -1,8 +1,8 @@
-/* Homepage introduction and blueprint artwork. */
+/* Homepage introduction and responsive professional portrait. */
 .hero {
   padding-top: 74px;
   display: grid;
-  grid-template-columns: 1.55fr 1fr;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
   gap: 32px 70px;
   align-items: center;
 }
@@ -59,118 +59,76 @@
   color: var(--muted);
   width: 100%;
 }
-.hero-blueprint {
-  align-self: stretch;
-  max-height: 510px;
-  margin-top: 10px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--surface-alt);
-  overflow: hidden;
+/* A separate frame keeps hover motion independent of the AOS entrance. */
+.hero-portrait {
+  width: min(100%, 360px);
+  justify-self: end;
+  position: relative;
+  isolation: isolate;
+}
+.hero-portrait::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 8% -5% 16%;
+  background: radial-gradient(ellipse, #43d8c724, transparent 72%);
+  pointer-events: none;
+}
+.portrait-frame {
+  padding: 3px;
+  border-radius: 30px;
+  background: linear-gradient(145deg, var(--accent), var(--sky) 48%, var(--line) 82%);
   box-shadow: var(--shadow);
+  transition:
+    transform 280ms ease,
+    box-shadow 280ms ease;
 }
-.panel-heading,
-.panel-bottom {
-  padding: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+.hero-headshot {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border: 5px solid var(--surface);
+  border-radius: 27px;
 }
-.panel-heading {
-  border-bottom: 1px solid var(--line-soft);
-}
-.panel-heading .mono {
-  font-size: 10px;
-  color: var(--muted);
-}
-.status {
-  display: inline-block;
-  padding: 4px 8px;
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  font: 10px/1.5 var(--mono);
-  color: var(--accent);
-}
-.blueprint-grid {
-  height: 310px;
-  position: relative;
+.portrait-caption {
   display: grid;
-  place-items: center;
-  background-image:
-    linear-gradient(var(--line-soft) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
-  background-size: 28px 28px;
-  overflow: hidden;
+  gap: 5px;
+  padding: 18px 5px 0;
 }
-.orbit {
-  position: absolute;
-  width: 240px;
-  height: 240px;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-}
-.orbit-two {
-  width: 180px;
-  height: 180px;
-  border-style: dashed;
-}
-.core {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  padding: 24px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  transform: rotate(-4deg);
-  box-shadow: 9px 9px 0 var(--line-soft);
-}
-.core > span {
-  font: 26px var(--mono);
-  color: var(--accent);
-}
-.core p {
-  font-size: 29px;
-  line-height: 1.1;
-  font-weight: 600;
-  letter-spacing: -0.04em;
-}
-.core em {
-  font-style: normal;
-  color: var(--accent);
-}
-.blueprint-label {
-  position: absolute;
-  background: var(--surface-alt);
-  padding: 5px 8px;
-  border: 1px solid var(--line);
-  font: 8px var(--mono);
+.portrait-caption .mono {
   color: var(--muted);
-}
-.label-one {
-  top: 34px;
-  left: 18px;
-}
-.label-two {
-  bottom: 45px;
-  right: 16px;
-}
-.label-three {
-  bottom: 15px;
-  left: 18px;
-}
-.panel-bottom {
-  border-top: 1px solid var(--line-soft);
-}
-.panel-bottom p {
-  font-size: 14px;
-  line-height: 1.5;
-}
-.panel-bottom .mono {
   font-size: 9px;
-  color: var(--muted);
-  text-align: right;
+  letter-spacing: 0.08em;
+}
+.portrait-caption > span:last-child {
+  font-size: 15px;
+  color: var(--text);
+}
+@media (hover: hover) and (pointer: fine) {
+  .hero-portrait:hover .portrait-frame {
+    transform: translateY(-5px) rotate(-0.5deg);
+    box-shadow: 0 24px 65px #0003;
+  }
+}
+/* AOS CSS is loaded locally. Only successful setup may hide entrance content. */
+html:not(.aos-enabled) [data-aos] {
+  opacity: 1 !important;
+  transform: none !important;
+  pointer-events: auto !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-aos],
+  .hero-portrait:hover .portrait-frame {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+@media print {
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 .hero-bottom {
   grid-column: 1/-1;

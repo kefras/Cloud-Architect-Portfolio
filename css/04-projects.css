@@ -64,7 +64,7 @@
 .project-meta .eyebrow {
   font-size: 9px;
 }
-.project-card h3 {
+.project-card :is(h2, h3) {
   font-size: 27px;
   margin-bottom: 12px;
 }
@@ -104,6 +104,7 @@
   border-radius: 3px;
 }
 .project-links {
+  flex-wrap: wrap;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -112,6 +113,10 @@
   padding-top: 20px;
   margin-top: auto;
   font-size: 12px;
+}
+
+.directory-link {
+  margin-top: 28px;
 }
 .project-links a:first-child {
   color: var(--accent);

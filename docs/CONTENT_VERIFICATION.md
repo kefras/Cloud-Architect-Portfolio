@@ -1,43 +1,46 @@
-# Content verification
+# Project and resume content verification
 
-Evidence reviewed on 28 October 2026. Repository files are evidence of implementation, not proof of production operation, authorship of every commit, adoption or performance.
+Updated 28 October 2026. This revision replaces the earlier three-project CV selection. It distinguishes source implementation, historical lab evidence, owner-supplied deployment evidence and future work.
 
 ## Identity and experience
 
-Name, Abuja location, B.Sc. Computer Science at Miva Open University and expected graduation in 2027 come from the explicit user request. Email, phone and LinkedIn URL come from supplied source files. The public [LinkedIn profile](https://ng.linkedin.com/in/kefas) corroborates the early-career positioning, education, Build and Ship association and Cloud Quest training badge titles.
+Name, Abuja location, B.Sc. Computer Science at Miva Open University and expected graduation in 2027 come from the user. The title **DevOps & Cloud Engineer Intern** and **Build and Ship Academy Ltd | Remote** were explicitly confirmed by the user. Other experience dates remain user-supplied. Education start year is omitted because prior local/public records disagreed. No employer verification or certification claim is added.
 
-The SIWES, Schull training and Miva Buddy dates are retained as user-supplied resume facts, with narrower descriptions and no quantified results. They are not independently employer-verified. Start year is omitted from education: the local resume says 2023 while the public LinkedIn record says 2024. Only the user-confirmed expected graduation is used. Founder/lead-instructor and additional honors were omitted pending confirmation.
+## Project evidence matrix
 
-## Project evidence
-
-| Project | Reviewed revision / files | Supported claims | Limits |
+| Project | Evidence reviewed | What can be described | Limits |
 | --- | --- | --- | --- |
-| [NASENI Research LIMS](https://github.com/kefras/naseni-research-lims) | Tree `9d32bffb8af8bc9c141c1539bea0c5b2f2289e6b`; backend/app/main.py, backend/app/auth.py, frontend/package.json, frontend/src/app/App.tsx, compose.yaml | FastAPI, React/TypeScript, PostgreSQL/SQLAlchemy, Docker Compose, JWT, role dependencies, sample history and audit routes | In development; no institutional endorsement or live operation verified. README says no frontend, but source contains one. Generic diagram only; no operational records/screenshots reproduced |
-| [Container delivery on AWS](https://github.com/kefras/Production-Grade-AWS-EKS-Microservices-Deployment-with-Terraform-and-Kubernetes) | Tree `175a90212429e944e9de1e0f584dc319090c55d9`; Dockerfile `f99acbbef6bfd0a250ee67ab353d948252a3a318`; workflow `e9c4f3ff9f0fc5ca5342b3fdb03308b3eebdb4d2` | Non-root Nginx container; GitHub Actions builds, scans and pushes SHA/latest tags to ECR | No Terraform/Kubernetes files in tree. Trivy exit-code 0 is advisory. AWS access-key secret references are configuration, not exposed literal credentials. No workflow executed or cloud access performed |
-| [RouteNG](https://github.com/kefras/RouteNG) | Tree `a1200ed557dffa85612b2b6ee69beea091b0bd72`; README, package.json, src/server.js | Vanilla HTML/CSS/JS frontend; Express/PostgreSQL; JWT cookies; ride/booking routes; row locks; optional Paystack initialize/verify routes | MVP. No production user numbers, live payments, booking correctness or end-to-end test result verified. README lists reconciliation, webhooks and operational controls as unfinished |
-| [Terraform foundations](https://github.com/kefras/terraform-github-actions-aws-pipeline) | terraform/main.tf `cecf7c4a5b8893e363a0af1894bc866e526b92b9`; workflow `0df775edb7e277b82c824991a6ff3ea1c2cb9e70` | AWS provider plus one S3 bucket resource; illustrative S3 sync workflow | Foundational lab, not EKS infrastructure. Workflow bucket is a placeholder. No apply performed |
-| [NovaMart candidate](https://github.com/kefras/novamart-aws-agentcore-multi-agent-rag) | README fetch returns GitHub 404; absent from accessible owner repository search | User supplied a project name and candidate technologies | Not published as implemented work. 404 does not prove nonexistence: private, renamed or unavailable access is possible |
+| [AWS portfolio](https://github.com/kefras/Cloud-Architect-Portfolio) | Current application/workflow/package source, CORS preflight, owner-confirmed manual S3 upload | Portfolio delivery work, API Gateway contact integration, documented CloudFront/OAC and Lambda/SES design | GitHub deployment credentials failed; manual upload subsequently confirmed by owner. Lambda/IAM/email delivery not independently inspected |
+| [AWS container delivery](https://github.com/kefras/Production-Grade-AWS-EKS-Microservices-Deployment-with-Terraform-and-Kubernetes) | Dockerfile and GitHub Actions workflow | Non-root Nginx container, Docker build, advisory Trivy report, SHA-tagged ECR push | No Terraform/EKS manifests were present in the reviewed tree. No enforced scan gate or production deployment claimed |
+| [Kubernetes orchestration](https://github.com/kefras/kubernetes-scalable-app) | deployment.yaml and service.yaml; tree 9ce9ef918c085f98d1cd99332271618b90933ed2 | Three configured replicas, CPU/memory requests and limits, label-selected NodePort Service | No HPA or readiness/liveness probes in those manifests; no current cluster/scale benchmark inspected |
+| [EC2 Docker application](https://github.com/kefras/DevOps-Cloud-Engineer-Practical-Evaluation-Assignment) | README and selected EC2 build/deploy screenshots; tree 8ae9704329ede935e824b318f522506dae95a820 | Successful historical Nginx image build and deploy.sh run, port conflict/build-context troubleshooting | Dockerfile/deploy.sh not standalone tracked files; no current instance availability or zero-downtime result claimed |
+| [ALB/Auto Scaling lab](https://github.com/kefras/High-Availability-Web-Tier-Project-2-) | README and target-group screenshots; tree 94f41812e27b4520f1890f93c4ae102c23662286 | Documented launch-template/ASG work and a healthy target at screenshot capture time | Minimum capacity one does not prove continuous multi-AZ redundancy. No measured failover or uptime adopted |
+| [RDS lab](https://github.com/kefras/aws-cloud-databases-lab) | README and architecture asset inventory; tree f8566401b686ab69cf27b67c299c60e13fa0c2dc | Documented subnet-group, ingress and connectivity work | Documentation-backed; no IaC or measured failure/restore logs reviewed |
+| [CloudWatch operations](https://github.com/kefras/aws-architecture-observability-security) | README and alarm screenshots; tree fc216d35fd484dba7d1a16d49d95e709b92d5863 | Configured CPU alarm; documented dashboard/SNS path | Screenshot shows Insufficient data. No successful incident notification, remediation or calculated savings claimed |
+| [Terraform foundations](https://github.com/kefras/terraform-github-actions-aws-pipeline) | AWS provider/S3 resource and S3-sync example | Foundational Terraform/S3 practice | Placeholder deployment destination; not a multi-environment EKS platform |
+| NovaMart Multi-Agent RAG | Authorized owner-account review of private source structure and implementation symbols | High-level Bedrock/Strands orchestration, retrieval helpers, DynamoDB/Lambda tools, tracing/Guardrail hooks and deployment tooling | Repository stays private. No private source, configs, identifiers or screenshots published. No runtime/model/test execution or live AgentCore deployment claimed |
+| [Digital Twin AI](https://github.com/kefras/digital-twin-ai) | pipeline.py, semantic_retriever.py, pdf_chat.py, three test files and CI; tree 9a9acd80247d87d4bed53355209d14b2ff0a538f | Semantic retrieval, rule-based knowledge-base path, separate Gemini PDF path, embedding/search components and core tests | The repository screenshot records 21 tests historically. No fresh project test run/model call here; those tests do not establish PDF answer quality. README's older repository link is not reused |
+| [ETIKU AI](https://github.com/kefras/etiku-ai) | assistant.py, entry point, session_storage.py, supabase_storage.py; tree 2310c6fea69f7284369494c4a7f849621fc6cd36 | Gemini streaming, settings and conversation management; newer auth/storage integration in source | README and supplied screenshot describe the older session-only demo. Current source uses Supabase. Hosted persistence, schema and RLS not verified; RAG/PDF/voice remain ETIKU roadmap items |
+| [NASENI LIMS](https://github.com/kefras/naseni-research-lims) | Previously reviewed FastAPI/auth, React/TypeScript and Compose source | In-development research record and sample workflow | No institutional endorsement, operational screenshots or production-deployment claim |
+| [RouteNG](https://github.com/kefras/RouteNG) | Previously reviewed Express/PostgreSQL API and vanilla frontend | Transportation MVP, cookie authentication and row-locked booking source | No live-payment/user-volume claim; payment integration optional |
 
-Repository search reviewed the accessible kefras catalog to choose inspectable work. Other projects were not automatically imported because the old portfolio descriptions were not sufficient evidence of their outcomes. Public case studies include ten requested topics: context, objectives, role, architecture, implementation, decisions, challenges, verification, status and lessons. Lessons are presented as design observations and next steps, not invented personal anecdotes.
+The supplied Streamlit URLs and screenshots are included as demo evidence/links. The web reader could not open the hosted pages during this review. No prompts, sign-ins, PDF uploads or paid model requests were sent.
 
-## Credentials
+## Review of other candidates
 
-No verified certification list is published until issuer records can be reconciled. This avoids converting training badges into professional certifications.
+`devops-cicd-pipeline` contains README/screenshots but no checked-in workflow, Dockerfile or Terraform source in the reviewed tree; it is not used to justify all README feature claims. `dockerized-app-deploy-v2` overlaps the stronger practical-evaluation evidence and is not counted as an additional independent flagship. Repository titles and descriptions alone are not treated as proof of implemented scope.
 
-- AWS Certified Cloud Practitioner and AWS Certified Solutions Architect cards reused URLs also assigned to Google Cloud cards. Exact certification name, level, issuer record, badge ownership and validity are unresolved.
-- Cloud Quest Cloud Practitioner and Generative AI Practitioner titles appear in the supplied resume and public profile as **training badges**, issued April 2026; issuer verification pages were unavailable to the web reader. They are not treated as AWS certifications.
-- Linux Foundation LFS101/LFS158/LFS250, Oz University credentials, Hashgraph/Hedera and other awards require accessible issuer evidence and owner/title/date confirmation.
-- Generic repeated Credly badge artwork was removed.
+## Resume selection
 
-## Information to confirm
+The ATS CV explicitly includes five Cloud/DevOps projects and two AI projects on one A4 page. The web resume also covers further AWS labs and software work. This is controlled through content.json rather than an implicit first-three-project slice. Skills now include demonstrated AI work instead of marking all AI implementation evidence as pending.
 
-1. Exact employment/internship start and end dates, official organization/role names, and ongoing status.
-2. Education start year if it should appear (2023 local vs 2024 public profile).
-3. Issuer verification links or certificates with owner name, credential title, issue/expiry dates and identifier.
-4. Accessible NovaMart repository and implementation/test evidence.
-5. Individual contributions and team roles for all featured projects. Repository ownership alone is not commit attribution.
-6. Written clearance for any future institutional NASENI screenshots, branding or operational detail. Current visuals contain no such material.
-7. Any verified public demos. None is linked as live without evidence.
-8. Supporting test logs before adding latency, uptime, cost, throughput or user-count metrics.
+## Credentials and remaining confirmations
 
-The current resume deliberately omits unsupported certification claims and measured performance results. A skills-oriented professional headline is not represented as employment in three disciplines.
+On 31 October 2026, the owner supplied eight public verification links. Six Credly records were read in the browser and reconciled by title, issuer, displayed recipient and issue date. Their training/course/skill badge cards are now published locally, with no AWS exam-certification claim. The two Oz University URLs displayed Credential Not Found and are excluded. See CREDENTIAL_VERIFICATION.md for the exact record map. No expiry date was invented. Experience dates and the education start-year conflict remain unchanged pending confirmation. Future institutional NASENI material requires appropriate public-release authorization.
+
+To strengthen the cloud labs, supply the actual Dockerfile/deploy.sh, reproducible ALB/ASG/RDS/CloudWatch configuration and measured drill logs. Never add uptime, failover, savings or user-count metrics without supporting evidence. Proposed next projects are listed only in PROJECT_STRATEGY.md and are not represented as completed work.
+
+
+## Hosted demo availability — 31 October 2026
+
+Browser visits to both owner-supplied Streamlit URLs reached the public sleeping-app screen. The URLs resolve to the intended hosts; runtime/model functionality was not tested. Cards now say Open demo and note that waking may be required. No external service was awakened or redeployed. Twelve public project repository metadata URLs were successfully retrieved through the connected GitHub read-only API; the private NovaMart source link remains suppressed.

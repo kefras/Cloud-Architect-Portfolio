@@ -6,7 +6,7 @@
   "phone": "+234 810 283 9482",
   "github": "https://github.com/kefras",
   "linkedin": "https://linkedin.com/in/kefas",
-  "summary": "Computer Science undergraduate building practical experience in cloud infrastructure, delivery automation and full-stack applications. Working with AWS, Python, React, Docker and GitHub Actions through engineering projects and technical training. Seeking internships and junior engineering opportunities.",
+  "summary": "Computer Science undergraduate and DevOps & Cloud Engineer Intern with hands-on AWS hosting, Docker/Linux deployment, Kubernetes manifests and GitHub Actions experience. Builds Python AI applications and documents infrastructure troubleshooting. Seeking junior Cloud/DevOps opportunities.",
   "education": {
     "degree": "B.Sc. Computer Science",
     "school": "Miva Open University",
@@ -18,8 +18,8 @@
       "organization": "Build and Ship Academy Ltd | Remote",
       "date": "2026 - Present",
       "bullets": [
-        "Practice cloud deployment and delivery automation through AWS, Docker and GitHub Actions projects.",
-        "Document infrastructure configuration, deployment workflows and troubleshooting steps."
+        "Build AWS hosting, container deployment and delivery-automation projects using Linux, Docker and GitHub Actions.",
+        "Document infrastructure configuration, deployment troubleshooting and cloud operations labs."
       ]
     },
     {
@@ -40,9 +40,9 @@
   "skills": [
     {
       "name": "Cloud Platforms",
-      "items": "AWS S3, ECR",
-      "level": "Demonstrated in repository code",
-      "source": "aws-delivery"
+      "items": "AWS EC2, S3, CloudFront/OAC, ECR; ALB, Auto Scaling and RDS labs",
+      "level": "Code, deployed portfolio and documented AWS labs",
+      "source": "cloud-portfolio"
     },
     {
       "name": "DevOps & CI/CD",
@@ -52,9 +52,9 @@
     },
     {
       "name": "Containers & Orchestration",
-      "items": "Docker, Docker Compose; Kubernetes fundamentals",
-      "level": "Docker demonstrated; Kubernetes in training",
-      "source": "naseni-lims"
+      "items": "Docker, Compose, Kubernetes Deployments and Services, resource requests/limits",
+      "level": "Container deployment evidence and Kubernetes manifests",
+      "source": "kubernetes"
     },
     {
       "name": "Infrastructure as Code",
@@ -82,30 +82,331 @@
     },
     {
       "name": "AI Engineering",
-      "items": "RAG, agent orchestration, intelligent applications",
-      "level": "Currently learning; implementation evidence pending",
-      "source": null
+      "items": "Gemini streaming, semantic retrieval, RAG, PDF Q&A; Bedrock/Strands agent workflows",
+      "level": "Public application source and authorized private implementation review",
+      "source": "digital-twin"
     },
     {
       "name": "Linux & System Administration",
-      "items": "Linux CLI, Bash, process and log troubleshooting",
-      "level": "Training and practical coursework",
-      "source": null
+      "items": "Ubuntu, Bash deployment scripts, Docker logs, port-conflict troubleshooting",
+      "level": "Reviewed EC2 deployment screenshots and lab documentation",
+      "source": "velvet-ec2"
     }
   ],
   "projects": [
     {
+      "id": "cloud-portfolio",
+      "title": "AWS Portfolio & Serverless Contact",
+      "category": "Cloud & DevOps",
+      "status": "Deployed portfolio",
+      "repo": "Cloud-Architect-Portfolio",
+      "visual": "cloud-portfolio.svg",
+      "tags": ["S3", "CloudFront", "OAC", "API Gateway", "Lambda", "SES"],
+      "architecture": ["Browser / HTTPS", "CloudFront / S3", "API Gateway", "Lambda / SES"],
+      "intro": "A public portfolio with private-origin delivery and an AWS contact integration.",
+      "problem": "A static website needs HTTPS delivery, controlled origin access and a contact channel without a dedicated application server.",
+      "objective": "Publish the portfolio through a custom-domain AWS delivery path and connect the browser contact form to an AWS endpoint.",
+      "contribution": "Built the static application and contact integration; documented private S3/CloudFront hosting and the Lambda/SES backend during Cloud and DevOps practical work.",
+      "implementation": "The browser sends bounded JSON contact requests to API Gateway. The documented hosting design uses a private S3 origin, CloudFront OAC, Route 53 and ACM. The GitHub workflow builds and validates the site, packages public assets and has a main-branch S3 deployment stage.",
+      "decisions": "Keep source templates and tests outside the public upload package. Serve content through the existing HTTPS distribution and use an API endpoint for contact requests rather than adding a web server.",
+      "challenges": "Resolved origin-access and CORS configuration issues in the documented project. The latest automated deployment was blocked by invalid stored AWS credentials; the current version was subsequently uploaded manually to S3 by the owner.",
+      "verification": "Reviewed application source, deployment workflow and packaging checks. Verified the production-origin CORS preflight. The owner confirmed the manual S3 upload worked. Lambda source, IAM policies, email delivery and current CloudFront configuration were not independently inspected.",
+      "current": "Public portfolio. Manual S3 upload confirmed by the owner; GitHub deployment credentials still require repair. No availability or email-delivery guarantee is claimed.",
+      "lessons": "An upload must include CSS, JavaScript, case studies and assets together. Validation and an explicit deployment package help prevent incomplete releases.",
+      "live": "https://kefas.live/",
+      "evidence_level": "Code and owner-confirmed deployment",
+      "resume": [
+        "Built private-origin S3/CloudFront portfolio hosting and integrated an API Gateway contact form with a documented Lambda/SES backend."
+      ],
+      "label": "01 / CLOUD & DEVOPS",
+      "visibility": "public"
+    },
+    {
+      "id": "aws-delivery",
+      "title": "Container delivery on AWS",
+      "category": "Cloud & DevOps",
+      "label": "02 / CLOUD & DEVOPS",
+      "status": "CI/CD lab",
+      "repo": "Production-Grade-AWS-EKS-Microservices-Deployment-with-Terraform-and-Kubernetes",
+      "visual": "delivery.svg",
+      "intro": "A traceable path from a Git commit to a container registry.",
+      "problem": "A containerized web application needs a repeatable image build and a traceable release artifact.",
+      "objective": "Build a Docker image in CI, inspect it with Trivy and publish commit-tagged artifacts to Amazon ECR.",
+      "contribution": "Repository work includes a non-root Nginx Dockerfile and GitHub Actions build, scan and ECR publication workflow.",
+      "tags": ["AWS ECR", "Docker", "GitHub Actions", "Trivy", "Nginx"],
+      "architecture": ["GitHub commit", "Docker build", "Trivy report", "Amazon ECR"],
+      "implementation": "The workflow builds on main/master pushes, tags images with the commit SHA and latest, runs Trivy, then pushes both tags to ECR. The Dockerfile switches to a non-root app user.",
+      "decisions": "Commit SHA tags connect an artifact to a source revision. The scan uses exit-code 0, so it reports findings without blocking publication. This is visibility, not an enforced security gate.",
+      "challenges": "The README describes Terraform and EKS resources that are absent from the reviewed source tree. The portfolio limits its claims to the Dockerfile and ECR pipeline that can be inspected.",
+      "verification": "Reviewed README.md, Dockerfile, .github/workflows/deploy.yml and the complete tree. No Terraform directory or Kubernetes manifest was present. The workflow was not executed and no AWS resources were inspected.",
+      "current": "Source implementation reviewed; current AWS deployment and build success are unverified. No uptime, failover, cost-saving or vulnerability-elimination result is claimed.",
+      "lessons": "Artifact publication and application deployment are separate stages. A future iteration can add enforced scan thresholds, pinned actions, OIDC credentials and a verified deployment stage.",
+      "resume": [
+        "Built a GitHub Actions Docker build/Trivy-report/ECR-push pipeline with commit-SHA image tags and a non-root Nginx container."
+      ],
+      "visibility": "public"
+    },
+    {
+      "id": "kubernetes",
+      "title": "Kubernetes Application Orchestration",
+      "category": "Cloud & DevOps",
+      "status": "Hands-on lab",
+      "repo": "kubernetes-scalable-app",
+      "visual": "kubernetes.svg",
+      "tags": ["Kubernetes", "Deployments", "Services", "Nginx", "Resource limits"],
+      "architecture": ["NodePort service", "Label selector", "Deployment", "Nginx replicas"],
+      "intro": "Declarative replicas, resource budgets and service discovery for a containerized web workload.",
+      "problem": "A single manually started container has no declarative replica count or stable service abstraction.",
+      "objective": "Practice Kubernetes workload management using a Deployment and a matching Service.",
+      "contribution": "Authored Kubernetes manifests for an Nginx deployment with three replicas, resource requests/limits and a NodePort service.",
+      "implementation": "deployment.yaml specifies three nginx:alpine replicas, CPU/memory requests and limits, and consistent app labels. service.yaml uses those labels to target port 80 and expose NodePort 30080.",
+      "decisions": "Separate workload and service definitions so pods can be replaced without changing the service contract. Declare resource requests and limits instead of leaving resource use implicit.",
+      "challenges": "Workload labels and service selectors must match for traffic to reach the pods. The manifests do not include HPA or readiness/liveness probes; those are next steps rather than implemented claims.",
+      "verification": "Reviewed deployment.yaml and service.yaml at revision 9ce9ef918c085f98d1cd99332271618b90933ed2, alongside the repository's lab documentation and screenshot inventory. No cluster was started or mutated in this portfolio task.",
+      "current": "Declarative Kubernetes lab. Three configured replicas are a manifest setting, not a claim of measured live capacity or availability.",
+      "lessons": "A useful orchestration example makes replicas, routing and resource budgets explicit. Probe behavior and failure recovery need their own reproducible tests.",
+      "evidence_level": "Manifest implementation",
+      "resume": [
+        "Defined a three-replica Nginx Deployment, CPU/memory requests and limits, and a label-selected NodePort Service in Kubernetes manifests."
+      ],
+      "label": "03 / CLOUD & DEVOPS",
+      "visibility": "public"
+    },
+    {
+      "id": "velvet-ec2",
+      "title": "Dockerized Application on EC2",
+      "category": "Cloud & DevOps",
+      "status": "Documented deployment lab",
+      "repo": "DevOps-Cloud-Engineer-Practical-Evaluation-Assignment",
+      "visual": "velvet-ec2.svg",
+      "tags": ["EC2", "Ubuntu", "Docker", "Nginx", "Bash"],
+      "architecture": ["Web assets", "Nginx image", "EC2 / Ubuntu", "Deploy script"],
+      "intro": "From a web application to a repeatable Linux container deployment.",
+      "problem": "A restaurant application needed a consistent build/start workflow and a workable host/container port arrangement.",
+      "objective": "Deploy the application to EC2, package it in Docker and automate the update sequence.",
+      "contribution": "Containerized the Velvet Restaurant application with Nginx, deployed it on EC2 Ubuntu and used a Bash deployment script to rebuild and restart the container.",
+      "implementation": "The README describes EC2 setup, Docker/Nginx configuration, restart policy and operational log/resource checks. Repository screenshots show a successful nginx:alpine image build and a completed deploy.sh execution on the EC2 host.",
+      "decisions": "Use a small static-web container and automate the build/stop/run sequence. Treat this as a single-host lab rather than claiming a rolling or zero-downtime release.",
+      "challenges": "A host Nginx process occupied port 80. The documented troubleshooting resolved the bind conflict; the deployment command also required the correct Docker build context.",
+      "verification": "Reviewed README.md and selected EC2 build/deployment screenshots at revision 8ae9704329ede935e824b318f522506dae95a820. The successful script run is historical evidence; the Dockerfile and deploy.sh are visible in screenshots but are not standalone tracked source files in this repository.",
+      "current": "Documented practical deployment. Current instance operation, HTTPS certificate state and uptime were not checked. No live IP is promoted as a current demo.",
+      "lessons": "Host services and container ports must be coordinated. Checking the build context, container logs and restart behavior gives a practical troubleshooting sequence.",
+      "evidence_level": "README and reviewed deployment screenshots",
+      "resume": [
+        "Containerized a restaurant site with Nginx on EC2 Ubuntu; automated rebuild/restart with Bash and resolved a host-port conflict."
+      ],
+      "label": "04 / CLOUD & DEVOPS",
+      "visibility": "public"
+    },
+    {
+      "id": "aws-web-tier",
+      "title": "AWS Load Balancing & Auto Scaling",
+      "category": "Cloud & DevOps",
+      "status": "Documented infrastructure lab",
+      "repo": "High-Availability-Web-Tier-Project-2-",
+      "visual": "aws-web-tier.svg",
+      "tags": ["EC2", "ALB", "Auto Scaling", "VPC", "Security groups"],
+      "architecture": ["Public traffic", "Application LB", "Target group", "EC2 / ASG"],
+      "intro": "Exploring health-based routing and instance replacement on AWS.",
+      "problem": "A manually managed web server needs a traffic entry point and a repeatable replacement mechanism.",
+      "objective": "Practice ALB target groups, launch templates, Auto Scaling and network access controls.",
+      "contribution": "Configured a documented AWS web-tier lab using an ALB, EC2 launch template, Auto Scaling and target-group health checks.",
+      "implementation": "The repository describes the VPC, AMI/launch-template workflow, target group and scaling configuration. A reviewed console screenshot shows one registered target in Healthy state at capture time.",
+      "decisions": "Use the target group as the traffic/health boundary and a launch template to make instance replacement repeatable. The documented minimum capacity is one; that does not establish continuously redundant multi-AZ capacity.",
+      "challenges": "The README describes troubleshooting an unreachable endpoint through ALB security-group rules and exercising instance replacement. The reviewed screenshot does not establish a failover duration.",
+      "verification": "Reviewed README and target-group screenshots at revision 94f41812e27b4520f1890f93c4ae102c23662286. The tree contains documentation and images rather than infrastructure-as-code or the app.py mentioned in README.",
+      "current": "Historical lab evidence. No present endpoint, uptime percentage, scale-out capacity or zero-downtime result is claimed.",
+      "lessons": "Health checks, target registration and scaling settings should be verified separately. Infrastructure-as-code and a recorded replacement drill would make the lab easier to reproduce.",
+      "evidence_level": "README and reviewed healthy-target screenshot",
+      "resume": [
+        "Configured ALB target groups, EC2 launch templates and Auto Scaling in an AWS availability lab; documented security-group troubleshooting."
+      ],
+      "label": "05 / CLOUD & DEVOPS",
+      "visibility": "public"
+    },
+    {
+      "id": "aws-databases",
+      "title": "AWS RDS Networking & Database Lab",
+      "category": "Cloud & DevOps",
+      "status": "Documented lab",
+      "repo": "aws-cloud-databases-lab",
+      "visual": "aws-databases.svg",
+      "tags": ["RDS MySQL", "VPC", "DB subnet groups", "Security groups"],
+      "architecture": ["Application tier", "Security group", "Private subnets", "RDS MySQL"],
+      "intro": "Documenting a database tier with explicit network boundaries.",
+      "problem": "A database should be reachable by its application tier without broad public network access.",
+      "objective": "Practice RDS MySQL subnet placement, application-to-database connectivity and access rules.",
+      "contribution": "Documented an RDS MySQL lab covering private DB subnet groups, application-security-group ingress and connection checks.",
+      "implementation": "The README records creation of a DB subnet group, MySQL ingress restricted to an application security group, disabled public access and database connection verification. It also discusses Multi-AZ and managed credential storage.",
+      "decisions": "Express database access in terms of the application tier rather than open internet ingress. Keep conceptual discussion separate from demonstrated deployment results.",
+      "challenges": "Database connectivity depends on subnet placement and security-group rules. Current failover and restoration results require execution logs that are not supplied in the repository.",
+      "verification": "Reviewed README and the architecture asset inventory at revision f8566401b686ab69cf27b67c299c60e13fa0c2dc. No IaC, automated database tests or measured failure logs are present. The README's service descriptions and cost/performance statements were not adopted as verified claims.",
+      "current": "Documentation-backed lab. No measured recovery time, data-loss guarantee or current AWS deployment status is claimed.",
+      "lessons": "Subnet groups, connectivity tests and least-privilege ingress form useful practical evidence. A reproducible restore exercise would strengthen the project.",
+      "evidence_level": "Repository lab documentation",
+      "resume": [
+        "Documented private RDS MySQL subnet groups, application-tier security-group ingress and database connectivity checks."
+      ],
+      "label": "06 / CLOUD & DEVOPS",
+      "visibility": "public"
+    },
+    {
+      "id": "cloudwatch-operations",
+      "title": "CloudWatch Monitoring & Alerting Lab",
+      "category": "Cloud & DevOps",
+      "status": "Documented operations lab",
+      "repo": "aws-architecture-observability-security",
+      "visual": "cloudwatch-operations.svg",
+      "tags": ["CloudWatch", "SNS", "EC2", "ALB", "Runbooks"],
+      "architecture": ["App metrics", "CloudWatch", "Alarm state", "SNS notification"],
+      "intro": "Making infrastructure signals and alarm configuration visible.",
+      "problem": "An application can fail without a useful signal unless metrics, alarms and response procedures are designed together.",
+      "objective": "Practice metric selection, CloudWatch alarm setup and a documented notification path.",
+      "contribution": "Configured a CPU-utilization alarm and documented CloudWatch dashboard/SNS alerting practices for an AWS application lab.",
+      "implementation": "Reviewed console screenshots show a configured CPU alarm. The README describes dashboard widgets for compute, database and ALB signals, plus SNS notifications and cost-estimation exercises.",
+      "decisions": "Choose signals that connect compute load, application traffic and errors. Treat an alarm definition as configuration evidence rather than proof that an incident notification was delivered.",
+      "challenges": "The inspected alarm screenshot shows Insufficient data. A load/notification test and recorded state transition are still needed before claiming successful alert delivery or automatic remediation.",
+      "verification": "Reviewed README and alarm screenshots at revision fc216d35fd484dba7d1a16d49d95e709b92d5863. No current AWS access was used. Pricing-calculator estimates and percentage-savings claims were excluded from the portfolio/CV.",
+      "current": "Documented monitoring lab. Alarm configuration is evidenced; incident detection performance, notification delivery and savings are not measured here.",
+      "lessons": "Useful observability evidence includes a signal, threshold, state transition, notification receipt and response notes, not just a dashboard screenshot.",
+      "evidence_level": "README and reviewed alarm configuration screenshots",
+      "resume": [
+        "Configured a CloudWatch CPU alarm and documented application metrics, dashboard design and an SNS notification path."
+      ],
+      "label": "07 / CLOUD & DEVOPS",
+      "visibility": "public"
+    },
+    {
+      "id": "terraform-lab",
+      "title": "Terraform foundations",
+      "category": "Cloud & DevOps",
+      "label": "08 / CLOUD & DEVOPS",
+      "status": "Learning lab",
+      "repo": "terraform-github-actions-aws-pipeline",
+      "visual": "terraform.svg",
+      "intro": "Making a small piece of cloud infrastructure explicit and repeatable.",
+      "problem": "Manual cloud setup is difficult to inspect and reproduce from a source repository.",
+      "objective": "Practice the AWS provider and resource declaration in Terraform alongside a simple S3 delivery workflow.",
+      "contribution": "Repository work includes an AWS provider, an S3 bucket resource and a GitHub Actions S3 sync example.",
+      "tags": ["Terraform", "AWS S3", "GitHub Actions"],
+      "architecture": ["Terraform HCL", "AWS provider", "S3 resource", "S3 sync example"],
+      "implementation": "terraform/main.tf contains the AWS provider in us-east-1 and one S3 bucket resource. The separate workflow configures AWS credentials and runs aws s3 sync against a placeholder bucket.",
+      "decisions": "A small resource definition keeps the learning scope inspectable. The workflow is an example rather than a verified configured deployment because its destination is still a placeholder.",
+      "challenges": "README scope exceeds the checked-in infrastructure. Describe the actual S3 lab and make the configuration gap visible before anyone tries to reuse the workflow.",
+      "verification": "Reviewed terraform/main.tf, .github/workflows/deploy.yml, README.md and the tree. No Terraform apply, AWS calls or pipeline execution occurred.",
+      "current": "Foundational learning lab. No EKS provisioning, environment promotion or branch protection implementation is claimed.",
+      "lessons": "Infrastructure code is useful evidence only at the scope it actually implements. Next work includes provider pinning, state management and validation before deployment.",
+      "resume": [
+        "Defined an AWS S3 bucket with Terraform and documented a GitHub Actions S3 sync example."
+      ],
+      "visibility": "public"
+    },
+    {
+      "id": "novamart",
+      "title": "NovaMart Multi-Agent RAG",
+      "category": "AI Engineering",
+      "status": "Private implementation",
+      "repo": "novamart-aws-agentcore-multi-agent-rag",
+      "visual": "novamart.svg",
+      "tags": [
+        "Bedrock AgentCore",
+        "Strands",
+        "Knowledge Bases",
+        "DynamoDB",
+        "Lambda",
+        "CloudWatch"
+      ],
+      "architecture": ["Agent router", "Policy retrieval", "Workflow tools", "Trace / log hooks"],
+      "intro": "AWS agent orchestration connecting policy retrieval with business-workflow tools.",
+      "problem": "A support workflow needs to combine policy knowledge with order/inventory actions while tracking the request across tools.",
+      "objective": "Explore specialized agents, retrieval-backed policy context, workflow state and observability on AWS.",
+      "contribution": "Developed Python multi-agent orchestration with Bedrock/Strands integrations, Knowledge Base retrieval helpers and DynamoDB/Lambda workflow tools.",
+      "implementation": "Authorized private-source review confirms orchestration, policy retrieval, workflow-state helpers, Guardrail application hooks, AgentCore deployment tooling and CloudWatch/X-Ray observability code. This public summary intentionally contains only high-level capabilities.",
+      "decisions": "Separate policy retrieval, workflow actions and response composition into specialized agent/tool responsibilities. Keep observability code alongside orchestration so requests can be traced across boundaries.",
+      "challenges": "Working integration code still needs runtime credentials, configured cloud resources and end-to-end tests. The presence of deployment tooling does not prove a current deployed AgentCore runtime.",
+      "verification": "Reviewed the owner-authorized private repository's current source structure and implementation symbols. No private source, configuration, resource identifiers or screenshots are republished. Cloud resources, model calls and tests were not executed.",
+      "current": "Private source implementation. A high-level walkthrough can be shared on request; no current cloud-runtime or benchmark result is claimed.",
+      "lessons": "A multi-agent project is stronger when retrieval, state transitions, tool authorization and request traces can be demonstrated independently.",
+      "visibility": "private",
+      "evidence_level": "Authorized private source review",
+      "resume": [
+        "Built Python agent orchestration with Bedrock/Strands, policy retrieval and DynamoDB/Lambda workflow tools; added tracing and Guardrail hooks."
+      ],
+      "label": "09 / AI ENGINEERING"
+    },
+    {
+      "id": "digital-twin",
+      "title": "Digital Twin AI",
+      "category": "AI Engineering",
+      "status": "Streamlit demo",
+      "repo": "digital-twin-ai",
+      "visual": "digital-twin.svg",
+      "tags": ["Python", "Streamlit", "Sentence Transformers", "Gemini", "RAG", "Unit tests"],
+      "architecture": [
+        "PDF / knowledge",
+        "Semantic retrieval",
+        "Gemini PDF chat",
+        "Answer / sources"
+      ],
+      "intro": "From word embeddings to retrieval-grounded PDF conversations.",
+      "problem": "Finding useful information in text and PDFs requires retrieval of relevant context and a clear response when evidence is missing.",
+      "objective": "Combine embedding experiments, knowledge-base retrieval and document question answering in a Streamlit application.",
+      "contribution": "Implemented custom GloVe/search components, a retrieval pipeline with abstention behavior and Gemini-powered PDF chat with conversation context and source references.",
+      "implementation": "The knowledge-base path chunks text, retrieves similar passages and uses rule-based answer extraction. The PDF path extracts pages, ranks sentence embeddings and supplies selected context to Gemini. These are distinct paths; the knowledge-base demo is not described as generative LLM answering.",
+      "decisions": "Keep retrieval and answer generation separate. Preserve source/page information in the PDF path and return an insufficient-information result when the knowledge-base path cannot support an answer.",
+      "challenges": "Scanned PDFs need OCR beyond the current text extractor. Model availability and API quotas affect the PDF path. A retrieval-quality evaluation set is still a useful next step.",
+      "verification": "Reviewed pipeline.py, semantic_retriever.py, pdf_chat.py, three unit-test files and the CI workflow at revision 9a9acd80247d87d4bed53355209d14b2ff0a538f. A repository screenshot records 21 passing core tests; that is historical evidence, not a fresh test run in this task. No model request was made.",
+      "current": "Educational Streamlit demo supplied by the owner. Core code and historical test evidence reviewed; live model response quality and current hosted availability were not tested. Browser check on 31 October 2026 reached the Streamlit sleep page. The link is reachable; live model behavior was not tested.",
+      "lessons": "Embedding/search tests and explicit abstention are valuable, but they do not replace evaluation of the complete PDF/Gemini answering path.",
+      "live": "https://digitaltwin1.streamlit.app/",
+      "evidence_level": "Source, tests and supplied demo evidence",
+      "resume": [
+        "Built semantic retrieval and Gemini PDF chat with source references, custom embedding/search components and automated core-functionality tests."
+      ],
+      "label": "10 / AI ENGINEERING",
+      "visibility": "public",
+      "demo_availability": "Streamlit demo may sleep; wake-up may be required."
+    },
+    {
+      "id": "etiku-ai",
+      "title": "ETIKU AI",
+      "category": "AI Engineering",
+      "status": "Streamlit demo",
+      "repo": "etiku-ai",
+      "visual": "etiku-ai.svg",
+      "tags": ["Python", "Streamlit", "Gemini", "Streaming", "Supabase"],
+      "architecture": ["Streamlit UI", "Chat settings", "Gemini stream", "Conversation store"],
+      "intro": "A conversational assistant with streaming responses and organized chat history.",
+      "problem": "A useful chat interface needs more than a model call: conversation management, response controls and understandable storage boundaries matter.",
+      "objective": "Build a branded assistant for learning, research and coding, with streaming output and manageable conversation history.",
+      "contribution": "Built the Streamlit chat interface, Gemini streaming integration, response-style/temperature controls and conversation create/search/rename/delete flows.",
+      "implementation": "assistant.py prepares chat history and streams Gemini output. The current entry point imports Supabase-backed authentication and conversation storage, while an older session-storage module remains in the tree. The supplied README/screenshots describe the earlier session-isolated public demo.",
+      "decisions": "Keep the model adapter, settings, authentication and storage in separate modules. Load API configuration through environment/Streamlit settings rather than placing credentials in client-facing code.",
+      "challenges": "The README still describes session-only storage while current code uses Supabase. Hosted behavior, database schema and row-level security need verification before claiming persistent multi-user isolation. RAG, PDF upload and voice remain roadmap items for ETIKU itself.",
+      "verification": "Reviewed assistant.py, etiku_app.py, session_storage.py and supabase_storage.py at revision 2310c6fea69f7284369494c4a7f849621fc6cd36. The owner supplied the Streamlit demo screenshot and URL. No sign-in, model request or database operation was performed.",
+      "current": "Streamlit demonstration with a newer authentication/storage implementation in source. No production-security or persistent-storage guarantee is made. Browser check on 31 October 2026 reached the Streamlit sleep page. The link is reachable; live model behavior was not tested.",
+      "lessons": "Storage behavior must match the README and UI copy. Clear module boundaries make the model, UI and storage layers easier to test independently.",
+      "live": "https://etiku-ai.streamlit.app/",
+      "evidence_level": "Source and supplied demo evidence",
+      "resume": [
+        "Built a Streamlit Gemini assistant with streaming responses, configurable response styles and conversation search, rename and delete controls."
+      ],
+      "label": "11 / AI ENGINEERING",
+      "visibility": "public",
+      "demo_availability": "Streamlit demo may sleep; wake-up may be required."
+    },
+    {
       "id": "naseni-lims",
       "title": "NASENI Research LIMS",
       "category": "Full-stack",
-      "label": "01 / RESEARCH SYSTEMS",
+      "label": "12 / FULL-STACK",
       "status": "In development",
       "repo": "naseni-research-lims",
       "visual": "lims.svg",
       "intro": "Connecting research records with traceable laboratory workflows.",
       "problem": "Research projects, experiments and sample histories need a consistent record and clear access boundaries.",
       "objective": "Explore a laboratory management workflow with authenticated access, sample tracking and audit records.",
-      "contribution": "Project work covers a React/TypeScript workspace and FastAPI API with role checks, sample tracking and audit logging. Individual commit attribution has not been independently reviewed.",
+      "contribution": "Project work covers a React/TypeScript workspace and FastAPI API with role checks, sample tracking and audit logging.",
       "tags": ["FastAPI", "React", "TypeScript", "PostgreSQL", "Docker"],
       "architecture": ["React workspace", "FastAPI + JWT", "PostgreSQL", "Audit records"],
       "implementation": "The API defines projects, experiments, samples and observations. JWT tokens expire after 30 minutes; role dependencies restrict writes and administration. Compose defines the database, backend and frontend services.",
@@ -117,45 +418,21 @@
       "resume": [
         "Developing a React/TypeScript workspace and FastAPI API for research records and sample tracking.",
         "Implemented JWT role checks and transactional sample-history and audit records in the reviewed source."
-      ]
-    },
-    {
-      "id": "aws-delivery",
-      "title": "Container delivery on AWS",
-      "category": "Cloud & DevOps",
-      "label": "02 / DELIVERY AUTOMATION",
-      "status": "Implementation reviewed",
-      "repo": "Production-Grade-AWS-EKS-Microservices-Deployment-with-Terraform-and-Kubernetes",
-      "visual": "delivery.svg",
-      "intro": "A traceable path from a Git commit to a container registry.",
-      "problem": "A containerized web application needs a repeatable image build and a traceable release artifact.",
-      "objective": "Build a Docker image in CI, inspect it with Trivy and publish commit-tagged artifacts to Amazon ECR.",
-      "contribution": "Repository work includes a non-root Nginx Dockerfile and GitHub Actions build, scan and ECR publication workflow. Individual commit attribution has not been independently reviewed.",
-      "tags": ["AWS ECR", "Docker", "GitHub Actions", "Trivy", "Nginx"],
-      "architecture": ["GitHub commit", "Docker build", "Trivy report", "Amazon ECR"],
-      "implementation": "The workflow builds on main/master pushes, tags images with the commit SHA and latest, runs Trivy, then pushes both tags to ECR. The Dockerfile switches to a non-root app user.",
-      "decisions": "Commit SHA tags connect an artifact to a source revision. The scan uses exit-code 0, so it reports findings without blocking publication. This is visibility, not an enforced security gate.",
-      "challenges": "The README describes Terraform and EKS resources that are absent from the reviewed source tree. The portfolio limits its claims to the Dockerfile and ECR pipeline that can be inspected.",
-      "verification": "Reviewed README.md, Dockerfile, .github/workflows/deploy.yml and the complete tree. No Terraform directory or Kubernetes manifest was present. The workflow was not executed and no AWS resources were inspected.",
-      "current": "Source implementation reviewed; current AWS deployment and build success are unverified. No uptime, failover, cost-saving or vulnerability-elimination result is claimed.",
-      "lessons": "Artifact publication and application deployment are separate stages. A future iteration can add enforced scan thresholds, pinned actions, OIDC credentials and a verified deployment stage.",
-      "resume": [
-        "Created a GitHub Actions workflow to build Docker images, run a Trivy report and push commit-tagged images to ECR.",
-        "Configured a non-root Nginx container; the current scan reports findings without blocking the build."
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "id": "routeng",
       "title": "RouteNG",
       "category": "Full-stack",
-      "label": "03 / NIGERIAN MOBILITY",
+      "label": "13 / FULL-STACK",
       "status": "MVP",
       "repo": "RouteNG",
       "visual": "routeng.svg",
       "intro": "Exploring a more connected intercity travel experience in Nigeria.",
       "problem": "Intercity carpooling needs coordinated ride listings, passenger requests and seat availability.",
       "objective": "Build an MVP for Nigerian city search, ride management and driver/passenger booking workflows.",
-      "contribution": "Project source includes a vanilla HTML/CSS/JavaScript frontend, Express API and PostgreSQL booking model. Individual commit attribution has not been independently reviewed.",
+      "contribution": "Project source includes a vanilla HTML/CSS/JavaScript frontend, Express API and PostgreSQL booking model.",
       "tags": ["JavaScript", "Express", "PostgreSQL", "JWT", "Docker Compose"],
       "architecture": ["Web frontend", "Express API", "PostgreSQL", "Optional Paystack"],
       "implementation": "The API includes cookie-based JWT authentication, password hashing, city and ride search, vehicle management, seat-aware bookings, notifications and reviews. Paystack initialization and verification routes require server configuration.",
@@ -167,37 +444,118 @@
       "resume": [
         "Built an HTML/JavaScript frontend and Express/PostgreSQL MVP for Nigerian ride search and booking workflows.",
         "Added JWT cookie authentication and row-locked seat reservations; payments remain an optional integration."
-      ]
-    },
-    {
-      "id": "terraform-lab",
-      "title": "Terraform foundations",
-      "category": "Cloud & DevOps",
-      "label": "04 / INFRASTRUCTURE AS CODE",
-      "status": "Learning lab",
-      "repo": "terraform-github-actions-aws-pipeline",
-      "visual": "terraform.svg",
-      "intro": "Making a small piece of cloud infrastructure explicit and repeatable.",
-      "problem": "Manual cloud setup is difficult to inspect and reproduce from a source repository.",
-      "objective": "Practice the AWS provider and resource declaration in Terraform alongside a simple S3 delivery workflow.",
-      "contribution": "Repository work includes an AWS provider, an S3 bucket resource and a GitHub Actions S3 sync example. Individual commit attribution has not been independently reviewed.",
-      "tags": ["Terraform", "AWS S3", "GitHub Actions"],
-      "architecture": ["Terraform HCL", "AWS provider", "S3 resource", "S3 sync example"],
-      "implementation": "terraform/main.tf contains the AWS provider in us-east-1 and one S3 bucket resource. The separate workflow configures AWS credentials and runs aws s3 sync against a placeholder bucket.",
-      "decisions": "A small resource definition keeps the learning scope inspectable. The workflow is an example rather than a verified configured deployment because its destination is still a placeholder.",
-      "challenges": "README scope exceeds the checked-in infrastructure. Describe the actual S3 lab and make the configuration gap visible before anyone tries to reuse the workflow.",
-      "verification": "Reviewed terraform/main.tf, .github/workflows/deploy.yml, README.md and the tree. No Terraform apply, AWS calls or pipeline execution occurred.",
-      "current": "Foundational learning lab. No EKS provisioning, environment promotion or branch protection implementation is claimed.",
-      "lessons": "Infrastructure code is useful evidence only at the scope it actually implements. Next work includes provider pinning, state management and validation before deployment.",
-      "resume": [
-        "Defined an AWS S3 bucket with Terraform and documented a GitHub Actions S3 sync example."
-      ]
+      ],
+      "visibility": "public"
     }
   ],
   "resume_skill_summary": [
-    "Backend & data: Python, FastAPI, Node.js, Express, PostgreSQL, SQLAlchemy, JWT.",
-    "Frontend: React, TypeScript, HTML, CSS, JavaScript.",
-    "Cloud & delivery: AWS S3/ECR, Docker, Compose, GitHub Actions, Trivy; foundational Terraform.",
-    "Training / learning: Linux, Bash, Kubernetes fundamentals; AI applications, RAG and agent orchestration."
+    "Cloud: AWS EC2, S3, CloudFront/OAC, ECR; ALB/Auto Scaling, RDS and CloudWatch/SNS labs.",
+    "Delivery: Docker, Linux/Bash, Kubernetes Deployments/Services, GitHub Actions, Git, Trivy; foundational Terraform.",
+    "Development & AI: Python, JavaScript/TypeScript, FastAPI, React, PostgreSQL, Streamlit, Gemini and retrieval-augmented generation."
+  ],
+  "featured_project_ids": [
+    "cloud-portfolio",
+    "aws-delivery",
+    "kubernetes",
+    "novamart",
+    "digital-twin",
+    "etiku-ai"
+  ],
+  "resume_sections": [
+    {
+      "heading": "Cloud & DevOps Projects",
+      "projects": ["cloud-portfolio", "aws-delivery", "kubernetes", "velvet-ec2", "novamart"]
+    },
+    {
+      "heading": "AI Engineering Projects",
+      "projects": ["digital-twin", "etiku-ai"]
+    }
+  ],
+  "resume_web_extras": [
+    {
+      "heading": "Additional Cloud Labs",
+      "projects": ["aws-web-tier", "aws-databases", "cloudwatch-operations", "terraform-lab"]
+    },
+    {
+      "heading": "Software Engineering Projects",
+      "projects": ["naseni-lims", "routeng"]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Manage Kubernetes in Google Cloud Skill Badge",
+      "issuer": "Google Cloud",
+      "date": "11 September 2026",
+      "kind": "Skill badge",
+      "recipient": "Francis Kefas",
+      "confirmed": true,
+      "verification_url": "https://www.credly.com/badges/883171dd-b834-4ece-8837-eda169bdb6e5/public_url",
+      "reviewed_on": "2026-10-31"
+    },
+    {
+      "name": "AWS Cloud Quest: Cloud Practitioner - Training Badge",
+      "issuer": "Amazon Web Services Training and Certification",
+      "date": "4 April 2026",
+      "kind": "Training badge",
+      "recipient": "Kefas Etiku Francis",
+      "confirmed": true,
+      "verification_url": "https://www.credly.com/badges/2b7bbe3e-783a-4bee-948f-a3521f833db4/public_url",
+      "reviewed_on": "2026-10-31"
+    },
+    {
+      "name": "AWS Cloud Quest: Generative AI Practitioner - Training Badge",
+      "issuer": "Amazon Web Services Training and Certification",
+      "date": "22 April 2026",
+      "kind": "Training badge",
+      "recipient": "Kefas Etiku Francis",
+      "confirmed": true,
+      "verification_url": "https://www.credly.com/badges/45ffa510-cf69-4ca3-b84f-ddf3cb43eea9/public_url",
+      "reviewed_on": "2026-10-31"
+    },
+    {
+      "name": "LFS158: Introduction to Kubernetes",
+      "issuer": "The Linux Foundation",
+      "date": "19 March 2026",
+      "kind": "Course badge",
+      "recipient": "Kefas Etiku Francis",
+      "confirmed": true,
+      "verification_url": "https://www.credly.com/badges/e81f1b94-e6ed-454f-b4f8-eb0e9c95abbb/public_url",
+      "reviewed_on": "2026-10-31"
+    },
+    {
+      "name": "LFS101: Introduction to Linux",
+      "issuer": "The Linux Foundation",
+      "date": "16 March 2026",
+      "kind": "Course badge",
+      "recipient": "Kefas Etiku Francis",
+      "confirmed": true,
+      "verification_url": "https://www.credly.com/badges/60abffb8-96d3-42cd-a11f-36f4f6b6f822/public_url",
+      "reviewed_on": "2026-10-31"
+    },
+    {
+      "name": "LFS250: Kubernetes and Cloud Native Essentials",
+      "issuer": "The Linux Foundation",
+      "date": "21 March 2026",
+      "kind": "Course badge",
+      "recipient": "Kefas Etiku Francis",
+      "confirmed": true,
+      "verification_url": "https://www.credly.com/badges/ef6e71ed-5c17-4d2b-8c60-fbb7d0ffac2d/public_url",
+      "reviewed_on": "2026-10-31"
+    }
+  ],
+  "communities": [
+    {
+      "id": "miva-robotics",
+      "name": "Miva Robotics Club",
+      "role": "Member",
+      "institution": "Miva Open University",
+      "focus": [
+        "Robotics",
+        "Artificial Intelligence",
+        "Automation",
+        "Collaborative Technical Learning"
+      ],
+      "description": "Member of Miva Open University's Robotics Club, participating in a technical learning community focused on robotics, AI, practical engineering skills, and collaborative innovation."
+    }
   ]
 }

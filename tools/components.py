@@ -1,6 +1,8 @@
 """Reusable HTML components. All plain-text data is escaped here."""
 
 import html
+from urllib.parse import urlsplit
+from icons import icon
 from config import ROOT, content
 from rendering import render_template
 
@@ -15,6 +17,34 @@ def link(url, label, cls=""):
     return f'<a class="{cls}" href="{escape_html(url)}">{escape_html(label)}</a>'
 
 
+def project_source(project, label=None, css_class=""):
+    """Respect private repositories instead of publishing an unusable source link."""
+    if project.get("visibility") == "private":
+        return (
+            escape_html(project["title"])
+            if label is None
+            else '<span class="small muted">Private source</span>'
+        )
+    return link(
+        "https://github.com/kefras/" + project["repo"],
+        label or project["title"],
+        css_class,
+    )
+
+
+def project_filters(projects):
+    """Generate only categories represented by the current page's cards."""
+    categories = list(dict.fromkeys(project["category"] for project in projects))
+    buttons = [
+        '<button type="button" aria-pressed="true" data-filter="All">All projects</button>'
+    ]
+    for category in categories:
+        buttons.append(
+            f'<button type="button" aria-pressed="false" data-filter="{escape_html(category)}">{escape_html(category)}</button>'
+        )
+    return "".join(buttons)
+
+
 def head(title, description, path="", prefix=""):
     """Render shared metadata and asset references for any page."""
     return render_template(
@@ -25,6 +55,10 @@ def head(title, description, path="", prefix=""):
             "full_name": escape_html(content["name"]),
             "canonical_path": path,
             "asset_prefix": prefix,
+            "page_assets": (
+                f'<link rel="stylesheet" href="{prefix}assets/vendor/aos-2.3.4/aos.css">\n'
+                f'<script src="{prefix}assets/vendor/aos-2.3.4/aos.js" defer></script>'
+            ),
             "feature_scripts": "\n".join(
                 (
                     f'<script src="{prefix}js/{feature}.js" defer></script>'
@@ -35,6 +69,7 @@ def head(title, description, path="", prefix=""):
                         "projects",
                         "architecture",
                         "contact",
+                        "animations",
                     ]
                 )
             ),
@@ -50,6 +85,7 @@ def nav(prefix="", home=False):
         ("about", "About"),
         ("skills", "Skills"),
         ("experience", "Experience"),
+        ("certifications", "Credentials"),
     ]
     links = "".join(
         (
@@ -65,11 +101,12 @@ def nav(prefix="", home=False):
     )
 
 
-def project_card(project):
+def project_card(project, heading_level=3):
     """Render one project from the structured content source."""
     return render_template(
         "project_card.html",
         {
+            "heading_level": heading_level,
             "project_category": escape_html(project["category"]),
             "project_id": project["id"],
             "project_title": escape_html(project["title"]),
@@ -90,8 +127,27 @@ def project_card(project):
             "case_study_link": link(
                 "case-studies/" + project["id"] + ".html", "View case study →"
             ),
-            "repository_link": link(
-                "https://github.com/kefras/" + project["repo"], "GitHub ↗"
+            "repository_link": project_source(project, "GitHub ↗"),
+            "demo_link": (
+                link(
+                    project["live"],
+                    (
+                        "Open demo ↗"
+                        if project.get("demo_availability")
+                        else "Live demo ↗"
+                    ),
+                )
+                if project.get("live")
+                else ""
+            ),
+            "demo_notice": (
+                (
+                    '<p class="demo-notice">'
+                    + escape_html(project["demo_availability"])
+                    + "</p>"
+                )
+                if project.get("demo_availability")
+                else ""
             ),
         },
     )
@@ -158,12 +214,92 @@ def skill_card(skill, index):
     return render_template(
         "skill-card.html",
         {
+            "icon": icon(
+                [
+                    "cloud",
+                    "pipeline",
+                    "containers",
+                    "code",
+                    "server",
+                    "window",
+                    "database",
+                    "ai",
+                    "terminal",
+                ][index % 9]
+            ),
             "number": f"{index + 1:02}",
             "name": escape_html(skill["name"]),
             "items": escape_html(skill["items"]),
             "level": escape_html(skill["level"]),
             "evidence_link": evidence,
         },
+    )
+
+
+def credential_cards(records=None):
+    """Publish only owner-confirmed credentials with complete HTTPS records."""
+    records = content.get("certifications", []) if records is None else records
+    cards = []
+    for record in records:
+        if record.get("confirmed") is not True:
+            continue
+        if not all(
+            record.get(key)
+            for key in (
+                "name",
+                "issuer",
+                "date",
+                "verification_url",
+                "kind",
+                "recipient",
+            )
+        ):
+            raise ValueError("Confirmed credentials require a complete issuer record.")
+        url = urlsplit(record["verification_url"])
+        if url.scheme != "https" or not url.hostname or url.username or url.password:
+            raise ValueError("Credential verification URLs must be public HTTPS links.")
+        cards.append(
+            render_template(
+                "credential-card.html",
+                {
+                    **{
+                        key: escape_html(record[key])
+                        for key in (
+                            "name",
+                            "issuer",
+                            "date",
+                            "verification_url",
+                            "kind",
+                            "recipient",
+                        )
+                    },
+                    "icon": icon("award"),
+                },
+            )
+        )
+    return "".join(cards) or (
+        '<article class="credential-card credential-pending"><div class="card-icon">'
+        + icon("award")
+        + '</div><p class="eyebrow">RECORDS UNDER REVIEW</p><h3>Credential verification pending</h3><p class="muted">Credential names, issuers, dates and public verification links are being reconciled. Confirmed records will appear here.</p><p class="small muted">No certification is claimed while this review is pending.</p></article>'
+    )
+
+
+def community_cards():
+    """Keep user-supplied community involvement separate from job experience."""
+    return "".join(
+        render_template(
+            "community-card.html",
+            {
+                "community_id": escape_html(record["id"]),
+                "name": escape_html(record["name"]),
+                "role": escape_html(record["role"]),
+                "institution": escape_html(record["institution"]),
+                "description": escape_html(record["description"]),
+                "robotics_icon": icon("robotics"),
+                "focus_badges": list_items(record["focus"]),
+            },
+        )
+        for record in content.get("communities", [])
     )
 
 
@@ -198,9 +334,7 @@ def resume_project(project):
     return render_template(
         "resume-project.html",
         {
-            "project_link": link(
-                "https://github.com/kefras/" + project["repo"], project["title"]
-            ),
+            "project_link": project_source(project),
             "status": escape_html(project["status"]),
             "bullets": list_items(project["resume"]),
         },

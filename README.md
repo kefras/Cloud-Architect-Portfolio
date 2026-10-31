@@ -1,6 +1,6 @@
 # Kefas Etiku Francis - Engineering Portfolio and AWS Hosting
 
-A buildless HTML/CSS/JavaScript portfolio with a coordinated web resume, four evidence-based case studies and a one-page ATS PDF. No framework migration or production changes.
+A buildless HTML/CSS/JavaScript portfolio with a coordinated web resume, 13 project case studies, a filterable project directory and a one-page ATS PDF. The CV leads with practical Cloud/DevOps work and includes a separate AI section.
 
 [Visit kefas.live](https://kefas.live/) · [Web resume](https://kefas.live/resume.html) · [Download resume](https://kefas.live/resume.pdf)
 
@@ -33,7 +33,9 @@ Open http://127.0.0.1:8765. The contact endpoint permits the production origin; 
 
 ## Content and generation
 
-Edit `content.json` for identity, resume facts, skills and project evidence. The internship title is **DevOps & Cloud Engineer Intern**, at **Build and Ship Academy Ltd | Remote**. Both resume versions and the homepage use that same record.
+Edit `content.json` for identity, resume facts, skills and project evidence. `featured_project_ids` selects the six homepage projects; `resume_sections` selects the Cloud/DevOps and AI groups for the ATS PDF; `resume_web_extras` adds further labs and software work to the web resume. Reordering project cards cannot silently remove projects from the CV. The internship title remains **DevOps & Cloud Engineer Intern**, at **Build and Ship Academy Ltd | Remote**.
+
+NovaMart is a private-source project: the public portfolio contains a high-level case study and no private repository link, code, resource identifiers or operational screenshots. Project status distinguishes source implementations, deployed demos and documentation-backed labs. `docs/PROJECT_STRATEGY.md` ranks the evidence and proposes stronger next projects without presenting them as completed work.
 
 `tools/build.py` is a small build entry point. The maintained sources are organized by responsibility:
 
@@ -42,11 +44,14 @@ Edit `content.json` for identity, resume facts, skills and project evidence. The
 | Homepage sections | `templates/home/` |
 | Shared navigation, project cards, experience rows and resume entries | `templates/` and `tools/components.py` |
 | Page assembly and content mapping | `tools/pages.py` |
-| Theme tokens, shared styles and section layouts | `css/00-tokens.css` through `css/09-accessibility-print.css` |
+| Theme tokens, shared styles and section layouts | `css/00-tokens.css` through `css/11-communities.css` |
 | Navigation, themes, filters, architecture or contact behavior | The matching file in `js/` |
 | Shared browser helpers | `js/core.js` |
 | Page initialization | `script.js` |
 | ATS PDF layout | `tools/resume_pdf.py` |
+| Hero headshot and frame | `headshot/kefas-headshot.png`, `templates/home/home.html`, `css/03-hero.css` |
+
+The hero uses the supplied portrait with intrinsic dimensions and high fetch priority. `tools/portrait_assets.py` builds responsive WebP copies, preserving the PNG as a fallback. Its frame remains visible on mobile and tablet. AOS 2.3.4 is pinned under `assets/vendor/aos-2.3.4/` with its MIT license and loads on generated HTML pages; `js/animations.js` handles reduced motion and failure fallback. No CDN is required. The public packager includes both `headshot/` and the vendored assets, preserving exact lowercase paths for S3. See `docs/HEADSHOT_INTEGRATION.md` for local checks and editing instructions.
 
 Each feature initializer ignores pages without its controls, so the same scripts can be reused across the portfolio, resume and case studies. All feature scripts use one `window.Portfolio` namespace and deferred loading in a declared order. This preserves local-file preview support without JavaScript module/CORS requirements.
 
@@ -97,3 +102,16 @@ The GitHub Actions workflow validates pull requests. A push or merge to `main` a
 - Separate A4 ATS PDF with selectable text and logical extraction order; web print CSS is also single-column.
 
 Read `docs/PORTFOLIO_AUDIT.md`, `docs/CONTENT_VERIFICATION.md`, `docs/IMPLEMENTATION_SUMMARY.md` and `docs/TEST_RESULTS.md` for evidence, measured results and outstanding limits.
+
+## Redesign audit and credentials
+
+See docs/REDESIGN_AUDIT.md for the requirement-by-requirement assessment and measured results. Section reveals use a shared progressive AOS initializer; project filters refresh the reveal positions. Cards offer hover/focus states, capabilities have local SVG icons, and the experience/education timeline uses the same source facts as the resume. The architecture explorer has delivery-pipeline and AWS-portfolio views. The shared header portrait uses page-relative paths on all 16 HTML pages.
+
+`content.json` contains a `certifications` list. Only complete records with `confirmed: true`, exact `name`, `issuer`, `date`, `kind`, `recipient` and a public HTTPS `verification_url` are rendered as credentials. Six owner-supplied Credly records were verified and populated during the audit; unresolved issuer records are excluded. An empty collection displays an honest pending state. See docs/CREDENTIAL_VERIFICATION.md. Credential rendering tests use fixtures; fixtures never enter the public website.
+
+After creating a public ZIP, run `python tools/verify_site_zip.py PATH_TO_ZIP` to check its allowlist, source bytes, integrity, and exact-case local paths (including srcset and fragment links). A passing local audit does not confirm production deployment or third-party demo availability.
+
+
+## Technical community involvement
+
+Community membership is stored in the `communities` collection in content.json and rendered by tools/components.py through templates/community-card.html and templates/home/communities.html. The section sits directly after Experience & Education; it does not add an employment or leadership entry to the resume. css/11-communities.css and the shared AOS initializer provide responsive presentation and reduced-motion behavior. See docs/COMMUNITY_UPDATE.md for this change and its verification.

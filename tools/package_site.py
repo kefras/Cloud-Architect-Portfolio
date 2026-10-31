@@ -3,16 +3,24 @@
 Run after tools/build.py. A nonempty output directory is rejected so this tool
 never cleans or overwrites an arbitrary collection of files.
 """
+
 import argparse
 from pathlib import Path
 import shutil
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_FILES = (
-    "index.html", "resume.html", "resume.pdf", "styles.css", "script.js",
-    "theme.js", "robots.txt", "sitemap.xml",
+    "index.html",
+    "projects.html",
+    "resume.html",
+    "resume.pdf",
+    "styles.css",
+    "script.js",
+    "theme.js",
+    "robots.txt",
+    "sitemap.xml",
 )
-PUBLIC_DIRECTORIES = ("assets", "case-studies", "js")
+PUBLIC_DIRECTORIES = ("assets", "case-studies", "js", "headshot")
 
 
 def package_site(output):
@@ -45,4 +53,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=ROOT / "public-dist")
     arguments = parser.parse_args()
-    print(f"Packaged {package_site(arguments.output)} public files into {arguments.output}.")
+    print(
+        f"Packaged {package_site(arguments.output)} public files into {arguments.output}."
+    )

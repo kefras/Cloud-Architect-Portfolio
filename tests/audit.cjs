@@ -16,16 +16,18 @@ const base = process.env.PORTFOLIO_TEST_URL || 'http://127.0.0.1:8765';
     args: ['--remote-debugging-port=9223'],
   });
   try {
-    const page = await browser.newPage();
+    // Reveal the whole DOM for contrast/landmark checks, including offscreen cards.
+    const page = await browser.newPage({ reducedMotion: 'reduce' });
     const axe = fs.readFileSync(path.join(qa, 'axe-core/axe.min.js'), 'utf8');
     const audits = [];
+    const projects = JSON.parse(
+      fs.readFileSync(path.join(__dirname, '../content.json'), 'utf8'),
+    ).projects;
     for (const route of [
       '',
       'resume.html',
-      'case-studies/naseni-lims.html',
-      'case-studies/aws-delivery.html',
-      'case-studies/routeng.html',
-      'case-studies/terraform-lab.html',
+      'projects.html',
+      ...projects.map((project) => `case-studies/${project.id}.html`),
     ]) {
       for (const width of [375, 1440])
         for (const theme of ['dark', 'light']) {
@@ -45,6 +47,7 @@ const base = process.env.PORTFOLIO_TEST_URL || 'http://127.0.0.1:8765';
             route: route || 'index.html',
             width,
             theme,
+            reducedMotion: true,
             violations: r.violations.map((v) => ({
               id: v.id,
               impact: v.impact,
@@ -65,6 +68,7 @@ const base = process.env.PORTFOLIO_TEST_URL || 'http://127.0.0.1:8765';
     }
     fs.writeFileSync(path.join(out, 'axe-results.json'), JSON.stringify(audits, null, 2));
     if (audits.some((a) => a.violations.length)) process.exitCode = 1;
+    await page.emulateMedia({ reducedMotion: 'no-preference' });
     await page.setViewportSize({ width: 1440, height: 1050 });
     await page.goto(base);
     await page.evaluate(() => (document.documentElement.dataset.theme = 'dark'));

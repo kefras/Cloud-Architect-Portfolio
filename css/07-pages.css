@@ -65,6 +65,8 @@
   margin-bottom: 16px;
 }
 .case-body p {
+  /* Source revisions and filenames must wrap on narrow screens. */
+  overflow-wrap: anywhere;
   color: var(--muted);
   font-size: 15px;
 }
