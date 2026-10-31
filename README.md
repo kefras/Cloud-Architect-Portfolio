@@ -8,11 +8,15 @@ This repository contains one current portfolio at its root. Earlier duplicate fo
 
 ## AWS architecture
 
-The documented hosting design uses CloudFront with a private S3 origin, OAC, Route 53 and ACM. The current client sends contact requests to an API Gateway endpoint; it no longer references a Lambda Function URL directly. Lambda/SES email handling, IAM policies, alarms and budgets are backend configuration and are not provisioned by this repository.
+The portfolio uses Amazon CloudFront to deliver static content from a private Amazon S3 bucket, secured through Origin Access Control (OAC). Amazon Route 53 manages domain routing, while AWS Certificate Manager (ACM) provides the TLS certificate for HTTPS delivery.
+
+Contact-form submissions are sent to Amazon API Gateway, processed by AWS Lambda, and delivered to the portfolio owner through Amazon SES. End-to-end contact submission and email delivery have been successfully tested, and CORS preflight for https://kefas.live has been verified.
+
+The repository contains the frontend, reusable build tools and GitHub Actions deployment workflow. AWS backend resources, IAM policies, monitoring and budgets are configured separately.
 
 ![Week 12 AWS Infrastructure Architecture](https://github.com/kefras/Cloud-Architect-Portfolio/blob/main/Kefas-Portfolio-AWS-Architecture.png)
 
-The endpoint's CORS preflight for `https://kefas.live` was verified. Current backend delivery, IAM, monitoring configuration and availability metrics have not been independently verified. No production uptime, cost-saving or performance guarantee is claimed.
+
 
 ## Preview
 
