@@ -15,12 +15,6 @@
   .hero h1 {
     font-size: clamp(58px, 8vw, 90px);
   }
-  .hero-blueprint {
-    max-height: 490px;
-  }
-  .blueprint-grid {
-    height: 290px;
-  }
   .about-layout {
     gap: 40px;
   }
@@ -67,8 +61,9 @@
   .hero h1 {
     font-size: clamp(60px, 12vw, 90px);
   }
-  .hero-blueprint {
-    display: none;
+  .hero-portrait {
+    justify-self: center;
+    width: min(100%, 320px);
   }
   .hero-socials span {
     width: auto;
@@ -152,6 +147,9 @@
   }
   .hero h1 {
     font-size: 61px;
+  }
+  .hero-portrait {
+    width: min(100%, 268px);
   }
   .hero-copy > .eyebrow {
     font-size: 9px;

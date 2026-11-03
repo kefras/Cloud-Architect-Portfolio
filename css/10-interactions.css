@@ -1,0 +1,280 @@
+/* Shared card treatment; hover and focus carry the same visual affordance. */
+.brand-avatar {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 28%;
+  border: 1px solid var(--accent);
+}
+.project-copy .demo-notice { margin-top: 12px; font-size: 11px; }
+.brand {
+  gap: 12px;
+}
+.project-card {
+  contain: layout style;
+  border-color: transparent;
+  background:
+    linear-gradient(var(--surface), var(--surface)) padding-box,
+    linear-gradient(140deg, var(--line), var(--line)) border-box;
+  transition:
+    translate 220ms ease,
+    box-shadow 220ms ease;
+}
+.project-visual {
+  overflow: hidden;
+}
+.project-visual img {
+  transition: transform 300ms ease;
+}
+.project-card:focus-within {
+  background:
+    linear-gradient(var(--surface), var(--surface)) padding-box,
+    linear-gradient(140deg, var(--accent), var(--sky), var(--line)) border-box;
+  box-shadow: var(--shadow);
+}
+.tags li {
+  transition:
+    border-color 160ms ease,
+    color 160ms ease;
+}
+.tags li:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+.project-links a,
+.skill a,
+.credential-card a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.line-icon {
+  display: block;
+}
+.card-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  background: var(--surface-alt);
+  color: var(--accent);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.skills-grid {
+  gap: 18px;
+}
+.skill:nth-child(n) {
+  contain: layout style;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  transition:
+    translate 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+.skill-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.skill:focus-within,
+.credential-card:focus-within {
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+/* Scope the decorative timeline to the homepage, preserving resume print layout. */
+#experience .timeline {
+  position: relative;
+  padding-left: 34px;
+}
+#experience .timeline::before {
+  content: '';
+  position: absolute;
+  left: 9px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(var(--accent), var(--sky), var(--line));
+}
+#experience .timeline-row {
+  position: relative;
+  padding: 25px;
+  margin-bottom: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  grid-template-columns: minmax(135px, 190px) minmax(0, 1fr);
+}
+#experience .timeline-row::before {
+  content: '';
+  position: absolute;
+  left: -32px;
+  top: 31px;
+  width: 12px;
+  height: 12px;
+  border: 3px solid var(--bg);
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+.credentials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.credential-card {
+  contain: layout style;
+  min-width: 0;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  transition:
+    translate 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+.credential-card .eyebrow {
+  margin-top: 18px;
+}
+.credential-card h3 {
+  margin: 14px 0;
+  font-size: 23px;
+}
+.credential-card > p {
+  font-size: 13px;
+}
+.credential-card a {
+  margin-top: 12px;
+  color: var(--accent);
+}
+.credential-pending {
+  grid-column: 1 / -1;
+  max-width: 780px;
+}
+.learning-note .text-link {
+  display: inline-block;
+  margin-top: 18px;
+  color: var(--accent);
+}
+.map-modes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+.map-modes button {
+  min-height: 44px;
+  padding: 9px 16px;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface-alt);
+  font-size: 13px;
+}
+.map-modes [aria-pressed='true'] {
+  color: var(--accent-ink);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.map-node {
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+.map-node[aria-pressed='true'] {
+  background: var(--bg);
+}
+.map-progress {
+  height: 3px;
+  background: var(--line);
+  margin-bottom: 22px;
+  overflow: hidden;
+}
+.map-progress::before {
+  content: '';
+  display: block;
+  height: 100%;
+  width: var(--stage-progress, 25%);
+  background: linear-gradient(90deg, var(--accent), var(--sky));
+  transition: width 250ms ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .project-card:hover {
+    translate: 0 -5px;
+    box-shadow: var(--shadow);
+    background:
+      linear-gradient(var(--surface), var(--surface)) padding-box,
+      linear-gradient(140deg, var(--accent), var(--sky), var(--line)) border-box;
+  }
+  .project-card:hover .project-visual img {
+    transform: scale(1.035);
+  }
+  .skill:hover,
+  .credential-card:hover {
+    translate: 0 -4px;
+    border-color: var(--accent);
+    box-shadow: var(--shadow);
+  }
+  .map-node:hover {
+    border-color: var(--accent);
+  }
+}
+@media (min-width: 1280px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 859px) {
+  .credentials-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 560px) {
+  .credentials-grid {
+    grid-template-columns: 1fr;
+  }
+  #experience .timeline {
+    padding-left: 25px;
+  }
+  #experience .timeline-row {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 20px;
+  }
+  #experience .timeline-row::before {
+    left: -23px;
+  }
+  .skill:nth-child(n) {
+    padding: 22px;
+  }
+  .brand {
+    gap: 9px;
+  }
+  .brand-avatar {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+  }
+  .project-card,
+  .skill,
+  .credential-card {
+    translate: none !important;
+  }
+  .project-visual img,
+  .portrait-frame {
+    transform: none !important;
+  }
+}

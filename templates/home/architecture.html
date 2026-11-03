@@ -3,12 +3,17 @@
   ${architecture_heading}
   <div class="architecture-shell">
     <div class="map-header mono">
-      <span>COMMIT → ARTIFACT → APPLICATION</span>
+      <span id="mapTitle">COMMIT → ARTIFACT → APPLICATION</span>
       <span>ILLUSTRATIVE</span>
     </div>
-    <div class="map-nodes" role="group" aria-label="Delivery stages">
+    <div class="map-modes" id="architectureModes" role="group" aria-label="Architecture view" hidden>
+      <button type="button" data-architecture-mode="delivery" aria-pressed="true" aria-controls="architectureNodes mapDetail">Delivery pipeline</button>
+      <button type="button" data-architecture-mode="portfolio" aria-pressed="false" aria-controls="architectureNodes mapDetail">AWS portfolio</button>
+    </div>
+    <div class="map-nodes" id="architectureNodes" role="group" aria-label="Architecture stages">
       ${architecture_stages}
     </div>
+    <div class="map-progress" aria-hidden="true"></div>
     <div id="mapDetail" class="map-detail" role="status">
       <span class="eyebrow">01 / SOURCE CONTROL</span>
       <h3>A reviewable starting point.</h3>
