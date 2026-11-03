@@ -18,6 +18,7 @@
           if (!card.hidden) count++;
         });
         countLabel.textContent = `${count} project${count === 1 ? '' : 's'}`;
+        requestAnimationFrame(() => window.Portfolio.refreshAnimations?.());
       }),
     );
   };

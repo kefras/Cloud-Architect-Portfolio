@@ -9,6 +9,7 @@
   portfolio.initProjectFilters();
   portfolio.initArchitecture();
   portfolio.initContactForm();
+  portfolio.initAnimations();
 
   // Resume actions are shared with every page but activate only when present.
   portfolio.select('#printResume')?.addEventListener('click', () => window.print());
