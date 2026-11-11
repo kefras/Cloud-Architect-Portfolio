@@ -16,9 +16,9 @@ The repository contains the frontend, reusable build tools and GitHub Actions de
 
 ![Week 12 AWS Infrastructure Architecture](https://github.com/kefras/Cloud-Architect-Portfolio/blob/main/assets/AWS%20Static%20Website%20and%20Messaging%20Architecture.png)
 
-![Week 12 AWS Infrastructure Architecture](https://github.com/kefras/Cloud-Architect-Portfolio/blob/main/assets/AWS%20Container%20CI_CD%20Architecture-3.png)
-
 ![Week 12 AWS Infrastructure Architecture](https://github.com/kefras/Cloud-Architect-Portfolio/blob/main/assets/kefas.live%20AWS%20Three-Tier%20Architecture-1.png)
+
+![Week 12 AWS Infrastructure Architecture](https://github.com/kefras/Cloud-Architect-Portfolio/blob/main/assets/AWS%20Container%20CI_CD%20Architecture-3.png)
 
 ## Preview
 
