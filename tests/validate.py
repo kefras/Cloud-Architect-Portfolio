@@ -2,6 +2,7 @@
 
 from pathlib import Path
 from html.parser import HTMLParser
+from html import unescape
 from urllib.parse import urlsplit, unquote
 import json, re, xml.etree.ElementTree as ET
 from pypdf import PdfReader
@@ -23,10 +24,18 @@ class Page(HTMLParser):
         self.ids = []
         self.h1 = 0
         self.images = []
+        self.article_stack = []
+        self.nested_timeline_rows = 0
+        self.unmatched_articles = 0
         self.feed(text)
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
+        if tag == "article":
+            timeline = "timeline-row" in a.get("class", "").split()
+            if timeline and any(self.article_stack):
+                self.nested_timeline_rows += 1
+            self.article_stack.append(timeline)
         if "id" in a:
             self.ids.append(a["id"])
         if tag == "h1":
@@ -36,6 +45,14 @@ class Page(HTMLParser):
         for key in ["src", "href"]:
             if key in a:
                 self.links.append(a[key])
+
+
+    def handle_endtag(self, tag):
+        if tag == "article":
+            if self.article_stack:
+                self.article_stack.pop()
+            else:
+                self.unmatched_articles += 1
 
 
 pages = {
@@ -51,6 +68,8 @@ for f, p in pages.items():
     relative = str(f.relative_to(ROOT))
     check(relative + ": unique ids", len(p.ids) == len(set(p.ids)))
     check(relative + ": exactly one h1", p.h1 == 1)
+    check(relative + ": balanced article wrappers", not p.article_stack and p.unmatched_articles == 0)
+    check(relative + ": timeline cards are not nested", p.nested_timeline_rows == 0)
     check(
         relative + ": image alternatives",
         all(
@@ -92,8 +111,12 @@ check("Sitemap XML parses", True)
 pdf = PdfReader(ROOT / "resume.pdf")
 text = "\n".join(p.extract_text() for p in pdf.pages)
 check(
-    "ATS PDF is one A4 page",
-    len(pdf.pages) == 1 and abs(float(pdf.pages[0].mediabox.width) - 595.276) < 1,
+    "ATS PDF is one or two A4 pages",
+    1 <= len(pdf.pages) <= 2 and all(
+        abs(float(page.mediabox.width) - 595.276) < 1
+        and abs(float(page.mediabox.height) - 841.89) < 1
+        for page in pdf.pages
+    ),
 )
 check("ATS PDF has selectable text", len(text) > 2000)
 check("ATS PDF has no replacement characters", "\ufffd" not in text)
@@ -110,6 +133,12 @@ check(
     [text.index(s) for s in sections] == sorted(text.index(s) for s in sections),
 )
 d = json.loads((ROOT / "content.json").read_text(encoding="utf-8"))
+for entry in d["experience"]:
+    for filename in ("index.html", "resume.html"):
+        page_text = unescape((ROOT / filename).read_text(encoding="utf-8"))
+        check(filename + ": current experience " + entry["title"], all(value in page_text for value in [entry["title"], entry["organization"], entry["date"], *entry["bullets"]]))
+    normalized_pdf = " ".join(text.split())
+    check("PDF: current experience " + entry["title"], all(" ".join(value.split()) in normalized_pdf for value in [entry["title"], entry["organization"], entry["date"], *entry["bullets"]]))
 check(
     "Resume identity and education match source",
     all(

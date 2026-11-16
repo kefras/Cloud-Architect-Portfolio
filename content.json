@@ -9,17 +9,54 @@
   "summary": "Computer Science undergraduate and DevOps & Cloud Engineer Intern with hands-on AWS hosting, Docker/Linux deployment, Kubernetes manifests and GitHub Actions experience. Builds Python AI applications and documents infrastructure troubleshooting. Seeking junior Cloud/DevOps opportunities.",
   "education": {
     "degree": "B.Sc. Computer Science",
-    "school": "Miva Open University",
+    "school": "Miva Open University, Abuja",
     "date": "Expected graduation: 2027"
   },
   "experience": [
     {
+      "title": "Machine Learning Engineer Intern",
+      "organization": "UNICCON Institute of Technology, Abuja",
+      "date": "November 2026 - Present",
+      "bullets": [
+        "Conducted exploratory data analysis using Python, pandas and Matplotlib, including data cleaning, visualisation and correlation analysis.",
+        "Built and evaluated a linear regression model in Google Colab, comparing predictions against a baseline using mean absolute error.",
+        "Documented data preparation, modelling steps, findings and limitations in reproducible notebooks, while exploring practical ML applications in Nigeria."
+      ]
+    },
+    {
+      "title": "AI School Participant — Building LLM-based AI Applications",
+      "organization": "African Technology Forum (ATF)",
+      "date": "July 2026 - October 2026",
+      "bullets": [
+        "Learned about the fundamentals of large language models (LLMs) and their applications in natural language processing.",
+        "Completed the AI School learning phase of the ATF AI Challenge, developing knowledge of LLM-based application development.",
+        "Built and deployed Etiku AI, a conversational assistant using Python, Streamlit and Gemini, with streaming responses and conversation management."
+      ]
+    },
+    {
       "title": "DevOps & Cloud Engineer Intern",
       "organization": "Build and Ship Academy Ltd | Remote",
-      "date": "2026 - Present",
+      "date": "April 2026 - Present",
       "bullets": [
         "Build AWS hosting, container deployment and delivery-automation projects using Linux, Docker and GitHub Actions.",
         "Document infrastructure configuration, deployment troubleshooting and cloud operations labs."
+      ]
+    },
+    {
+      "title": "Student Mentor / Community Volunteer",
+      "organization": "Miva Buddy Programme, Miva Open University | Remote",
+      "date": "January 2026 - April 2026",
+      "bullets": [
+        "Supported student onboarding and peer collaboration."
+      ]
+    },
+    {
+      "title": "Software Development Intern",
+      "organization": "TechSolutions Ltd, Abuja",
+      "date": "December 2025 - March 2026",
+      "bullets": [
+        "Assisted in the development of a web application using Python, Django and PostgreSQL.",
+        "Participated in code reviews and contributed to the improvement of code quality."
       ]
     },
     {
@@ -29,12 +66,6 @@
       "bullets": [
         "Completed practical training in AWS infrastructure, access management and application hosting."
       ]
-    },
-    {
-      "title": "Student Mentor / Community Volunteer",
-      "organization": "Miva Buddy Programme, Miva Open University | Remote",
-      "date": "January 2026 - April 2026",
-      "bullets": ["Supported student onboarding and peer collaboration."]
     }
   ],
   "skills": [
